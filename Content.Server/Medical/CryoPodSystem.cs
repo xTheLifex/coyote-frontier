@@ -2,7 +2,6 @@ using Content.Server.Administration.Logs;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Atmos.Piping.Components;
 using Content.Server.Atmos.Piping.Unary.EntitySystems;
-using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Medical.Components;
 using Content.Server.NodeContainer.EntitySystems;
@@ -12,6 +11,7 @@ using Content.Server.Temperature.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Atmos;
 using Content.Shared.UserInterface;
+using Content.Shared.Body.Components;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
@@ -124,7 +124,9 @@ public sealed partial class CryoPodSystem : SharedCryoPodSystem
                 solutionToInject.ScaleSolution(cryoPod.PotencyMultiplier);
                 // End Frontier
 
-                _bloodstreamSystem.TryAddToChemicals(patient.Value, solutionToInject, bloodstream);
+                // _bloodstreamSystem.TryAddToChemicals(patient.Value, solutionToInject, bloodstream);
+                // var solutionToInject = _solutionContainerSystem.SplitSolution(containerSolution.Value, cryoPod.BeakerTransferAmount);
+                _bloodstreamSystem.TryAddToChemicals((patient.Value, bloodstream), solutionToInject);
                 _reactiveSystem.DoEntityReaction(patient.Value, solutionToInject, ReactionMethod.Injection);
             }
         }

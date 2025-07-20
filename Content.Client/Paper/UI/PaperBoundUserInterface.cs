@@ -26,6 +26,7 @@ public sealed partial class PaperBoundUserInterface : BoundUserInterface // Delt
         _window.Typing += OnTyping; // DeltaV
         _window.SubmitPressed += OnSubmit; // DeltaV
         _window.OnClose += OnSubmit; // DeltaV
+        _window.OnSignatureRequested += OnSignatureRequested; // Coyote
 
         if (EntMan.TryGetComponent<PaperComponent>(Owner, out var paper))
         {
@@ -53,4 +54,11 @@ public sealed partial class PaperBoundUserInterface : BoundUserInterface // Delt
             _window.Input.CursorPosition = new TextEdit.CursorPos(0, TextEdit.LineBreakBias.Top);
         }
     }
+
+    // Coyote start: Port in fillable forms from RMC
+    private void OnSignatureRequested(int signatureIndex)
+    {
+        SendMessage(new PaperSignatureRequestMessage(signatureIndex));
+    }
+    // Coyote end
 }

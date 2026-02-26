@@ -17,7 +17,7 @@
     7DeadlySins: 7
 
 - type: reaction
-  id: A.B.Lustine
+  id: ABLustine # Coyote: Illegal character removal
   requiredMixerCategories:
   - Shake
   reactants:
@@ -28,7 +28,7 @@
     Pomelustine:
       amount: 1
   products:
-    A.B.Lustine: 3
+    ABLustine: 3
 
 - type: reaction
   id: AppleberryFizz

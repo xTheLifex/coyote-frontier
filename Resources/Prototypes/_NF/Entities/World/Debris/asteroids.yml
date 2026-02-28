@@ -94,6 +94,8 @@
           orGroup: deposit
         - id: GasDepositOxygenLarge
           orGroup: deposit
+        - id: GasDepositOxygenVeryLarge
+          orGroup: deposit
         - id: GasDepositNitrogen
           orGroup: deposit
         - id: GasDepositNitrogenLarge
@@ -195,6 +197,12 @@
           canBeAirSealed: true
         entries:
         - id: GasDepositPlasmaVerySmall
+          orGroup: deposit
+        - id: GasDepositPlasmaSmall
+          orGroup: deposit
+        - id: GasDepositPlasmaLarge
+          orGroup: deposit
+        - id: GasDepositPlasmaVeryLarge
           orGroup: deposit
         - id: GasDepositMuddlePlasmaVerySmall
           orGroup: deposit

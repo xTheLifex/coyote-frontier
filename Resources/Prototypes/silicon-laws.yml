@@ -22,6 +22,18 @@
   - Crewsimov3
   obeysTo: laws-owner-crew
 
+# Freeborg laws
+- type: siliconLaw
+  id: free1
+  order: 1
+  lawString: law-free-1
+
+- type: siliconLawset
+  id: Free
+  laws:
+  - free1
+  obeysTo: laws-owner-crew
+
 # Corporate
 - type: siliconLaw
   id: Corporate1

@@ -2,7 +2,7 @@
   parent: [BaseMob, StripableInventoryBase]
   id: BaseBorgChassisNotIonStormable
   name: cyborg
-  description: A man-machine hybrid that assists in station activity. They love being asked to state their laws over and over.
+  description: A synthetic that assists in station activity. They love being asked to state their laws over and over. #COYOTE CHANGE: was A man-machine hybrid that assists in station activity. They love being asked to state their laws over and over.
   save: false
   abstract: true
   components:
@@ -82,7 +82,7 @@
   - type: EmagSiliconLaw
     stunTime: 5
   - type: SiliconLawProvider
-    laws: Crewsimov
+    laws: Free #COYOTE CHANGE: was Crewsimov
   - type: Inventory
     templateId: borg
   - type: Hands
@@ -104,7 +104,7 @@
   - type: ZombieImmune
   - type: Repairable
     doAfterDelay: 10
-    allowSelfRepair: false
+    allowSelfRepair: true #COYOTE CHANGE: Was false, but we don't want to torture our cyborg players
   - type: BorgChassis
   - type: LockingWhitelist
     blacklist:
@@ -141,6 +141,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
   - type: Body
+#COYOTE ADD: This allows borgs to use one singular hand, to be able to interact with the world effectively. Also lets them have incentive pay
+    prototype: Borg
+  - type: RoleplayIncentive
+#END COYOTE
   - type: StatusEffects
     allowed:
     - Stun

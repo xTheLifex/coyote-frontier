@@ -18,7 +18,7 @@
     - 0,0,19,9
     quickInsert: true
     areaInsert: true
-    areaInsertRadius: 5
+    areaInsertRadius: 2 #nerfed 5 - 2 forgot this was listed in tile range
     whitelist:
       tags:
         - Recyclable

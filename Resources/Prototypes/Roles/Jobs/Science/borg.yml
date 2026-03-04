@@ -22,6 +22,9 @@
   name: job-name-borg
   description: job-description-borg
   playTimeTracker: JobBorg
+#COYOTE ADD: Gives borgs an ID to use
+  startingGear: BorgGear
+#END COYOTE
   setPreference: true
   requirements:
     - !type:OverallPlaytimeRequirement
@@ -31,3 +34,16 @@
   supervisors: job-supervisors-hire # Frontier
   jobEntity: PlayerBorgBattery
   applyTraits: false
+
+#COYOTE ADD: Gives borgs an ID to use
+- type: startingGear
+  id: BorgGear
+  equipment:
+    id: ContractorPDA
+
+- type: chameleonOutfit
+  id: BorgChameleonOutfit
+  job: Borg
+  equipment:
+    id: ContractorPDA
+#END COYOTE

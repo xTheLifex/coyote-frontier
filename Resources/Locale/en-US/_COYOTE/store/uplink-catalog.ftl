@@ -62,12 +62,14 @@ uplink-security-cash5000-name = 5,000 Spesos
 uplink-security-cash5000-desc = Cold, hard cash.
 
 uplink-security-cash10000-name = 10,000 Spesos
+uplink-security-cash10000-desc = Cold, hard cash.
 
 uplink-security-cash20000-name = 20,000 Spesos
 
 uplink-security-cash30000-name = 30,000 Spesos
 
 uplink-security-cash100000-name = 100,000 Spesos
+uplink-security-cash100000-desc = Cold, hard cash.
 
 uplink-electric-range-name = Donk Co. Electric Range
 uplink-electric-range-desc = A flatpack used for deploying a Donk Co. electric range

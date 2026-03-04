@@ -281,6 +281,17 @@
   id: SeedExtractorMachineCircuitboard
   result: SeedExtractorMachineCircuitboard
 
+- type: latheRecipe #Coyote Sector
+  parent: [BaseCircuitboardRecipe, BaseServiceMachineRecipeCategory, BaseMedicalMachineRecipeCategory]
+  id: SmartFridgeCircuitboard
+  result: SmartFridgeCircuitboard
+  materials:
+    Steel: 100
+    Glass: 500
+    Plasma: 2000
+    Bluespace: 200
+    Diamond: 100
+
 # Kitchen
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseServiceMachineRecipeCategory ]

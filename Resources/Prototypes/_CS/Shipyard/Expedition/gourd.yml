@@ -13,7 +13,7 @@
 - type: vessel
   id: gourd
   parent: BaseVessel
-  name: SLI Gourd
+  name: LL3 Gourd
   description: The flagship of the Salami Lid Exploration and Science Initiative. Featuring it's state of the art blast chamber, large research and salvage bays, bar and lounge, and fully expedition ready!
   price: 790000 #140000, 70000(50%(exped) + 280000(LL3(200%) + 299100(price per tile) = 789100
   category: Large

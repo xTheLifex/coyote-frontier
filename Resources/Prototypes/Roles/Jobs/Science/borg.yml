@@ -23,7 +23,7 @@
   description: job-description-borg
   playTimeTracker: JobBorg
 #COYOTE ADD: Gives borgs an ID to use
-  startingGear: BorgGear
+  #startingGear: COYOTE COMMENT: BorgGear They don't need this anymore, as the borg body itself does this
 #END COYOTE
   setPreference: true
   requirements:

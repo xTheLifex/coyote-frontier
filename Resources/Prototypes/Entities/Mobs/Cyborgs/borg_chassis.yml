@@ -31,7 +31,15 @@
     inherentRadioChannels:
     - Common
     - Binary
+ #COYOTE ADD: Ring ring! We want our borgs to be able to talk in shortband too!
+    - Traffic
+  #COYOTE END
   - type: BankAccount # Coyote Borgs can now interact with bank accounts
+    #COYOTE ADD: Borg PDA's are good for borgs, even ones made midround
+  - type: Loadout
+    prototypes:
+    - BorgGear
+#END COYOTE
 
 - type: entity
   id: BorgChassisGeneric
@@ -228,7 +236,7 @@
   id: BorgChassisDerelict
   parent: BaseBorgChassisDerelict
   name: derelict cyborg
-  description: A man-machine hybrid that assists in station activity. This one is in a state of great disrepair.
+  description: A synthetic that assists in station activity. This one is in a state of great disrepair. #COYOTE CHANGE: Changed "man-machine hybrid" to "synthetic"
   components:
   - type: Sprite
     layers:
@@ -255,3 +263,8 @@
     interactFailureString: petting-failure-derelict-cyborg
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
+  #COYOTE ADD: Borg PDA's are good for borgs, even ones made midround
+  - type: Loadout
+    prototypes:
+    - BorgGear
+#END COYOTE

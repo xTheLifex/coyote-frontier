@@ -215,9 +215,9 @@
   description: An aristocratic suit reeking of blood and lost dreams.
   components:
   - type: Sprite
-    sprite: _Starlight/Clothing/Uniforms/Jumpsuit/ari.rsi
+    sprite: _CS/Clothes/Uniforms/Jumpsuit/ari.rsi
   - type: Clothing
-    sprite: _Starlight/Clothing/Uniforms/Jumpsuit/ari.rsi
+    sprite: _CS/Clothes/Uniforms/Jumpsuit/ari.rsi
 
 - type: entity
   parent: ClothingUniformBase
@@ -226,6 +226,6 @@
   description: A blue noble suit that exudes elegance and refinement.
   components:
     - type: Sprite
-      sprite: _Starlight/Clothing/Uniforms/Jumpsuit/belpero.rsi
+      sprite: _CS/Clothes/Uniforms/Jumpsuit/belpero.rsi
     - type: Clothing
-      sprite: _Starlight/Clothing/Uniforms/Jumpsuit/belpero.rsi
+      sprite: _CS/Clothes/Uniforms/Jumpsuit/belpero.rsi

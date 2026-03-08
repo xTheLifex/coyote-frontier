@@ -692,7 +692,7 @@
   productEntity: MedkitCombatFilled
   icon: { sprite: _NF/Objects/Specific/Medical/firstaidkits.rsi, state: blackkit } # Frontier: _NF prefix
   cost:
-    FrontierUplinkCoin: 2
+    FrontierUplinkCoin: 10
   categories:
     - UplinkSecurityUtility
   conditions:
@@ -700,6 +700,9 @@
       whitelist:
         tags:
           - SecurityUplink
+    - !type:BuyerJobCondition
+      whitelist:
+        - Brigmedic
 
 - type: listing
   id: UplinkSecurityInspector

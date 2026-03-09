@@ -53,8 +53,19 @@ shuttle-console-docked = Docked objects
 
 shuttle-console-view = View
 shuttle-console-undock = Undock
+shuttle-console-undock-all = Undock All
 shuttle-console-dock = Dock
 shuttle-console-docks-label = Docks
 
 shuttle-console-undock-fail = Undocking failed
 shuttle-console-dock-fail = Docking failed
+
+# Wayfarer: AUTOPILOT
+shuttle-console-autopilot = Autopilot
+shuttle-console-autopilot-enable = Enable Autopilot
+shuttle-console-autopilot-disable = Disable Autopilot
+shuttle-console-autopilot-enabled = Autopilot: Engaged - Destination: {$destination}
+shuttle-console-autopilot-disabled = Autopilot: Disabled
+shuttle-console-autopilot-no-target = No radar target selected
+shuttle-console-autopilot-no-server = No autopilot server installed on this shuttle
+# End Wayfarer

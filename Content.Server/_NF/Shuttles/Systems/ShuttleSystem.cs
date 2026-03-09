@@ -4,6 +4,8 @@
 
 using Content.Server._NF.Shuttles.Components;
 using Content.Server._NF.Station.Components;
+using Content.Server._WF.Shuttles.Components; // Wayfarer: Autopilot
+using Content.Server._WF.Shuttles.Systems; // Wayfarer: Autopilot
 using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
 using Content.Server.Popups;
@@ -32,6 +34,7 @@ public sealed partial class ShuttleSystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly IPlayerManager _players = default!;
     [Dependency] private readonly PopupSystem _popupSystem = null!;
+    [Dependency] private readonly AutopilotSystem _autopilot = default!; // Wayfarer: Autopilot
     public TimeSpan BrakeDelay = TimeSpan.FromSeconds(10);
     public TimeSpan NextBrakeCheck = TimeSpan.Zero;
 
@@ -97,6 +100,16 @@ public sealed partial class ShuttleSystem
         {
             return;
         }
+
+        // Wayfarer start: Disengage autopilot if pilot manually changes mode
+        if (args.Mode != InertiaDampeningMode.Query &&
+            TryComp<AutopilotComponent>(transform.GridUid.Value, out var autopilot) &&
+            autopilot.Enabled)
+        {
+            _autopilot.DisableAutopilot(transform.GridUid.Value);
+            _autopilot.SendShuttleMessage(transform.GridUid.Value, "Autopilot disengaged - manual mode change");
+        }
+        // Wayfarer end
 
         if (SetInertiaDampening(
                 uid,

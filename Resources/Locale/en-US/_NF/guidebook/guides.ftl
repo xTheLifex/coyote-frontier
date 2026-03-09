@@ -3,6 +3,7 @@ guide-entry-nf14 = Frontier Guide
 guide-entry-bank = NT Galactic Bank
 guide-entry-shifts-and-persistence = Shifts and Persistence
 guide-entry-piloting = Piloting
+guide-entry-autopilot = Autopilot
 guide-entry-startinggear = Starting Equipment
 guide-entry-hiring = Hiring Crew
 guide-entry-interviews = Interviews

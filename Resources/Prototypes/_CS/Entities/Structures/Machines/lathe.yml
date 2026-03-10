@@ -1,7 +1,7 @@
 - type: entity
   parent: [ NFBlueprintReceiverBase, BaseLatheLube ]
   id: DonkcoServiceTechFab
-  name: Donk co. service techfab
+  name: donk co. service techfab
   description: Prints equipment for service staff.
   components:
   - type: Sprite

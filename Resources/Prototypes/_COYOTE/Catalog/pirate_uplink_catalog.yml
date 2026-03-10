@@ -845,6 +845,24 @@
     - Smuggler
 
 - type: listing
+  id: UplinkFreelancerJawsOfLife
+  name: uplink-syndicate-jaws-of-life-name
+  description: uplink-syndicate-jaws-of-life-desc
+  productEntity: SyndicateJawsOfLife
+  cost:
+    Doubloon: 8
+  categories:
+  - UplinkPirateDeception
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - PirateUplink
+  - !type:BuyerJobCondition
+    whitelist:
+    - Escort
+
+- type: listing
   id: UplinkFreelancerVoiceMask
   name: uplink-voice-mask-name
   description: uplink-voice-mask-desc
@@ -899,7 +917,7 @@
   icon: { sprite: /Textures/Clothing/Uniforms/Jumpsuit/rainbow.rsi, state: icon }
   productEntity: ClothingBackpackChameleonFill
   cost:
-    Doubloon: 8
+    Doubloon: 20
   categories:
   - UplinkPirateDeception
   conditions:

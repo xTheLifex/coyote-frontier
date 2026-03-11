@@ -278,7 +278,7 @@ public sealed partial class MarkingSet
 
                 if (marking.Sprites.Count != list[i].MarkingColors.Count)
                 {
-                    list[i] = new Marking(marking.ID, marking.Sprites.Count);
+                    list[i] = new Marking(list[i], marking.Sprites.Count);
                 }
             }
 

@@ -221,7 +221,7 @@ public sealed partial class SingleMarkingPicker : BoxContainer
 
         if (marking.MarkingColors.Count != proto.Sprites.Count)
         {
-            marking = new Marking(marking.MarkingId, proto.Sprites.Count);
+            marking = new Marking(marking, proto.Sprites.Count);
         }
 
         for (var i = 0; i < marking.MarkingColors.Count; i++)

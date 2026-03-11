@@ -1,7 +1,7 @@
 - type: entity
   id: DonkcoKitchenAssembler
   parent: KitchenMicrowave
-  name: Donk Pocket Assembler
+  name: donk co. food-o-mat
   description: Assembles and prepares donk pockets!...and other things, I guess.
   components:
   - type: Microwave

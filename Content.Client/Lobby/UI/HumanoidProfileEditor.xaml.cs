@@ -520,7 +520,7 @@ namespace Content.Client.Lobby.UI
 
             Markings.OnMarkingAdded += OnMarkingChange;
             Markings.OnMarkingRemoved += OnMarkingChange;
-            Markings.OnMarkingColorChange += OnMarkingChange;
+            Markings.OnMarkingDataChanged += OnMarkingChange;
             Markings.OnMarkingRankChange += OnMarkingChange;
             Markings.OnLegStyleChanged += OnLegsChanged;
 

@@ -231,7 +231,28 @@ namespace Content.Server.Database
             {
                 foreach (var marking in markingsRaw)
                 {
-                    var parsed = Marking.ParseFromDbString(marking);
+                    Marking? ParseFromDbJSON(string input)
+                    {
+                        return new Marking(JsonSerializer.Deserialize<MarkingDTO>(input));
+                    }
+
+                    Marking? ParseFromDbString(string input)
+                    {
+                        if (input.Length == 0) return null;
+                        // if it starts with '{', it's JSON, so deserialize it.
+                        if (input.StartsWith("{")) return ParseFromDbJSON(input);
+                        // otherwise, it's an old string, so parse it using legacy code
+                        // we could force a migration at some point to remove dependance on this old code
+                        var split = input.Split('@');
+                        if (split.Length != 2) return null;
+                        List<Color> colorList = new();
+                        foreach (string color in split[1].Split(','))
+                            colorList.Add(Color.FromHex(color));
+
+                        return new Marking(split[0], colorList);
+                    }
+
+                    var parsed = ParseFromDbString(marking);
 
                     if (parsed is null) continue;
 
@@ -308,7 +329,7 @@ namespace Content.Server.Database
             List<string> markingStrings = new();
             foreach (var marking in appearance.Markings)
             {
-                markingStrings.Add(marking.ToString());
+                markingStrings.Add(JsonSerializer.Serialize(marking.ToDTO()));
             }
             var markings = JsonSerializer.SerializeToDocument(markingStrings);
 

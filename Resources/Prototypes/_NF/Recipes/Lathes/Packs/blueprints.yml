@@ -523,6 +523,7 @@
   # Monolith
   - ArmorPlateMedium
   - ArmorPlateTactical
+  - ArmorPlateRefractive
 
 # region Engineering & Science
 - type: latheRecipePack

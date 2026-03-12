@@ -16,7 +16,8 @@ namespace Content.Server._Mono.ArmorPlate;
 /// </summary>
 public sealed class ArmorPlateSystem : SharedArmorPlateSystem
 {
-    [Dependency] private readonly StaminaSystem _stamina = default!;
+    //[Dependency] private readonly StaminaSystem _stamina = default!; // Coyote: We use SharedStam
+    [Dependency] private readonly SharedStaminaSystem _stamina = default!; // Coyote
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;

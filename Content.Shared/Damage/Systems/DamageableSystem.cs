@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared.CCVar;
 using Content.Shared.Chemistry;
 using Content.Shared.Damage.Prototypes;
@@ -13,7 +14,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
-using System.Linq;
+
 using static Content.Shared.Damage.DamageableSystem;
 
 namespace Content.Shared.Damage

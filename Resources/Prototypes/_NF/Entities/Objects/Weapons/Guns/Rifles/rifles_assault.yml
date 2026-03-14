@@ -15,6 +15,38 @@
     steps: 4
     zeroVisible: true
 
+- type: entity
+  id: NFWeaponRifleAssaultEstoc
+  parent: [NFBaseWeaponRifleAssaultChamber20, NFBaseWeaponFrameRifleAssaultCybersun]
+  name: Estoc DMR
+  description: "A designated marksman rifle firing in 3-round bursts. The Estoc was designed as the Lecter’s long-range counterpart, equipped with an extended 20-inch barrel and telescopic sight.\nFeeds from .20 rifle magazines."
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Rifles/estoc.rsi
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Rifles/estoc.rsi
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/estocshot.ogg
+    availableModes:
+    - Burst
+    - SemiAuto
+    selectedMode: Burst
+    shotsPerBurst: 3
+    burstFireRate: 14
+    burstCooldown: 1
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.9
+    sprintModifier: 0.9
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 2
+    pvsIncrease: 0.2
+
 - type: entity # TODO: switch to .25 rifle (caseless)
   id: NFWeaponRifleAssaultM90GrenadeLauncher
   parent: [ NFBaseWeaponRifleAssaultChamber20, NFBaseWeaponFrameRifleAssaultCybersun ]

@@ -89,7 +89,7 @@
   productEntity: CratePirateChest
   icon: { sprite: _NF/Structures/Storage/Crates/piratechestgrey.rsi, state: crate_icon }
   cost:
-    Doubloon: 8
+    Doubloon: 20 # Coyote: Cost increase
   categories:
     - UplinkPirateUtility
   conditions:

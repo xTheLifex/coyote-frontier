@@ -59,11 +59,12 @@ public sealed class ModifyUndiesSystem : EntitySystem
         {
             if (!_markingManager.TryGetMarking(marking, out var mProt))
                 continue;
-            // check if the Bodypart is in the component's BodyPartTargets
-            if (!component.BodyPartTargets.Contains(mProt.BodyPart))
+            // Skip if we don't have permission to modify this marking
+            if (isMine && !marking.CanToggleVisible || !isMine && !marking.OtherCanToggleVisible)
                 continue;
-                
             // Skip genital markings based on consent
+            // This can probably be removed now that users can control genital interactions
+            // through the marking interface. Should be discussed to confirm
             if (mProt.BodyPart == HumanoidVisualLayers.Genital)
             {
                 // If user and target are the same person, they can always interact with their own markings
@@ -77,8 +78,8 @@ public sealed class ModifyUndiesSystem : EntitySystem
                     }
                 }
             }
-            
-            var localizedName = Loc.GetString($"marking-{mProt.ID}");
+
+            var localizedName = string.IsNullOrEmpty(marking.CustomName) ? Loc.GetString($"marking-{mProt.ID}") : marking.CustomName;
             var partSlot = mProt.BodyPart;
             var isVisible = !humApp.HiddenMarkings.Contains(mProt.ID);
             if (mProt.Sprites.Count < 1)
@@ -88,7 +89,7 @@ public sealed class ModifyUndiesSystem : EntitySystem
                 HumanoidVisualLayers.UndergarmentTop => new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/bra.png")),
                 HumanoidVisualLayers.UndergarmentBottom => new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/underpants.png")),
                 HumanoidVisualLayers.Genital => new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/love.png")),
-                _ => new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/undies.png"))
+                _ => mProt.Sprites.FirstOrDefault() ?? new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/undies.png"))
             };
             // add the verb
             Verb verb = new()
@@ -98,7 +99,9 @@ public sealed class ModifyUndiesSystem : EntitySystem
                     ("undies", localizedName),
                     ("isVisible", isVisible),
                     ("isMine", isMine),
-                    ("target", Identity.Entity(args.Target, EntityManager))
+                    ("target", Identity.Entity(args.Target, EntityManager)),
+                    ("putOnVerb", string.IsNullOrEmpty(marking.PutOnVerb) ? Loc.GetString("marking-toggle-self-default-verb-on") : marking.PutOnVerb),
+                    ("takeOffVerb", string.IsNullOrEmpty(marking.TakeOffVerb) ? Loc.GetString("marking-toggle-self-default-verb-off") : marking.TakeOffVerb)
                     ),
                 Icon = undieOrBra,
                 Category = UndiesCat,
@@ -127,13 +130,12 @@ public sealed class ModifyUndiesSystem : EntitySystem
                     string gString;
                     if (args.User == args.Target)
                     {
-                        gString = isVisible
-                            ? "undies-removed-self-start"
-                            : "undies-equipped-self-start";
+                        gString = "marking-toggle-self-start";
                         _popupSystem.PopupCoordinates(
                             Loc.GetString(
                                 gString,
-                                ("undie", localizedName)
+                                ("marking-name", localizedName),
+                                ("verb", isVisible ? marking.TakeOffVerb : marking.PutOnVerb)
                                 ),
                             Transform(args.Target).Coordinates,
                             Filter.Entities(args.Target),
@@ -144,27 +146,25 @@ public sealed class ModifyUndiesSystem : EntitySystem
                     else
                     {
                         // to the user
-                        gString = isVisible
-                            ? "undies-removed-user-start"
-                            : "undies-equipped-user-start";
+                        gString = "marking-toggle-other-start";
                         _popupSystem.PopupCoordinates(
                             Loc.GetString(
                                 gString,
-                                ("undie", localizedName)
+                                ("verb", isVisible ? marking.TakeOffVerb : marking.PutOnVerb),
+                                ("marking-name", localizedName)
                                 ),
                             Transform(args.Target).Coordinates,
                             Filter.Entities(args.User),
                             true,
                             PopupType.Medium);
                         // to the target
-                        gString = isVisible
-                            ? "undies-removed-target-start"
-                            : "undies-equipped-target-start";
+                        gString = "marking-toggle-by-other-start";
                         _popupSystem.PopupCoordinates(
                             Loc.GetString(
                                 gString,
-                                ("undie", localizedName),
-                                ("user", Identity.Entity(args.User, EntityManager))
+                                ("marking-name", localizedName),
+                                ("verb", isVisible ? marking.TakeOffVerb : marking.PutOnVerb),
+                                ("other", Identity.Entity(args.User, EntityManager))
                                 ),
                             Transform(args.Target).Coordinates,
                             Filter.Entities(args.Target),
@@ -210,15 +210,16 @@ public sealed class ModifyUndiesSystem : EntitySystem
         // Effect targets for different players
         // Popups
         string gString;
+        var marking = args.Marking;
+
         if (args.User == args.Target.Value)
         {
-            gString = args.IsVisible
-                ? "undies-removed-self"
-                : "undies-equipped-self";
+            gString = "marking-toggle-self";
             _popupSystem.PopupCoordinates(
                 Loc.GetString(
                     gString,
-                    ("undie", args.MarkingPrototypeName)
+                    ("marking-name", string.IsNullOrEmpty(marking.CustomName) ? args.MarkingPrototypeName : marking.CustomName),
+                    ("verb", args.IsVisible ? marking.TakeOffVerb : marking.PutOnVerb)
                     ),
                 Transform(args.Target.Value).Coordinates,
                 Filter.Entities(args.Target.Value),
@@ -229,27 +230,25 @@ public sealed class ModifyUndiesSystem : EntitySystem
         else
         {
             // to the user
-            gString = args.IsVisible
-                ? "undies-removed-user"
-                : "undies-equipped-user";
+            gString = "marking-toggle-other";
             _popupSystem.PopupCoordinates(
                 Loc.GetString(
                     gString,
-                    ("undie", args.MarkingPrototypeName)
+                    ("marking-name", string.IsNullOrEmpty(marking.CustomName) ? args.MarkingPrototypeName : marking.CustomName),
+                    ("verb", args.IsVisible ? marking.TakeOffVerb : marking.PutOnVerb)
                     ),
                 Transform(args.Target.Value).Coordinates,
                 Filter.Entities(args.User),
                 true,
                 PopupType.Medium);
             // to the target
-            gString = args.IsVisible
-                ? "undies-removed-target"
-                : "undies-equipped-target";
+            gString = "marking-toggle-by-other";
             _popupSystem.PopupCoordinates(
                 Loc.GetString(
                     gString,
-                    ("undie", args.MarkingPrototypeName),
-                    ("user", Identity.Entity(args.User, EntityManager))
+                    ("marking-name", string.IsNullOrEmpty(marking.CustomName) ? args.MarkingPrototypeName : marking.CustomName),
+                    ("verb", args.IsVisible ? marking.TakeOffVerb2p : marking.PutOnVerb2p),
+                    ("other", Identity.Entity(args.User, EntityManager))
                     ),
                 Transform(args.Target.Value).Coordinates,
                 Filter.Entities(args.Target.Value),

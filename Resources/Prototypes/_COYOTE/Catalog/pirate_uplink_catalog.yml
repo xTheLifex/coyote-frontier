@@ -1588,7 +1588,25 @@
   icon: { sprite: /Textures/Objects/Storage/boxicons.rsi, state: throwing_knives }
   productEntity: ThrowingKnivesKit
   cost:
-    Doubloon: 24
+    Doubloon: 16
+  categories:
+  - UplinkPirateWeapons
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - PirateUplink
+  - !type:BuyerJobCondition
+    whitelist:
+    - Escort
+
+- type: listing
+  id: UplinkFreelancerPistolCobra
+  name: uplink-pistol-cobra-name
+  description: uplink-pistol-cobra45-desc
+  productEntity: NFWeaponPistolCobra
+  cost:
+    Doubloon: 16
   categories:
   - UplinkPirateWeapons
   conditions:

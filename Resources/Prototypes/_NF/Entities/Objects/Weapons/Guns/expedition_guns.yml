@@ -382,6 +382,13 @@
 ## Rifles
 - type: entity
   parent:
+  - BaseExpeditionWeaponTier4
+  - NFWeaponRifleAssaultEstoc
+  categories: [ HideSpawnMenu ]
+  id: NFWeaponRifleAssaultEstocExpedition
+
+- type: entity
+  parent:
   #- BaseC2Contraband # Coyote change. Prevents different base contraband levels from fighting with each other.
   - BaseExpeditionWeaponTier4Syndicate
   - NFWeaponRifleAssaultSm

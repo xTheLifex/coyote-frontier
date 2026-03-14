@@ -256,6 +256,7 @@
       - id: WeaponCaseLongVulcanExpedition
       - id: WeaponCaseLongBulldog
       - id: WeaponCaseLongEnforcerExpedition
+      - id: WeaponCaseLongEstocExpedition
       - id: WeaponCaseShortAntiqueLaserExpedition
       - id: WeaponCaseShortAdvancedLaserExpedition
       - id: WeaponCaseLongLaserCarbineExpedition

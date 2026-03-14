@@ -1,6 +1,6 @@
 - type: entity
   name: prototype pulse rifle
-  parent: [BaseC3Contraband, BaseWeaponBattery, BaseGunWieldable] # Frontier: added BaseC2Contraband
+  parent: [ BaseC3Contraband, NFBaseWeaponEnergyRifleHitScanPulse, NFBaseWeaponFrameEnergyRifleNanotrasen ] # Coyote: Removed BaseWeaponBattery, BaseGunWieldable, added BaseC3Contraband, NFBaseWeaponEnergyRifleHitScanPulse, NFBaseWeaponFrameEnergyRifleNanotrasen
   id: WeaponPrototypePulseRifle
   description: Some nutjob built this pulse rifle in their spess garage. It's quite power hungry. And why is it a lever action?!
   components:
@@ -27,7 +27,7 @@
       path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
   - type: HitscanBatteryAmmoProvider
     proto: PulseWeak # Flooftier Weak Pulse Rifle
-    fireCost: 100 # Coyote: 80 < 100
+    fireCost: 80
   - type: Battery
     maxCharge: 2400
     startingCharge: 2400

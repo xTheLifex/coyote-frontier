@@ -331,6 +331,19 @@
 
 - type: entity
   parent: WeaponCaseLong
+  id: WeaponCaseLongEstocExpedition
+  suffix: Dungeon, Estoc
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: NFWeaponRifleAssaultEstocExpedition
+      amount: 1
+    - id: NFMagazineRifle20
+      amount: 2
+
+- type: entity
+  parent: WeaponCaseLong
   id: WeaponCaseLongSm
   suffix: Dungeon, Soland-Moss AR
   categories: [ HideSpawnMenu ]

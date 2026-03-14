@@ -52,7 +52,7 @@
 
 - type: entity
   name: jaws of death # Coyote: added fun ( syndicate jaws of life < jaws of death )
-  parent: [JawsOfLife, BaseC2Contraband] # Frontier: BaseSyndicateContraband<BaseC4Contraband # Coyote: BaseC4Contraband < BaseC1Contraband
+  parent: [JawsOfLife, BaseC1Contraband] # Frontier: BaseSyndicateContraband<BaseC4Contraband # Coyote: BaseC4Contraband < BaseC1Contraband
   id: SyndicateJawsOfLife
   description: Useful for entering the station or its departments.
   components:

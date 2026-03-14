@@ -1,6 +1,4 @@
 using System.Linq;
-using Content.Shared.Humanoid.Prototypes;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Humanoid.Markings
@@ -24,14 +22,73 @@ namespace Content.Shared.Humanoid.Markings
         }
 
         public Marking(string markingId,
+            List<Color> markingColors, MarkingCategories category) : this(markingId, markingColors.Count, category)
+        {
+            MarkingId = markingId;
+            _markingColors = markingColors;
+        }
+
+        public Marking(Marking marking,
+            List<Color> markingColors) : this(marking)
+        {
+            _markingColors = markingColors;
+        }
+
+        public Marking(string markingId,
             IReadOnlyList<Color> markingColors)
             : this(markingId, new List<Color>(markingColors))
         {
         }
 
-        public Marking(string markingId, int colorCount)
+        public Marking(Marking marking,
+            IReadOnlyList<Color> markingColors)
+            : this(marking)
+        {
+            _markingColors = new(markingColors);
+        }
+
+        /// <summary>
+        /// Creates a new marking from metadata, setting defaults based on category
+        /// </summary>
+        /// <param name="markingId"></param>
+        /// <param name="colorCount"></param>
+        /// <param name="category"></param>
+        public Marking(string markingId, int colorCount, MarkingCategories category)
         {
             MarkingId = markingId;
+            List<Color> colors = new();
+            for (int i = 0; i < colorCount; i++)
+                colors.Add(Color.White);
+            _markingColors = colors;
+
+            if (category == MarkingCategories.UndergarmentBottom || category == MarkingCategories.UndergarmentTop)
+            {
+                CanToggleVisible = true;
+                OtherCanToggleVisible = true;
+            }
+            else if (category == MarkingCategories.Genital)
+            {
+                ShowAtStart = false;
+                CanToggleVisible = true;
+                OtherCanToggleVisible = false;
+                PutOnVerb = "show";
+                PutOnVerb2p = "shows";
+                TakeOffVerb = "hide";
+                TakeOffVerb2p = "hides";
+            }
+            else
+            {
+                CanToggleVisible = false;
+                OtherCanToggleVisible = false;
+                PutOnVerb = "show";
+                PutOnVerb2p = "shows";
+                TakeOffVerb = "hide";
+                TakeOffVerb2p = "hides";
+            }
+        }
+
+        public Marking(Marking marking, int colorCount) : this(marking)
+        {
             List<Color> colors = new();
             for (int i = 0; i < colorCount; i++)
                 colors.Add(Color.White);
@@ -44,6 +101,29 @@ namespace Content.Shared.Humanoid.Markings
             _markingColors = new(other.MarkingColors);
             Visible = other.Visible;
             Forced = other.Forced;
+            CustomName = other.CustomName;
+            CanToggleVisible = other.CanToggleVisible;
+            OtherCanToggleVisible = other.OtherCanToggleVisible;
+            PutOnVerb = other.PutOnVerb;
+            PutOnVerb2p = other.PutOnVerb2p;
+            TakeOffVerb = other.TakeOffVerb;
+            TakeOffVerb2p = other.TakeOffVerb2p;
+            ShowAtStart = other.ShowAtStart;
+        }
+
+        public Marking(MarkingDTO? other)
+        {
+            if (other == null) return;
+            MarkingId = other.MarkingId ?? MarkingId;
+            _markingColors = new(other.MarkingColors.Select(x => Color.FromHex(x)) ?? _markingColors);
+            ShowAtStart = other.Visible ?? ShowAtStart;
+            CustomName = other.CustomName ?? CustomName;
+            CanToggleVisible = other.CanToggleVisible ?? CanToggleVisible;
+            OtherCanToggleVisible = other.OtherCanToggleVisible ?? OtherCanToggleVisible;
+            PutOnVerb = other.PutOnVerb ?? PutOnVerb;
+            PutOnVerb2p = other.PutOnVerb2p ?? PutOnVerb2p;
+            TakeOffVerb = other.TakeOffVerb ?? TakeOffVerb;
+            TakeOffVerb2p = other.TakeOffVerb2p ?? TakeOffVerb2p;
         }
 
         /// <summary>
@@ -63,6 +143,54 @@ namespace Content.Shared.Humanoid.Markings
         /// </summary>
         [DataField("visible")]
         public bool Visible = true;
+
+        /// <summary>
+        ///     If this marking is can be toggled on or off by the user.
+        /// </summary>
+        [DataField("customName")]
+        public string? CustomName = null;
+
+        /// <summary>
+        ///     If this marking is should start enabled.
+        /// </summary>
+        [DataField("showAtStart")]
+        public bool ShowAtStart = true;
+
+        /// <summary>
+        ///     If this marking is can be toggled on or off by the user.
+        /// </summary>
+        [DataField("canToggleVisible")]
+        public bool CanToggleVisible = false;
+
+        /// <summary>
+        ///     If this marking is can be toggled on or off by the other players.
+        /// </summary>
+        [DataField("otherCanToggleVisible")]
+        public bool OtherCanToggleVisible = false;
+
+        /// <summary>
+        ///     Verb to use when putting on
+        /// </summary>
+        [DataField("putOnVerb")]
+        public string PutOnVerb = "put on";
+
+        /// <summary>
+        ///     Verb to use when taking off
+        /// </summary>
+        [DataField("takeOffVerb")]
+        public string TakeOffVerb = "take off";
+
+        /// <summary>
+        ///     Verb to use when putting on (2nd person)
+        /// </summary>
+        [DataField("putOnVerb2p")]
+        public string PutOnVerb2p = "puts on";
+
+        /// <summary>
+        ///     Verb to use when taking off (2nd person)
+        /// </summary>
+        [DataField("takeOffVerb2p")]
+        public string TakeOffVerb2p = "takes off";
 
         /// <summary>
         ///     If this marking should be forcefully applied, regardless of points.
@@ -108,41 +236,32 @@ namespace Content.Shared.Humanoid.Markings
             return MarkingId.Equals(other.MarkingId)
                 && _markingColors.SequenceEqual(other._markingColors)
                 && Visible.Equals(other.Visible)
-                && Forced.Equals(other.Forced);
+                && Forced.Equals(other.Forced)
+                && CustomName == other.CustomName
+                && CanToggleVisible == other.CanToggleVisible
+                && OtherCanToggleVisible == other.OtherCanToggleVisible
+                && PutOnVerb == other.PutOnVerb
+                && PutOnVerb2p == other.PutOnVerb2p
+                && TakeOffVerb == other.TakeOffVerb
+                && TakeOffVerb2p == other.TakeOffVerb2p
+                && ShowAtStart == other.ShowAtStart;
         }
 
-        // VERY BIG TODO: TURN THIS INTO JSONSERIALIZER IMPLEMENTATION
-
-
-        // look this could be better but I don't think serializing
-        // colors is the correct thing to do
-        //
-        // this is still janky imo but serializing a color and feeding
-        // it into the default JSON serializer (which is just *fine*)
-        // doesn't seem to have compatible interfaces? this 'works'
-        // for now but should eventually be improved so that this can,
-        // in fact just be serialized through a convenient interface
-        new public string ToString()
+        public MarkingDTO ToDTO()
         {
-            // reserved character
-            string sanitizedName = this.MarkingId.Replace('@', '_');
-            List<string> colorStringList = new();
-            foreach (Color color in _markingColors)
-                colorStringList.Add(color.ToHex());
-
-            return $"{sanitizedName}@{String.Join(',', colorStringList)}";
-        }
-
-        public static Marking? ParseFromDbString(string input)
-        {
-            if (input.Length == 0) return null;
-            var split = input.Split('@');
-            if (split.Length != 2) return null;
-            List<Color> colorList = new();
-            foreach (string color in split[1].Split(','))
-                colorList.Add(Color.FromHex(color));
-
-            return new Marking(split[0], colorList);
+            return new MarkingDTO()
+            {
+                MarkingId = MarkingId,
+                CanToggleVisible = CanToggleVisible,
+                CustomName = CustomName,
+                MarkingColors = _markingColors.Select(x => x.ToHex()).ToList(),
+                Visible = ShowAtStart,
+                OtherCanToggleVisible = OtherCanToggleVisible,
+                PutOnVerb = PutOnVerb,
+                PutOnVerb2p = PutOnVerb2p,
+                TakeOffVerb = TakeOffVerb,
+                TakeOffVerb2p = TakeOffVerb2p
+            };
         }
     }
 }

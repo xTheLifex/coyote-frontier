@@ -644,7 +644,7 @@
     attackRate: 2
     damage:
       types:
-        Blunt: 53 #coyote
+        Blunt: 53 # Coyote: 35 < 53
     soundHit:
       collection: Punch
     animation: WeaponArcFist

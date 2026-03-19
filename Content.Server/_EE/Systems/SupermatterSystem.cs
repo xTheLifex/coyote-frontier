@@ -44,6 +44,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Content.Shared.DeviceLinking;
+using Content.Shared.Tag; // Coyote: Tag for the trash check
 
 namespace Content.Server._EE.Supermatter.Systems;
 
@@ -72,7 +73,9 @@ public sealed partial class SupermatterSystem : EntitySystem
     [Dependency] private readonly IConfigurationManager _config = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly TagSystem _tag = default!; // Coyote: Tag for the trash check
 
+    private static readonly ProtoId<TagPrototype> TrashTag = "Trash"; // Coyote: Tag for the trash check
     public override void Initialize()
     {
         base.Initialize();
@@ -297,6 +300,14 @@ public sealed partial class SupermatterSystem : EntitySystem
             HasComp<GodmodeComponent>(target) ||
             _container.IsEntityInContainer(uid))
             return;
+
+        // Coyote: Check for Trash tag - delete without powering. This is to avoid roundstart powerup due to trash.
+        if (_tag.HasTag(target, TrashTag))
+        {
+            EntityManager.QueueDeleteEntity(target);
+            return;
+        }
+        // Coyote End
 
         if (!sm.HasBeenPowered)
             LogFirstPower(uid, sm, target);

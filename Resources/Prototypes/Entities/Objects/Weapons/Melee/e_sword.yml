@@ -303,11 +303,11 @@
             Slash: 18 # buffed most melee's damage by ~1.5x
             Heat: 18 # buffed most melee's damage by ~1.5x
             Structural: 15 # buffed most melee's damage by ~1.5x
-  - type: ItemToggleActiveSound
-    activeSound:
-      path: /Audio/Weapons/ebladehum.ogg
-      params:
-        volume: 3
+  #- type: ItemToggleActiveSound # Coyote: Inherits parent sound
+  #  activeSound:
+  #    path: /Audio/Weapons/ebladehum.ogg
+  #    params:
+  #      volume: 3
   - type: ComponentToggler
     components:
     - type: Sharp

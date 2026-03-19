@@ -158,3 +158,6 @@ uplink-pirate-35ammo-fire-desc = A box of .35 Incendiary Ammo
 
 uplink-pirate-40ammo-fire-name = .40 Incendiary Ammo Box
 uplink-pirate-40ammo-fire-desc = A box of .40 Incendiary Ammo
+
+uplink-pirate-60ammo-rubber-name = .60 Rubber Ammo Box
+uplink-pirate-60ammo-rubber-desc = A box of .60 Rubber Ammo

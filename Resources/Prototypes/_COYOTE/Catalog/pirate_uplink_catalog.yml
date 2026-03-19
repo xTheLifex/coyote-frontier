@@ -1562,3 +1562,22 @@
     whitelist:
     - Smuggler
     - NFPirate
+
+- type: listing
+  id:  UplinkPirateAmmunitionBoxRifle60Rubber #A fun toy for escorts to play with
+  name:  uplink-pirate-60ammo-rubber-name
+  description: uplink-pirate-60ammo-rubber-desc
+  productEntity:  NFAmmunitionBoxRifle60Rubber
+  icon: { sprite: _NF/Objects/Weapons/Guns/Ammunition/Boxes/rifle.rsi, state: icon-60}
+  cost:
+    Doubloon: 2
+  categories:
+  - UplinkPirateAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - PirateUplink
+  - !type:BuyerJobCondition
+    whitelist:
+    - Escort

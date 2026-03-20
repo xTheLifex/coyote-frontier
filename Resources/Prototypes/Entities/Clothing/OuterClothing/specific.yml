@@ -1,5 +1,5 @@
 ﻿- type: entity
-  parent: [ ClothingOuterBase, ClothingArmorPlate] # Coyote: Allows it to use armor plates.
+  parent: [ ClothingOuterBase, ClothingArmorPlate ] # Coyote: Allows it to use armor plates.
   id: ClothingOuterChameleon
   name: vest
   description: A thick vest with a rubbery, water-resistant shell.

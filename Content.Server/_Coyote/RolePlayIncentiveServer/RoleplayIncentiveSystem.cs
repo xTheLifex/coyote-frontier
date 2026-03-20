@@ -80,8 +80,11 @@ public sealed class RoleplayIncentiveSystem : EntitySystem
 
     private List<RpiContinuousProxyActionPrototype> AllContinuousProxies = new();
 
-    private TimeSpan DeathPunishmentCooldown = TimeSpan.FromMinutes(30);
-    private TimeSpan DeepFryerPunishmentCooldown = TimeSpan.FromMinutes(5); // please stop deep frying tesharis
+    private readonly TimeSpan DeathPunishmentCooldown = TimeSpan.FromMinutes(30);
+    private readonly TimeSpan DeepFryerPunishmentCooldown = TimeSpan.FromMinutes(5); // please stop deep frying tesharis
+
+    private readonly TimeSpan SystemCheckInterval = TimeSpan.FromSeconds(0.5);
+    private TimeSpan NextSystemCheck = TimeSpan.Zero;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -819,6 +822,11 @@ public sealed class RoleplayIncentiveSystem : EntitySystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
+        // just so it doesnt run every single frame
+        if (_timing.CurTime < NextSystemCheck)
+            return;
+        NextSystemCheck = _timing.CurTime + SystemCheckInterval;
 
         var query = EntityQueryEnumerator<RoleplayIncentiveComponent>();
         while (query.MoveNext(out var uid, out var rpic))

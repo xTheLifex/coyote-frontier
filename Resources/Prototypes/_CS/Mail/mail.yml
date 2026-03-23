@@ -1,12 +1,12 @@
 - type: entity
   categories: [ HideSpawnMenu ]
   parent: BaseMailLarge
-  id: MailCSC20p
-  suffix: C20p
+  id: MailCSC19r
+  suffix: C19r
   components:
   - type: Mail
     contents:
-    - id: CSWeaponSubMachineGunC20p
+    - id: CSWeaponSubMachineGunC19r
     - id: NFMagazineSubMachineGun35
       amount: 3
 

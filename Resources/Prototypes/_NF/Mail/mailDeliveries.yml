@@ -84,8 +84,8 @@
     MailNFKendoKit: 0.2
     MailNFKnife: 0.7
     MailNFSword: 0.3
-    MailCSC20p: 0.05 # Coyote, rare.
-    MailCSAK: 0.05 # Coyote, rare.
+    MailCSC19r: 0.1 # Coyote, rare.
+    MailCSAK: 0.1 # Coyote, rare.
     # Pranks
     MailNFBuildABuddy: 0.5
     MailNFCritter: 1

@@ -651,6 +651,7 @@ namespace Content.Client.Lobby.UI
                 "Scents",
                 "ScentsNSFW",
                 "BodyType",
+                "Abilities",
             };
 
             // Create UI view from model

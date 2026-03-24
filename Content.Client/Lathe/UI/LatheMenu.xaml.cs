@@ -40,6 +40,8 @@ public sealed partial class LatheMenu : DefaultWindow
 
     public EntityUid Entity;
 
+    private int? _bufferAmount; // Coyote: store the current buffer amount
+
     public LatheMenu()
     {
         RobustXamlLoader.Load(this);
@@ -127,9 +129,12 @@ public sealed partial class LatheMenu : DefaultWindow
 
         foreach (var prototype in sortedRecipesToShow)
         {
-            var canProduce = _lathe.CanProduce(Entity, prototype, quantity, component: lathe);
+            // Coyote: Use custom availability check that includes the buffer
+            var canProduce = CanProduceWithBuffer(prototype, quantity);
 
-            var control = new RecipeControl(_lathe, prototype, () => GenerateTooltipText(prototype), canProduce, GetRecipeDisplayControl(prototype));
+            // Coyote: Pass the current buffer amount to the tooltip generator
+            var tooltip = () => GenerateTooltipText(prototype, _bufferAmount);
+            var control = new RecipeControl(_lathe, prototype, tooltip, canProduce, GetRecipeDisplayControl(prototype)); // Coyote: better readability
             control.OnButtonPressed += s =>
             {
                 if (!int.TryParse(AmountLineEdit.Text, out var amount) || amount <= 0)
@@ -140,7 +145,7 @@ public sealed partial class LatheMenu : DefaultWindow
         }
     }
 
-    private string GenerateTooltipText(LatheRecipePrototype prototype)
+    private string GenerateTooltipText(LatheRecipePrototype prototype, int? bufferAmount) // Coyote: Modified tooltip generator – accepts buffer amount
     {
         StringBuilder sb = new();
         var multiplier = _entityManager.GetComponent<LatheComponent>(Entity).FinalMaterialUseMultiplier; // Frontier: MaterialUseMultiplier<FinalMaterialUseMultiplier
@@ -155,8 +160,19 @@ public sealed partial class LatheMenu : DefaultWindow
 
             var unit = Loc.GetString(proto.Unit);
             var sheets = adjustedAmount / (float) sheetVolume;
-
-            var availableAmount = _materialStorage.GetMaterialAmount(Entity, id);
+            //Coyote changes
+            int availableAmount;
+            if (id == "Biomass" && bufferAmount.HasValue)
+            {
+                // Total = stored + buffer
+                var stored = _materialStorage.GetMaterialAmount(Entity, id);
+                availableAmount = stored + bufferAmount.Value;
+            }
+            else
+            {
+                availableAmount = _materialStorage.GetMaterialAmount(Entity, id);
+            }
+            //End coyote changes
             var missingAmount = Math.Max(0, adjustedAmount - availableAmount);
             var missingSheets = missingAmount / (float) sheetVolume;
 
@@ -312,4 +328,47 @@ public sealed partial class LatheMenu : DefaultWindow
         }
         PopulateRecipes();
     }
+    //Start Coyote
+    #region Coyote
+    /// <summary>
+    /// Updates the biomass buffer and refreshes the recipe list
+    /// </summary>
+    public void UpdateBuffer(int? buffer)
+    {
+        BufferContainer.Visible = buffer.HasValue;
+        _bufferAmount = buffer; // store for later use
+        if (buffer.HasValue)
+            BufferLabel.Text = buffer.Value.ToString();
+        PopulateRecipes(); // re‑evaluate recipe availability
+    }
+    /// <summary>
+    /// Checks availability including the buffer
+    /// </summary>
+    private bool CanProduceWithBuffer(LatheRecipePrototype recipe, int quantity)
+    {
+        if (!_entityManager.TryGetComponent(Entity, out LatheComponent? lathe))
+            return false;
+
+        foreach (var (material, amount) in recipe.Materials)
+        {
+            var required = SharedLatheSystem.AdjustMaterial(amount, recipe.ApplyMaterialDiscount, lathe.FinalMaterialUseMultiplier) * quantity;
+
+            if (material == "Biomass")
+            {
+                var stored = _materialStorage.GetMaterialAmount(Entity, material);
+                var total = stored + (_bufferAmount ?? 0);
+                if (total < required)
+                    return false;
+            }
+            else
+            {
+                var available = _materialStorage.GetMaterialAmount(Entity, material);
+                if (available < required)
+                    return false;
+            }
+        }
+        return true;
+    }
+    #endregion
+    //End Coyote
 }

@@ -31,7 +31,7 @@
   parent: PlushieExperiment
   id: PlushieVoid
   name: purple puppy plushie
-  description: Test
+  description: A plushie of a perfectly playful purple-colored puppy.
   components:
   - type: Sprite
     sprite: _CS/Objects/Fun/Plushies/void.rsi

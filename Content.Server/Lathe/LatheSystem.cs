@@ -206,8 +206,11 @@ namespace Content.Server.Lathe
             if (quantity <= 0)
                 return false;
             quantity = int.Min(quantity, MaxItemsPerRequest);
+            // Frontier: argument check
+            //if (!CanProduce(uid, recipe, quantity, component)) // Frontier: 1<quantity
+            //    return false;
 
-            // Availability check using events
+            // Start Coyote: Availability check using events
             foreach (var (mat, amount) in recipe.Materials)
             {
                 var required = AdjustMaterial(amount, recipe.ApplyMaterialDiscount, component.FinalMaterialUseMultiplier) * quantity;
@@ -218,23 +221,27 @@ namespace Content.Server.Lathe
                 if (available < required)
                     return false;
             }
+            // End Coyote
 
-            // Deduct materials
+            // Material Deduction: Changed a bit by Coyote
             foreach (var (mat, amount) in recipe.Materials)
             {
                 var adjustedAmount = recipe.ApplyMaterialDiscount
-                    ? (int)(-amount * component.FinalMaterialUseMultiplier)
+                    ? (int)(-amount * component.FinalMaterialUseMultiplier) // Frontier: MaterialUseMultiplier<FinalMaterialUseMultiplier
                     : -amount;
-                adjustedAmount *= quantity;
+                adjustedAmount *= quantity; // Frontier
 
-                int toDeduct = -adjustedAmount; // positive amount
-                OnDeductMaterial?.Invoke(uid, component, mat, ref toDeduct); // ref allowed
+                int toDeduct = -adjustedAmount; // Coyote: positive amount
+                OnDeductMaterial?.Invoke(uid, component, mat, ref toDeduct); // Coyote: Invoke Material Deduction Event
 
+                //_materialStorage.TryChangeMaterialAmount(uid, mat, adjustedAmount); // Coyote: Commented for the sake of the check below.
+                //Coyote Start
                 if (toDeduct > 0)
                 {
                     if (!_materialStorage.TryChangeMaterialAmount(uid, mat, -toDeduct))
                         return false;
                 }
+                //Coyote End
             }
 
             // Frontier: queue up a batch
@@ -242,6 +249,8 @@ namespace Content.Server.Lathe
                 component.Queue[^1].ItemsRequested += quantity;
             else
                 component.Queue.Add(new LatheRecipeBatch(recipe, 0, quantity));
+            // End Frontier
+            // component.Queue.Add(recipe); // Frontier
 
             return true;
         }

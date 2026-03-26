@@ -222,8 +222,6 @@ namespace Content.Server.Lathe
                     return false;
             }
             // End Coyote
-
-            // Material Deduction: Changed a bit by Coyote
             foreach (var (mat, amount) in recipe.Materials)
             {
                 var adjustedAmount = recipe.ApplyMaterialDiscount

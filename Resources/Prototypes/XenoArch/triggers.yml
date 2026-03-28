@@ -244,7 +244,7 @@
     - ZombieBlood
     - GoblinBlood # Frontier
     - Sap # Frontier
-    - Oxidant # Coyotee
+    - Oxidant # Coyote
 
 - type: xenoArchTrigger
   id: TriggerThrow

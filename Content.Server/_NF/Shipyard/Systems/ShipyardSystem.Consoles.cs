@@ -214,10 +214,10 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         var deedID = EnsureComp<ShuttleDeedComponent>(targetId);
 
         var shuttleOwner = Name(player).Trim();
-        AssignShuttleDeedProperties((targetId, deedID), shuttleUid, name, shuttleOwner, voucherUsed);
+        AssignShuttleDeedProperties((targetId, deedID), shuttleUid, name, shuttleOwner, voucherUsed, vessel.ID); // Coyote: Add vessel.ID
 
         var deedShuttle = EnsureComp<ShuttleDeedComponent>(shuttleUid);
-        AssignShuttleDeedProperties((shuttleUid, deedShuttle), shuttleUid, name, shuttleOwner, voucherUsed);
+        AssignShuttleDeedProperties((shuttleUid, deedShuttle), shuttleUid, name, shuttleOwner, voucherUsed, vessel.ID); // Coyote: Add vessel.ID
 
         // if (!voucherUsed && component.NewJobTitle != null)
         // {
@@ -274,7 +274,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         {
             // Get the price of the ship
             if (TryComp<ShuttleDeedComponent>(targetId, out var deed))
-                sellValue = (int)_pricing.AppraiseGrid((EntityUid)(deed?.ShuttleUid!), LacksPreserveOnSaleComp);
+                sellValue = (int)_pricing.CoyoteAppraiseGrid((EntityUid)(deed?.ShuttleUid!), LacksPreserveOnSaleComp, deed); // Coyote: AppraiseGrid to CoyoteAppraiseGrid, add deed.
 
             // Adjust for taxes
             sellValue = CalculateShipResaleValue((shipyardConsoleUid, component), sellValue);
@@ -496,7 +496,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         int sellValue = 0;
         if (deed?.ShuttleUid != null)
         {
-            sellValue = (int)_pricing.AppraiseGrid((EntityUid)(deed?.ShuttleUid!), LacksPreserveOnSaleComp);
+            sellValue = (int)_pricing.CoyoteAppraiseGrid((EntityUid)(deed?.ShuttleUid!), LacksPreserveOnSaleComp, deed); // Coyote: AppraiseGrid to CoyoteAppraiseGrid, add deed.
             sellValue = CalculateShipResaleValue((uid, component), sellValue);
         }
 
@@ -593,7 +593,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             int sellValue = 0;
             if (deed?.ShuttleUid != null)
             {
-                sellValue = (int)_pricing.AppraiseGrid(deed.ShuttleUid.Value, LacksPreserveOnSaleComp);
+                sellValue = (int)_pricing.CoyoteAppraiseGrid(deed.ShuttleUid.Value, LacksPreserveOnSaleComp, deed); // Coyote: AppraiseGrid to CoyoteAppraiseGrid, add deed.
                 sellValue = CalculateShipResaleValue((uid, component), sellValue);
             }
 
@@ -823,12 +823,13 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     }
 
     #region Deed Assignment
-    void AssignShuttleDeedProperties(Entity<ShuttleDeedComponent> deed, EntityUid? shuttleUid, string? shuttleName, string? shuttleOwner, bool purchasedWithVoucher)
+    void AssignShuttleDeedProperties(Entity<ShuttleDeedComponent> deed, EntityUid? shuttleUid, string? shuttleName, string? shuttleOwner, bool purchasedWithVoucher, string? vesselID) // Coyote: add string? vesselID
     {
         deed.Comp.ShuttleUid = shuttleUid;
         TryParseShuttleName(deed.Comp, shuttleName!);
         deed.Comp.ShuttleOwner = shuttleOwner;
         deed.Comp.PurchasedWithVoucher = purchasedWithVoucher;
+        deed.Comp.VesselID = vesselID; // Coyote
         Dirty(deed);
     }
 
@@ -848,7 +849,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         _idSystem.TryChangeFullName(uid, output); // Update the card with owner name
 
         var deedID = EnsureComp<ShuttleDeedComponent>(uid);
-        AssignShuttleDeedProperties((uid, deedID), shuttleDeed.ShuttleUid, shuttleDeed.ShuttleName, shuttleDeed.ShuttleOwner, shuttleDeed.PurchasedWithVoucher);
+        AssignShuttleDeedProperties((uid, deedID), shuttleDeed.ShuttleUid, shuttleDeed.ShuttleName, shuttleDeed.ShuttleOwner, shuttleDeed.PurchasedWithVoucher, shuttleDeed.VesselID); // Coyote: add shuttleDeed.VesselID
     }
     #endregion
 

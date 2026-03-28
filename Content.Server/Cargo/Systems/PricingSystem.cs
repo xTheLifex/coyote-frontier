@@ -19,6 +19,8 @@ using Robust.Shared.Utility;
 using System.Linq;
 using Content.Shared.Research.Prototypes;
 using Content.Server._NF.Cargo.Components; // Frontier
+using Content.Shared._NF.Shipyard.Components; // Coyote: Used for extended appraisal
+using Content.Shared._NF.Shipyard.Prototypes; // Coyote: Used for extended appraisal
 using Content.Server.Materials.Components; // Frontier
 using Content.Shared.Cargo.Components; // Frontier
 
@@ -35,6 +37,7 @@ public sealed class PricingSystem : EntitySystem
     [Dependency] private readonly BodySystem _bodySystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!; // Coyote: Used for extended appraisal
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -44,6 +47,11 @@ public sealed class PricingSystem : EntitySystem
         _consoleHost.RegisterCommand("appraisegrid",
             "Calculates the total value of the given grids.",
             "appraisegrid <grid Ids>", AppraiseGridCommand);
+
+        _consoleHost.RegisterCommand("coyoteappraisegrid",
+            "Calculates the total value of a grid including tile count, markup, price per tile, and expedition/donk bonuses.",
+            "coyoteappraisegrid <gridId> [markup=value] [pricePerTile=value] [expedCapable=bool] [donkCapable=bool]",
+            CoyoteAppraiseGridCommand); // Coyote
     }
 
     [AdminCommand(AdminFlags.Debug)]
@@ -451,4 +459,191 @@ public sealed class PricingSystem : EntitySystem
 
         return price;
     }
+    //Coyote Start
+    #region Coyote
+    public double CoyoteAppraiseGrid(EntityUid shuttleUid, Func<EntityUid, bool>? lacksPreserveOnSaleComp = null, ShuttleDeedComponent? deed = null)
+    {
+        // 1. Raw appraisal (excluding items that shouldn't be sold)
+        var appraisal = AppraiseGrid(shuttleUid, lacksPreserveOnSaleComp);
+
+        // 2. If no vessel prototype is stored, return raw value
+        if (string.IsNullOrEmpty(deed?.VesselID))
+            return appraisal;
+
+        // 3. Found an id, try the prototype manager index. If that doesn't work, return raw appraisal.
+        if (!_prototypeManager.TryIndex<VesselPrototype>(deed.VesselID, out var vessel))
+            return appraisal;
+
+        // 4. Count tiles on the grid
+        if (!TryComp<MapGridComponent>(shuttleUid, out var gridComp))
+            return appraisal;
+
+        var tileCount = _map.GetAllTiles(shuttleUid, gridComp).Count();
+
+        // 5. Apply modifiers
+        var modified = appraisal * vessel.Markup; //Markup
+        modified += tileCount * vessel.PricePerTile; //PPT
+
+        if (vessel.ExpedCapable) //Exped capable
+        {
+            var expedGV = modified * 0.5;
+            if (expedGV <= 50000)
+                modified += 50000;
+            else
+                modified += expedGV;
+        }
+        if (vessel.DonkCapable) //Donk capable
+        {
+            var donkGV = modified * 0.3;
+            if (donkGV <= 30000)
+                modified += 30000;
+            else
+                modified += donkGV;
+        }
+        return modified;
+    }
+    [AdminCommand(AdminFlags.Debug)]
+    private void CoyoteAppraiseGridCommand(IConsoleShell shell, string argStr, string[] args)
+    {
+        if (args.Length == 0)
+        {
+            shell.WriteError("Not enough arguments. Usage: coyoteappraisegrid <gridId> [markup=value] [pricePerTile=value] [expedCapable=bool] [donkCapable=bool]");
+            return;
+        }
+
+        // Parse overrides from arguments (format: key=value)
+        double? markupOverride = null;
+        int? pricePerTileOverride = null;
+        bool? expedCapableOverride = null;
+        bool? donkCapableOverride = null;
+
+        List<string> gridArgs = new();
+        foreach (var arg in args)
+        {
+            var parts = arg.Split('=', 2);
+            if (parts.Length == 2)
+            {
+                var key = parts[0].ToLowerInvariant();
+                var val = parts[1];
+                switch (key)
+                {
+                    case "markup":
+                        if (double.TryParse(val, out var m))
+                            markupOverride = m;
+                        else
+                            shell.WriteError($"Invalid markup value: {val}");
+                        break;
+                    case "pricepertile":
+                        if (int.TryParse(val, out var p))
+                            pricePerTileOverride = p;
+                        else
+                            shell.WriteError($"Invalid pricePerTile value: {val}");
+                        break;
+                    case "expedcapable":
+                        if (bool.TryParse(val, out var e))
+                            expedCapableOverride = e;
+                        else
+                            shell.WriteError($"Invalid expedCapable value: {val}");
+                        break;
+                    case "donkcapable":
+                        if (bool.TryParse(val, out var d))
+                            donkCapableOverride = d;
+                        else
+                            shell.WriteError($"Invalid donkCapable value: {val}");
+                        break;
+                    default:
+                        shell.WriteError($"Unknown parameter: {key}");
+                        break;
+                }
+            }
+            else
+            {
+                gridArgs.Add(arg);
+            }
+        }
+
+        // Process each grid ID
+        foreach (var gid in gridArgs)
+        {
+            if (!EntityManager.TryParseNetEntity(gid, out var gridId) || !gridId.Value.IsValid())
+            {
+                shell.WriteError($"Invalid grid ID \"{gid}\".");
+                continue;
+            }
+
+            if (!TryComp(gridId, out MapGridComponent? mapGrid))
+            {
+                shell.WriteError($"Grid \"{gridId}\" doesn't exist.");
+                continue;
+            }
+
+            // 1. Raw appraisal
+            var rawAppraisal = AppraiseGrid(gridId.Value, null);
+
+            // 2. Get tile count
+            var tileCount = 0;
+            if (TryComp(gridId, out MapGridComponent? gridComp))
+            {
+                tileCount = _map.GetAllTiles(gridId.Value, gridComp).Count();
+            }
+
+            // 3. Determine modifiers (deed or overrides)
+            double markup = 1.0;
+            int pricePerTile = 0;
+            bool expedCapable = false;
+            bool donkCapable = false;
+
+            // Try to get deed
+            if (TryComp<ShuttleDeedComponent>(gridId, out var deed) && !string.IsNullOrEmpty(deed.VesselID))
+            {
+                if (_prototypeManager.TryIndex<VesselPrototype>(deed.VesselID, out var vessel))
+                {
+                    markup = vessel.Markup;
+                    pricePerTile = vessel.PricePerTile;
+                    expedCapable = vessel.ExpedCapable;
+                    donkCapable = vessel.DonkCapable;
+                }
+                else
+                {
+                    shell.WriteError($"Vessel prototype {deed.VesselID} not found for grid {gid}. Using defaults.");
+                }
+            }
+
+            // Apply overrides
+            if (markupOverride.HasValue) markup = markupOverride.Value;
+            if (pricePerTileOverride.HasValue) pricePerTile = pricePerTileOverride.Value;
+            if (expedCapableOverride.HasValue) expedCapable = expedCapableOverride.Value;
+            if (donkCapableOverride.HasValue) donkCapable = donkCapableOverride.Value;
+
+            // 4. Compute modified value (same as CoyoteAppraiseGrid)
+            double modified = rawAppraisal * markup;
+            modified += tileCount * pricePerTile;
+
+            if (expedCapable)
+            {
+                var expedBonus = modified * 0.5;
+                modified += expedBonus <= 50000 ? 50000 : expedBonus;
+            }
+            if (donkCapable)
+            {
+                var donkBonus = modified * 0.3;
+                modified += donkBonus <= 30000 ? 30000 : donkBonus;
+            }
+
+            int modifiedInt = (int)Math.Round(modified);
+
+            // 5. Output
+            shell.WriteLine($"Grid {gid}:");
+            shell.WriteLine($"  Raw appraisal: {rawAppraisal:F2} spesos");
+            shell.WriteLine($"  Tile count: {tileCount}");
+            shell.WriteLine($"  Markup: {markup:F2}x");
+            shell.WriteLine($"  Price per tile: {pricePerTile} spesos/tile");
+            shell.WriteLine($"  Exped capable: {expedCapable}");
+            shell.WriteLine($"  Donk capable: {donkCapable}");
+            shell.WriteLine($"  Modified appraisal: {modifiedInt:F2} spesos");
+            shell.WriteLine("");
+        }
+    }
+    #endregion
+    //End Coyote
 }

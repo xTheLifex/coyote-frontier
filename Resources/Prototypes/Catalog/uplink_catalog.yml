@@ -1842,7 +1842,7 @@
   description: uplink-cat-ears-desc
   productEntity: ClothingHeadHatCatEars
   cost:
-    Telecrystal: 6 # Coyote: 26 to 6
+    Telecrystal: 5 # Coyote: 26 to 5
   categories:
   - UplinkPointless
 

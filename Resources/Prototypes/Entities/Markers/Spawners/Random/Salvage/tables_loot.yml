@@ -309,7 +309,7 @@
 #    - id: BlueprintSeismicCharge # Frontier
     - id: WeaponCrusherGlaive
     - id: ClothingOuterHardsuitSalvage
-    - id: ChemistryBottleOmnizine
+    - id: OmnizineChemistryBottle
       weight: 0.25 # Coyote
     - !type:GroupSelector
       children:

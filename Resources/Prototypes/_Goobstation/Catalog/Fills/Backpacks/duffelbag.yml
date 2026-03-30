@@ -13,12 +13,12 @@
     - id: FoodSnackLollypopWrappedOmnizine
       amount: 3
     - id: FoodSnackLollypopWrapped
-      amount: 10
+      amount: 9
     - id: FoodSnackChocolate
-      amount: 3
+      amount: 1
     - id: PlushieCarp
     - id: CrayonRainbow
-      amount: 3
+      amount: 1
     - id: BikeHorn
 
 - type: entity # GOD I FUCKING LOVE GAMBLING

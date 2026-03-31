@@ -2,7 +2,9 @@ using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Robust.Shared.Prototypes;
-using Content.Shared.Coyote.Helpers;
+using Content.Server._Coyote.Helpers;
+using Content.Shared.SSDIndicator;
+using Content.Shared.StatusIcon.Components;
 
 namespace Content.Server.Coyote.AphrodisiacLacedContainerVisibility;
 
@@ -21,21 +23,26 @@ public sealed class AphrodisiacLacedContainerVisibilitySystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<AphrodisiacLacedContainerVisibilityComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<AphrodisiacLacedContainerVisibilityComponent, SolutionContainerChangedEvent>(OnSolutionChange);
+        SubscribeLocalEvent<AphrodisiacLacedContainerVisibilityComponent, GetStatusIconsEvent>(OnGetStatusIcon);
     }
 
     public void OnMapInit(Entity<AphrodisiacLacedContainerVisibilityComponent> entity, ref MapInitEvent args)
     {
-        // TODO: Add check for preference here;
-        if (!entity.Comp.Laced)
-            CheckForAphrodisiacs(entity); // Checks for horny juices if it's not tagged as laced.
-        else
-            UpdateVisual(true); // Just update visual if it is tagged as laced.
+        CheckForAphrodisiacs(entity);
     }
 
     public void OnSolutionChange(Entity<AphrodisiacLacedContainerVisibilityComponent> entity, ref SolutionContainerChangedEvent args)
     {
-        // TODO: Add check for preference here;
         CheckForAphrodisiacs(entity);
+    }
+
+    private void OnGetStatusIcon(EntityUid uid, AphrodisiacLacedContainerVisibilityComponent component, ref GetStatusIconsEvent args)
+    {
+        // TODO: Add check for preference here
+        if (!component.Laced)
+            return;
+
+        args.StatusIcons.Add(_prototypeManager.Index(component.Icon));
     }
 
     public void CheckForAphrodisiacs(Entity<AphrodisiacLacedContainerVisibilityComponent> entity)
@@ -46,13 +53,6 @@ public sealed class AphrodisiacLacedContainerVisibilitySystem : EntitySystem
         if (_solutionContainerSystem.TryGetSolution(entity.Owner, entity.Comp.Solution, out _, out var solution))
         {
             entity.Comp.Laced = _helper.CheckForAphrodisiacs(_prototypeManager, solution);
-            // Update visuals with the final boolean value of the component
-            UpdateVisual(entity.Comp.Laced);
         }
-    }
-
-    public void UpdateVisual(bool laced)
-    {
-        // TODO: Visual logic
     }
 }

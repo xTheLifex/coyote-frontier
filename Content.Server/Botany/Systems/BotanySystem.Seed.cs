@@ -16,7 +16,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
-using Content.Server._NF.Contraband.Systems; // Frontier
+using Content.Server._NF.Contraband.Systems;
+using Content.Server._Coyote.Helpers;
+using Content.Server.Coyote.AphrodisiacLacedContainerVisibility; // Frontier
 
 namespace Content.Server.Botany.Systems;
 
@@ -32,6 +34,8 @@ public sealed partial class BotanySystem : EntitySystem
     [Dependency] private readonly RandomHelperSystem _randomHelper = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly ContrabandTurnInSystem _contraband = default!; // Frontier
+
+    private AphrodisiacChecker _helper = new();
 
     public override void Initialize()
     {
@@ -168,6 +172,8 @@ public sealed partial class BotanySystem : EntitySystem
         if (totalYield > 1 || proto.HarvestRepeat != HarvestType.NoRepeat)
             proto.Unique = false;
 
+        bool seedLaced = _helper.IsSeedLaced(_prototypeManager, proto); // Coyote: Check if seed has aphrodisiacs
+
         for (var i = 0; i < totalYield; i++)
         {
             var product = _robustRandom.Pick(proto.ProductPrototypes);
@@ -191,6 +197,14 @@ public sealed partial class BotanySystem : EntitySystem
                 _metaData.SetEntityDescription(entity,
                     metaData.EntityDescription + " " + Loc.GetString("botany-mysterious-description-addon"), metaData);
             }
+
+            // Coyote start: Ensure component if laced
+            if (seedLaced)
+            {
+                var aphroVisibility = EnsureComp<AphrodisiacLacedContainerVisibilityComponent>(entity);
+                aphroVisibility.Laced = true;
+            }
+            // Coyote end
         }
 
         return products;
@@ -200,6 +214,5 @@ public sealed partial class BotanySystem : EntitySystem
     {
         return !proto.Ligneous || proto.Ligneous && held != null && HasComp<SharpComponent>(held);
     }
-
     #endregion
 }

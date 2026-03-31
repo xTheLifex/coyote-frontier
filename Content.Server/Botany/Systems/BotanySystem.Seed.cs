@@ -16,9 +16,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
-using Content.Server._NF.Contraband.Systems;
-using Content.Server._Coyote.Helpers;
-using Content.Server.Coyote.AphrodisiacLacedContainerVisibility; // Frontier
+using Content.Server._NF.Contraband.Systems; // Frontier
+using Content.Server._Coyote.Helpers; // Coyote
+using Content.Server.Coyote.AphrodisiacLacedContainerVisibility; // Coyote
 
 namespace Content.Server.Botany.Systems;
 
@@ -35,7 +35,7 @@ public sealed partial class BotanySystem : EntitySystem
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly ContrabandTurnInSystem _contraband = default!; // Frontier
 
-    private AphrodisiacChecker _helper = new();
+    private AphrodisiacChecker _helper = new(); // Coyote
 
     public override void Initialize()
     {

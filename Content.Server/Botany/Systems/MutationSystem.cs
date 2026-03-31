@@ -1,5 +1,4 @@
 using Content.Shared.Atmos;
-using Content.Shared.Coyote.Helpers;
 using Content.Shared.EntityEffects;
 using Content.Shared.Random;
 using Robust.Shared.Prototypes;
@@ -14,7 +13,6 @@ public sealed class MutationSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     private RandomPlantMutationListPrototype _randomMutations = default!;
 
-    private AphrodisiacChecker _helper = new(); // Coyote
     public override void Initialize()
     {
         _randomMutations = _prototypeManager.Index<RandomPlantMutationListPrototype>("RandomPlantMutations");
@@ -61,7 +59,7 @@ public sealed class MutationSystem : EntitySystem
     {
         SeedData result = b.Clone();
 
-        CrossChemicals(ref result.Chemicals, a.Chemicals, out bool hasBeenLaced);
+        CrossChemicals(ref result.Chemicals, a.Chemicals);
 
         CrossFloat(ref result.NutrientConsumption, a.NutrientConsumption);
         CrossFloat(ref result.WaterConsumption, a.WaterConsumption);
@@ -111,9 +109,8 @@ public sealed class MutationSystem : EntitySystem
         return result;
     }
 
-    private void CrossChemicals(ref Dictionary<string, SeedChemQuantity> val, Dictionary<string, SeedChemQuantity> other, out bool hasBeenLaced) // Coyote: Aphrodisiac lacing
+    private void CrossChemicals(ref Dictionary<string, SeedChemQuantity> val, Dictionary<string, SeedChemQuantity> other)
     {
-        hasBeenLaced = false; // Coyote: Aphrodisiac lacing
         // Go through chemicals from the pollen in swab
         foreach (var otherChem in other)
         {

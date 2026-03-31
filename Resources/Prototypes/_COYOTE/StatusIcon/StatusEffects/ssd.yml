@@ -1,7 +1,7 @@
-- type: statusIcon
-  id: AphrodisiacLacing
+- type: ssdIcon
+  id: AphroLacedSSDIcon
   icon:
-    sprite: /Textures/_CS/Effects/aphrodisiacLacedIcon.rsi
+    sprite: /Textures/_CS/Effects/aphrodisiac_laced_icon.rsi
     state: default0
   locationPreference: Left
   priority: -1

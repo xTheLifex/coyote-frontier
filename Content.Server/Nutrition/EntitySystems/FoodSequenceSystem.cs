@@ -1,6 +1,5 @@
 using System.Numerics;
 using System.Text;
-using Content.Server.Coyote.AphrodisiacLacedContainerVisibility;
 using Content.Server.Nutrition.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Interaction;
@@ -16,6 +15,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Server._NF.Kitchen.Components; // Frontier
+using Content.Shared._Coyote.AphrodisiacLacedContainerVisibility; // Coyote
 
 namespace Content.Server.Nutrition.EntitySystems;
 

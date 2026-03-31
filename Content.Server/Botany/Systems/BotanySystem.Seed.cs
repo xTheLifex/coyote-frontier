@@ -18,7 +18,7 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Database;
 using Content.Server._NF.Contraband.Systems; // Frontier
 using Content.Server._Coyote.Helpers; // Coyote
-using Content.Server.Coyote.AphrodisiacLacedContainerVisibility; // Coyote
+using Content.Shared._Coyote.AphrodisiacLacedContainerVisibility; // Coyote
 
 namespace Content.Server.Botany.Systems;
 

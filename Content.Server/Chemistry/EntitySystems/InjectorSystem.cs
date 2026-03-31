@@ -1,6 +1,7 @@
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
-using Content.Server.Coyote.AphrodisiacLacedContainerVisibility; // Coyote
+using Content.Server._Coyote.Helpers; // Coyote
+using Content.Shared._Coyote.AphrodisiacLacedContainerVisibility; // Coyote
 using Content.Shared._DV.Chemistry.Components; // DeltaV
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
@@ -16,7 +17,6 @@ using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Stacks;
 using Content.Shared.Nutrition.EntitySystems;
-using Content.Server._Coyote.Helpers; // Coyote
 using Robust.Shared.Prototypes; // Coyote
 using System.Linq; // Frontier
 

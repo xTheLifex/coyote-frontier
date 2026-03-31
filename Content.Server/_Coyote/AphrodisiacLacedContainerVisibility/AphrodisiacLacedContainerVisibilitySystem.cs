@@ -5,8 +5,9 @@ using Robust.Shared.Prototypes;
 using Content.Server._Coyote.Helpers;
 using Content.Shared.SSDIndicator;
 using Content.Shared.StatusIcon.Components;
+using Content.Shared._Coyote.AphrodisiacLacedContainerVisibility;
 
-namespace Content.Server.Coyote.AphrodisiacLacedContainerVisibility;
+namespace Content.Server._Coyote.AphrodisiacLacedContainerVisibility;
 
 /// <summary>
 /// System that shows visual feedback to any container that is injected with a aphrodisiac.
@@ -23,7 +24,6 @@ public sealed class AphrodisiacLacedContainerVisibilitySystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<AphrodisiacLacedContainerVisibilityComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<AphrodisiacLacedContainerVisibilityComponent, SolutionContainerChangedEvent>(OnSolutionChange);
-        SubscribeLocalEvent<AphrodisiacLacedContainerVisibilityComponent, GetStatusIconsEvent>(OnGetStatusIcon);
     }
 
     public void OnMapInit(Entity<AphrodisiacLacedContainerVisibilityComponent> entity, ref MapInitEvent args)
@@ -36,15 +36,6 @@ public sealed class AphrodisiacLacedContainerVisibilitySystem : EntitySystem
         CheckForAphrodisiacs(entity);
     }
 
-    private void OnGetStatusIcon(EntityUid uid, AphrodisiacLacedContainerVisibilityComponent component, ref GetStatusIconsEvent args)
-    {
-        // TODO: Add check for preference here
-        if (!component.Laced)
-            return;
-
-        args.StatusIcons.Add(_prototypeManager.Index(component.Icon));
-    }
-
     public void CheckForAphrodisiacs(Entity<AphrodisiacLacedContainerVisibilityComponent> entity)
     {
         if (!EntityManager.HasComponent<SolutionContainerManagerComponent>(entity))
@@ -52,7 +43,17 @@ public sealed class AphrodisiacLacedContainerVisibilitySystem : EntitySystem
 
         if (_solutionContainerSystem.TryGetSolution(entity.Owner, entity.Comp.Solution, out _, out var solution))
         {
-            entity.Comp.Laced = _helper.CheckForAphrodisiacs(_prototypeManager, solution);
+            var laced = _helper.CheckForAphrodisiacs(_prototypeManager, solution);
+            entity.Comp.Laced = laced;
+
+            if (laced)
+            {
+                EnsureComp<StatusIconComponent>(entity);
+            }
+            else if (!laced && HasComp<StatusIconComponent>(entity))
+            {
+                RemComp<StatusIconComponent>(entity);
+            }
         }
     }
 }

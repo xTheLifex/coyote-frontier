@@ -1,7 +1,7 @@
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Coyote.AphrodisiacLacedContainerVisibility;
+namespace Content.Shared._Coyote.AphrodisiacLacedContainerVisibility;
 
 /// <summary>
 /// Component that keeps track of solution containers to see if they have been injected by horny juice.
@@ -26,5 +26,5 @@ public sealed partial class AphrodisiacLacedContainerVisibilityComponent : Compo
     // The icon to be used for the status effect.
     // </summary>
     [DataField("icon")]
-    public ProtoId<StatusIconPrototype> Icon = "AphrodisiacLacing";
+    public ProtoId<SsdIconPrototype> Icon = "AphroLacedSSDIcon";
 }

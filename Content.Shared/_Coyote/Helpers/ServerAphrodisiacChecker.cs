@@ -1,19 +1,19 @@
 
-using Content.Server.Botany;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Components.SolutionManager;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server._Coyote.Helpers;
+namespace Content.Shared._Coyote.Helpers;
 
-public struct AphrodisiacChecker
+// Base helper class for all related aphrodisiac checking.
+// Virtual cause we need a server-side version of it, and might need a client-side one in the future.
+[Virtual]
+public class SharedAphrodisiacChecker
 {
     private readonly string _aphrodisiacGroup = "Aphrodisiac";
     private readonly string _aphrodisiacDrinkGroup = "AphrodisiacDrink";
 
-    public AphrodisiacChecker() { }
+    public SharedAphrodisiacChecker() { }
     public bool CheckForAphrodisiacs(IPrototypeManager prototypeManager, Solution solution)
     {
         foreach (var (reagent, _) in solution.Contents)
@@ -22,17 +22,6 @@ public struct AphrodisiacChecker
             {
                 return true;
             }
-        }
-
-        return false;
-    }
-
-    public bool IsSeedLaced(IPrototypeManager prototypeManager, SeedData seed)
-    {
-        foreach ((var reagent, _) in seed.Chemicals)
-        {
-            if (IsReagentAphrodisiac(prototypeManager, reagent))
-                return true;
         }
 
         return false;

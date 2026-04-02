@@ -35,7 +35,7 @@ public sealed partial class BotanySystem : EntitySystem
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly ContrabandTurnInSystem _contraband = default!; // Frontier
 
-    private AphrodisiacChecker _helper = new(); // Coyote
+    private ServerAphrodisiacChecker _helper = new(); // Coyote
 
     public override void Initialize()
     {

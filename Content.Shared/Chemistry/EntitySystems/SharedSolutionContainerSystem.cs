@@ -20,6 +20,8 @@ using Content.Shared.Hands.EntitySystems;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Dependency = Robust.Shared.IoC.DependencyAttribute;
+using Content.Shared._Coyote.Helpers;
+using Content.Shared._Coyote.AphrodisiacLacedContainerVisibility;
 
 namespace Content.Shared.Chemistry.EntitySystems;
 
@@ -69,6 +71,8 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
     [Dependency] protected readonly SharedContainerSystem ContainerSystem = default!;
     [Dependency] protected readonly MetaDataSystem MetaDataSys = default!;
     [Dependency] protected readonly INetManager NetManager = default!;
+
+    private SharedAphrodisiacChecker _helper = new();
 
     public override void Initialize()
     {
@@ -323,6 +327,16 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
             var overflowEv = new SolutionOverflowEvent(soln, overflow);
             RaiseLocalEvent(uid, ref overflowEv);
         }
+
+        // Coyote start: Ensure component on container if there is aphrodisiacs on the solution
+        if (_helper.CheckForAphrodisiacs(PrototypeManager, solution)
+        && TryComp<ContainedSolutionComponent>(soln.Owner, out var containedSolution))
+        {
+            var lacedComp = EnsureComp<AphrodisiacLacedContainerVisibilityComponent>(containedSolution.Container);
+            lacedComp.Laced = true;
+            lacedComp.Solution = solution.Name ?? "";
+        }
+        // Coyote end
 
         UpdateAppearance((uid, comp, null));
 

@@ -18,7 +18,7 @@ public sealed class AphrodisiacLacedContainerVisibilitySystem : EntitySystem
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
-    private AphrodisiacChecker _helper = new();
+    private ServerAphrodisiacChecker _helper = new();
 
     public override void Initialize()
     {

@@ -54,6 +54,9 @@ consent-GenitalMarkings-desc = Turn this on to allow showing/hiding genital mark
 consent-Aphrodisiacs-name = Be affected by aphrodisiacs
 consent-Aphrodisiacs-desc = Turn this on to be affected by pomelustine, philterex, and libidozenithine.
 
+consent-AphrodisiacsVisibility-name = See if ingestables are laced
+consent-AphrodisiacsVisibility-desc = Turn this on to have an indicator show on containers and foods if they have aphrodisiacs in them.
+
 consent-SizeManipulation-name = Allow size manipulation
 consent-SizeManipulation-desc = Turn this on to allow yourself to be grown or shrunk by size manipulation.
 

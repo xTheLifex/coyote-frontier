@@ -32,12 +32,17 @@
   priority: 6
 
 - type: consentToggle
-  id: SizeManipulation
+  id: AphrodisiacsVisibility
   priority: 7
 
 - type: consentToggle
-  id: Transformation
+  id: SizeManipulation
   priority: 8
+
+- type: consentToggle
+  id: Transformation
+  priority: 9
+
 
 #- type: consentToggle
 #  id: Cum

@@ -20,8 +20,8 @@ using Content.Shared.Hands.EntitySystems;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Dependency = Robust.Shared.IoC.DependencyAttribute;
-using Content.Shared._Coyote.Helpers;
-using Content.Shared._Coyote.AphrodisiacLacedContainerVisibility;
+using Content.Shared._Coyote.Helpers; // Coyote
+using Content.Shared._Coyote.AphrodisiacLacedContainerVisibility; // Coyote
 
 namespace Content.Shared.Chemistry.EntitySystems;
 
@@ -72,7 +72,7 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
     [Dependency] protected readonly MetaDataSystem MetaDataSys = default!;
     [Dependency] protected readonly INetManager NetManager = default!;
 
-    private SharedAphrodisiacChecker _helper = new();
+    private SharedAphrodisiacChecker _helper = new(); // Coyote
 
     public override void Initialize()
     {

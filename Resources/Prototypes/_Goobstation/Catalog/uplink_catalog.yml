@@ -6,7 +6,7 @@
   description: uplink-anaconda-desc
   productEntity: WeaponPistolAnaconda
   cost:
-    Telecrystal: 40
+    Telecrystal: 12 # 40->12 Coyote start
   categories:
   - UplinkWeaponry
 
@@ -16,7 +16,7 @@
   description: uplink-whimsy-bundle-desc
   productEntity: ClothingBackpackDuffelSyndicateFilledWhimsy
   cost:
-    Telecrystal: 16 # 65->16 Coyote start
+    Telecrystal: 16 # 65->16
   categories:
   - UplinkWeaponry
 

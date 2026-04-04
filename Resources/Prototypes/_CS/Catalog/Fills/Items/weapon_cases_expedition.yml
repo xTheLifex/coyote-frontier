@@ -7,7 +7,7 @@
   components:
   - type: StorageFill
     contents:
-    - id: NFWeaponRevolverAnacondaExpedition
+    - id: CSWeaponPistolAnacondaExpedition
       amount: 1
 
 ## Coyote .40 pistol

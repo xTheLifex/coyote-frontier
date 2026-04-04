@@ -1,3 +1,15 @@
+# Weaponry
+
+- type: listing
+  id: UplinkPistolAnaconda
+  name: uplink-anaconda-name
+  description: uplink-anaconda-desc
+  productEntity: WeaponPistolAnaconda
+  cost:
+    Telecrystal: 40
+  categories:
+  - UplinkWeaponry
+
 - type: listing
   id: UplinkSyndicateWhimsyBundle
   name: uplink-whimsy-bundle-name
@@ -7,6 +19,8 @@
     Telecrystal: 16 # 65->16 Coyote start
   categories:
   - UplinkWeaponry
+
+# chemicals
 
 - type: listing
   id: UplinkSyndicateLollypopBundle

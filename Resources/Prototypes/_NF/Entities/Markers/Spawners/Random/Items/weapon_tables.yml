@@ -252,6 +252,7 @@
     - !type:GroupSelector
       weight: 0.99
       children:
+      - id: WeaponCaseShortAnacondaExpedition # Coyote
       - id: WeaponCaseLongSm
       - id: WeaponCaseLongVulcanExpedition
       - id: WeaponCaseLongBulldog

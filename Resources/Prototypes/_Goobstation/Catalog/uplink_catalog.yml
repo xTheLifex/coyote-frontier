@@ -6,7 +6,7 @@
   description: uplink-anaconda-desc
   productEntity: WeaponPistolAnaconda
   cost:
-    Telecrystal: 16 # 40->12 Coyote start
+    Telecrystal: 16 # 40->16 Coyote start
   categories:
   - UplinkWeaponry
 

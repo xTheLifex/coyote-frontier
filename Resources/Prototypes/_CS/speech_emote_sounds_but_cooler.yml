@@ -194,3 +194,7 @@
         variation: 0
     Eyebrow:
       path: /Audio/_PS/Voice/Emote/vineboom.ogg
+    ScreamKeemstar:
+      path: /Uploaded/sfx/keemstar.ogg
+      params:
+        variation: 0

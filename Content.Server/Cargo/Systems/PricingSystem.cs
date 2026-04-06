@@ -35,6 +35,7 @@ public sealed partial class PricingSystem : EntitySystem // Coyote: Add Partial
     [Dependency] private readonly BodySystem _bodySystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
+
     /// <inheritdoc/>
     public override void Initialize()
     {

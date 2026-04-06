@@ -23,9 +23,9 @@ public sealed partial class PricingSystem
     private int _donkCapableMinPrice = 30000;
 
     /// <summary>
-    /// How much should we return of the price per tile on resale? 0.75 means 75%.
+    /// How much should we return of the price per tile on resale? 0.5 means 50%.
     /// </summary>
-    private float _tileCostPercentReturn = 0.75f;
+    private float _tileCostPercentReturn = 0.5f;
 
     private void CSInitialize()
     {

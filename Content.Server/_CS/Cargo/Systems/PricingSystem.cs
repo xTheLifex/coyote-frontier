@@ -23,9 +23,9 @@ public sealed partial class PricingSystem
     private int _donkCapableMinPrice = 30000;
 
     /// <summary>
-    /// How much should we return of the price per tile on resale? 0.5 means 50%.
+    /// How much should we return of the price per tile on resale? 0.75 means 75%.
     /// </summary>
-    private float _tileCostPercentReturn = 0.5f;
+    private float _tileCostPercentReturn = 0.75f;
 
     private void CSInitialize()
     {
@@ -54,7 +54,7 @@ public sealed partial class PricingSystem
         var tileCount = _map.GetAllTiles(shuttleUid, gridComp).Count();
 
         // 5. Apply modifiers
-        var modified = appraisal * vessel.Markup;
+        var modified = appraisal; // We can't consider multiplying vessel.markup, as that would also make everything in the ship count for more than it should. Default appraisal it is.
 
         if (!isSale) // Costs that are not taken into account when reselling the vessel. isSale will always be true unless you're implementing a dynamic ship purchase system.
         {
@@ -75,7 +75,7 @@ public sealed partial class PricingSystem
         else // Tile price can actually get fairly expensive. Let's return at least some of it.
         {
             if (vessel.PricePerTile > 0)
-                modified += (tileCount * vessel.PricePerTile) * _tileCostPercentReturn;
+                modified += tileCount * vessel.PricePerTile * _tileCostPercentReturn;
         }
         return modified;
     }

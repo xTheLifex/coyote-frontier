@@ -196,9 +196,9 @@
     color: "#FF8888" # distinguish from regular PKA bolts
   - type: Projectile
     damage:
-      types: # Coyote start: change dematerializer to do tangible damage
-        Blunt: 30 # PKC damage
-        Structural: 15 # Coyote end: halved PKC damage to keep it from one magging solid walls
+      types:
+        Blunt: 1
+        Structural: 1
   - type: TimedDespawn
     lifetime: 1
   - type: PointLight

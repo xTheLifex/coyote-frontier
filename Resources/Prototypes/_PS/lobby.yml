@@ -83,10 +83,6 @@
   background: /Textures/_PS/Lobby/ops.png
 
 - type: lobbyBackground
-  id: LobbySyndicateWallpaper
-  background: /Textures/_PS/Lobby/syndicate.png
-
-- type: lobbyBackground
   id: FurrySurgery
   background: /Textures/_PS/Lobby/surgeryf.png
 

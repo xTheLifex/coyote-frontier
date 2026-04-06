@@ -22,6 +22,11 @@ public sealed partial class PricingSystem
     /// </summary>
     private int _donkCapableMinPrice = 30000;
 
+    /// <summary>
+    /// How much should we return of the price per tile on resale? 0.75 means 75%.
+    /// </summary>
+    private float _tileCostPercentReturn = 0.75f;
+
     private void CSInitialize()
     {
         _consoleHost.RegisterCommand("coyoteappraisegrid",
@@ -29,7 +34,7 @@ public sealed partial class PricingSystem
             "coyoteappraisegrid <gridId> [markup=value] [pricePerTile=value] [expedCapable=bool] [donkCapable=bool]",
             CoyoteAppraiseGridCommand);
     }
-    public double CoyoteAppraiseGrid(EntityUid shuttleUid, Func<EntityUid, bool>? lacksPreserveOnSaleComp = null, ShuttleDeedComponent? deed = null)
+    public double CoyoteAppraiseGrid(EntityUid shuttleUid, Func<EntityUid, bool>? lacksPreserveOnSaleComp = null, ShuttleDeedComponent? deed = null, bool isSale = true)
     {
         // 1. Raw appraisal (excluding items that shouldn't be sold)
         var appraisal = AppraiseGrid(shuttleUid, lacksPreserveOnSaleComp);
@@ -49,22 +54,28 @@ public sealed partial class PricingSystem
         var tileCount = _map.GetAllTiles(shuttleUid, gridComp).Count();
 
         // 5. Apply modifiers
-        var modified = appraisal;
-        if (vessel.Markup > 0)
-            modified += appraisal * vessel.Markup;
+        var modified = appraisal * vessel.Markup;
 
-        if (vessel.PricePerTile > 0)
-            modified += tileCount * vessel.PricePerTile;
-
-        if (vessel.DonkCapable)
+        if (!isSale) // Costs that are not taken into account when reselling the vessel. isSale will always be true unless you're implementing a dynamic ship purchase system.
         {
-            var expedBonus = modified * 0.5;
-            modified += expedBonus <= _expedCapableMinPrice ? _expedCapableMinPrice : expedBonus;
+            if (vessel.PricePerTile > 0)
+                modified += tileCount * vessel.PricePerTile;
+
+            if (vessel.DonkCapable)
+            {
+                var expedBonus = modified * 0.5;
+                modified += expedBonus <= _expedCapableMinPrice ? _expedCapableMinPrice : expedBonus;
+            }
+            if (vessel.ExpedCapable)
+            {
+                var donkBonus = modified * 0.3;
+                modified += donkBonus <= _donkCapableMinPrice ? _donkCapableMinPrice : donkBonus;
+            }
         }
-        if (vessel.ExpedCapable)
+        else // Tile price can actually get fairly expensive. Let's return at least some of it.
         {
-            var donkBonus = modified * 0.3;
-            modified += donkBonus <= _donkCapableMinPrice ? _donkCapableMinPrice : donkBonus;
+            if (vessel.PricePerTile > 0)
+                modified += (tileCount * vessel.PricePerTile) * _tileCostPercentReturn;
         }
         return modified;
     }
@@ -155,8 +166,8 @@ public sealed partial class PricingSystem
             }
 
             // 3. Determine modifiers (deed or overrides)
-            float markup = 0f;
-            int pricePerTile = 0;
+            float markup = 1f;
+            int pricePerTile = 100;
             bool expedCapable = false;
             bool donkCapable = false;
 
@@ -182,10 +193,8 @@ public sealed partial class PricingSystem
             if (expedCapableOverride.HasValue) expedCapable = expedCapableOverride.Value;
             if (donkCapableOverride.HasValue) donkCapable = donkCapableOverride.Value;
 
-            // 4. Compute modified value (same as CoyoteAppraiseGrid)
-            var modified = rawAppraisal;
-            if (markup > 0)
-                modified += rawAppraisal * markup;
+            // 4. Compute modified value
+            var modified = rawAppraisal * markup;
 
             if (pricePerTile > 0)
                 modified += tileCount * pricePerTile;

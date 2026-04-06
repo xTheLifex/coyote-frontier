@@ -13,7 +13,16 @@
   parent: BaseVessel
   name: LL1 Donk n Go
   description: "Donk co's new franchise package includes your very own floating restaurant to craft homemade donk pockets!"
-  price: 80000
+  price: 125000 # Arbitrary pricing, not used when reselling, only for purchase. Can be attained using the coyoteappraisegrid command.
+  # By using the coyoteappraisegrid command, we can see that its appraisal is 38726 spesos.
+  # We mark it up an extra 15% due to LL1, resulting in 44535 spesos.
+  # We then add the price per tile. In this case, 125*388, as it has 388 tiles, resulting in 93035 spesos.
+  # Finally, we determine what are its capabilities. As it is donk capable, we either add about 30% of the grid's value on top or 30k, whichever is higher, resulting in 123035 spesos.
+  # The four values below are used only when reselling an initialized ship.
+  pricePerTile: 125 # 125 spesos per tile on the ship. LL1 Pricing.
+  markup: 1.15 # A markup of 1.15x or 15%. LL1 Average Markup.
+  expedCapable: false
+  donkCapable: true
   category: Medium
   group: Shipyard
   shuttlePath: /Maps/_CS/Shuttles/donkngo.yml

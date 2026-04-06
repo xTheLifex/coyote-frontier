@@ -6,7 +6,7 @@ using Robust.Shared.Utility;
 namespace Content.Shared._NF.Shipyard.Prototypes;
 
 [Prototype]
-public sealed class VesselPrototype : IPrototype, IInheritingPrototype
+public sealed partial class VesselPrototype : IPrototype, IInheritingPrototype // Coyote: Add Partial
 {
     [IdDataField]
     public string ID { get; } = default!;
@@ -88,35 +88,6 @@ public sealed class VesselPrototype : IPrototype, IInheritingPrototype
     /// </summary>
     [DataField]
     public float MinPriceMarkup = 1.05f;
-
-    //Coyote additions for license level appraisal
-    #region Coyote
-    /// <summary>
-    ///     Extra price added per tile of the vessel when selling. Default is 1 speso per tile.
-    /// </summary>
-    [DataField("pricePerTile")]
-    public int PricePerTile = 1;
-
-    /// <summary>
-    ///     Increase applied to the total sale value (before price per tile).
-    ///     For example, a markup of 1.25 means +25% value.
-    /// </summary>
-    [DataField("markup")]
-    public float Markup = 1f;
-
-    /// <summary>
-    ///     Is the vessel exped capable? Adds half grid value or 50k to cost.
-    /// </summary>
-    [DataField("expedCapable")]
-    public bool ExpedCapable = false;
-
-    /// <summary>
-    ///     Is the vessel donk capable? Adds 0.3*grid value or 30k to cost.
-    /// </summary>
-    [DataField("donkCapable")]
-    public bool DonkCapable = false;
-    #endregion
-    //End Coyote
 
     /// <summary>
     /// Components to be added to any spawned grids.

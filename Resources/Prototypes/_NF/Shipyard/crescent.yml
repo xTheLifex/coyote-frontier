@@ -13,9 +13,10 @@
   parent: BaseVessel
   name: LL5 Crescent # COYOTE: changed name to include license level
   description: The Crescent, named for its exterior shape, is a vessel focused on providing service, medical aide, and scientific breakthroughs for smaller vessels.
-  price: 8000000 # 260,000 + 15% # COYOTE: 261704 * (3.5) ^= 1,000,000 (915,964)
-  pricePerTile: 500
-  markup: 5
+  # Coyote: The three values below are used only when reselling an initialized ship.
+  price: 8000000 # Coyote: Arbitrary Pricing. Not used when re-selling.
+  pricePerTile: 800 # Coyote: 800 spesos per tile on the ship.
+  markup: 8 # Coyote: Markup of 8 incurs 8x the price.
   expedCapable: True
   category: Large
   group: Shipyard

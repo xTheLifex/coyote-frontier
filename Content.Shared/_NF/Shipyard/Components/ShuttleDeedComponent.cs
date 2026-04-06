@@ -27,10 +27,4 @@ public sealed partial class ShuttleDeedComponent : Component
 
     [DataField, AutoNetworkedField]
     public bool PurchasedWithVoucher;
-    //Coyote Start
-    #region Coyote
-    [DataField("vesselID")] // Coyote: used for extended pricing calculations
-    public string? VesselID = null;
-    #endregion
-    //Coyote End
 }

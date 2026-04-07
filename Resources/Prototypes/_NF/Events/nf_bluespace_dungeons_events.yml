@@ -13,8 +13,8 @@
     endRadioAnnouncement: station-event-bluespace-dungeon-end-announcement
     endRadioAnnouncementChannel: Supply
     weight: 5
-    duration: 1800 # 30 minutes
-    maxDuration: 1800 # 30 minutes
+    duration: 3600 # 60 minutes
+    maxDuration: 3600 # 60 minutes
     reoccurrenceDelay: 120 # minutes, keep in mind there are 6 in rotation that each last 30 minutes, so there is never any real "downtime" between these
   - type: ActiveRadio
     channels:

@@ -13,7 +13,7 @@ If you want to host or create content for Coyote Sector, this is the repo you ne
 
 <div class="header" align="center">
 
-[Discord]TBA | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Patreon]TBA | [Wiki](https://frontierstation.wiki.gg/)
+[Discord](https://discord.com/invite/m7aJ3aKcnZ) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Wiki](https://frontierstation.wiki.gg/)
 
 </div>
 
@@ -33,11 +33,11 @@ If you make any contributions, note that any changes made to files belonging to 
 
 1. Clone this repo:
 ```shell
-git clone https://github.com/new-frontiers-14/frontier-station-14.git
+git clone https://github.com/ARF-SS13/coyote-frontier.git
 ```
 2. Go to the project folder and run `RUN_THIS.py` to initialize the submodules and load the engine:
 ```shell
-cd frontier-station-14
+cd coyote-frontier
 python RUN_THIS.py
 ```
 3. Compile the solution:

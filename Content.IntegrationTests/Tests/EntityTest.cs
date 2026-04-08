@@ -44,6 +44,7 @@ namespace Content.IntegrationTests.Tests
                     .Where(p => !pair.IsTestPrototype(p))
                     .Where(p => !p.Components.ContainsKey("MapGrid")) // This will smash stuff otherwise.
                     .Where(p => !p.Components.ContainsKey("RoomFill")) // This comp can delete all entities, and spawn others
+                    .Where(p => p.Categories.All(x => x.ID != SpawnerCategory)) // Coyote: Prevent spawning spawners.
                     .Select(p => p.ID)
                     .ToList();
 
@@ -108,6 +109,7 @@ namespace Content.IntegrationTests.Tests
                     .Where(p => !pair.IsTestPrototype(p))
                     .Where(p => !p.Components.ContainsKey("MapGrid")) // This will smash stuff otherwise.
                     .Where(p => !p.Components.ContainsKey("RoomFill")) // This comp can delete all entities, and spawn others
+                    .Where(p => p.Categories.All(x => x.ID != SpawnerCategory)) // Coyote: Prevent spawning spawners.
                     .Select(p => p.ID)
                     .ToList();
                 foreach (var protoId in protoIds)
@@ -170,6 +172,7 @@ namespace Content.IntegrationTests.Tests
                 .Where(p => !p.Abstract)
                 .Where(p => !pair.IsTestPrototype(p))
                 .Where(p => !p.Components.ContainsKey("MapGrid")) // This will smash stuff otherwise.
+                .Where(p => p.Categories.All(x => x.ID != SpawnerCategory)) // Coyote: Prevent spawning spawners.
                 .Select(p => p.ID)
                 .ToList();
 

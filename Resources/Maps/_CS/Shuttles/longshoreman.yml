@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 261.2.0
+  engineVersion: 267.3.0
   forkId: ""
   forkVersion: ""
-  time: 12/04/2025 04:53:16
-  entityCount: 1414
+  time: 04/08/2026 12:52:53
+  entityCount: 1415
 maps: []
 grids:
 - 1
@@ -469,6 +469,7 @@ entities:
     - type: Transform
       pos: 2.5,3.5
       parent: 1
+    - type: ItemSlots
 - proto: AirlockCommand
   entities:
   - uid: 6
@@ -476,6 +477,7 @@ entities:
     - type: Transform
       pos: 2.5,5.5
       parent: 1
+    - type: ItemSlots
 - proto: AirlockGlassShuttle
   entities:
   - uid: 7
@@ -484,213 +486,249 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -3.5,-17.5
       parent: 1
+    - type: ItemSlots
   - uid: 8
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,37.5
       parent: 1
+    - type: ItemSlots
   - uid: 9
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,38.5
       parent: 1
+    - type: ItemSlots
   - uid: 10
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,39.5
       parent: 1
+    - type: ItemSlots
   - uid: 11
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: -0.5,42.5
       parent: 1
+    - type: ItemSlots
   - uid: 12
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 0.5,42.5
       parent: 1
+    - type: ItemSlots
   - uid: 13
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 1.5,42.5
       parent: 1
+    - type: ItemSlots
   - uid: 14
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,39.5
       parent: 1
+    - type: ItemSlots
   - uid: 15
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,38.5
       parent: 1
+    - type: ItemSlots
   - uid: 16
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,37.5
       parent: 1
+    - type: ItemSlots
   - uid: 17
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,20.5
       parent: 1
+    - type: ItemSlots
   - uid: 18
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,19.5
       parent: 1
+    - type: ItemSlots
   - uid: 19
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,18.5
       parent: 1
+    - type: ItemSlots
   - uid: 20
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,18.5
       parent: 1
+    - type: ItemSlots
   - uid: 21
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,19.5
       parent: 1
+    - type: ItemSlots
   - uid: 22
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,20.5
       parent: 1
+    - type: ItemSlots
   - uid: 23
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,-0.5
       parent: 1
+    - type: ItemSlots
   - uid: 24
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,0.5
       parent: 1
+    - type: ItemSlots
   - uid: 25
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,1.5
       parent: 1
+    - type: ItemSlots
   - uid: 26
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,1.5
       parent: 1
+    - type: ItemSlots
   - uid: 27
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,0.5
       parent: 1
+    - type: ItemSlots
   - uid: 28
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,-0.5
       parent: 1
+    - type: ItemSlots
   - uid: 29
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,-17.5
       parent: 1
+    - type: ItemSlots
   - uid: 30
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,-18.5
       parent: 1
+    - type: ItemSlots
   - uid: 31
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,-19.5
       parent: 1
+    - type: ItemSlots
   - uid: 32
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,-18.5
       parent: 1
+    - type: ItemSlots
   - uid: 33
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,-19.5
       parent: 1
+    - type: ItemSlots
   - uid: 34
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,-36.5
       parent: 1
+    - type: ItemSlots
   - uid: 35
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,-37.5
       parent: 1
+    - type: ItemSlots
   - uid: 36
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -3.5,-38.5
       parent: 1
+    - type: ItemSlots
   - uid: 37
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,-36.5
       parent: 1
+    - type: ItemSlots
   - uid: 38
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,-37.5
       parent: 1
+    - type: ItemSlots
   - uid: 39
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 4.5,-38.5
       parent: 1
+    - type: ItemSlots
   - uid: 40
     components:
     - type: Transform
       pos: 1.5,-41.5
       parent: 1
+    - type: ItemSlots
   - uid: 41
     components:
     - type: Transform
       pos: 0.5,-41.5
       parent: 1
+    - type: ItemSlots
   - uid: 42
     components:
     - type: Transform
       pos: -0.5,-41.5
       parent: 1
+    - type: ItemSlots
 - proto: AirlockMaint
   entities:
   - uid: 43
@@ -698,6 +736,7 @@ entities:
     - type: Transform
       pos: -1.5,4.5
       parent: 1
+    - type: ItemSlots
 - proto: APCBasic
   entities:
   - uid: 44
@@ -3192,6 +3231,11 @@ entities:
     components:
     - type: Transform
       pos: 3.5,-3.5
+      parent: 1
+  - uid: 1415
+    components:
+    - type: Transform
+      pos: 3.5,-4.5
       parent: 1
 - proto: Catwalk
   entities:

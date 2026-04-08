@@ -24,11 +24,15 @@ reagent-desc-doxarubixadone = A cryogenics chemical. Heals cellular damage cause
 reagent-name-dermaline = dermaline
 reagent-desc-dermaline = An advanced chemical that is more effective at treating burn damage than kelotane.
 
+# Starlight Start
+# CS - TODO: Add Resomi
 reagent-name-dexalin = dexalin
-reagent-desc-dexalin = Used for treating minor oxygen deprivation and bloodloss. A required reagent for dexalin plus.
+reagent-desc-dexalin = Used for treating minor oxygen deprivation and bloodloss, mildly toxic to Avali. A required reagent for dexalin plus.
 
 reagent-name-dexalin-plus = dexalin plus
-reagent-desc-dexalin-plus = Used in treatment of extreme cases of oxygen deprivation and bloodloss. Flushes heartbreaker toxin out of the blood stream.
+reagent-name-dexalin-plus-saline = dexalin plus & saline
+reagent-desc-dexalin-plus = Used in treatment of extreme cases of oxygen deprivation and bloodloss, toxic to Avali. Flushes heartbreaker toxin out of the blood stream.
+# Starlight End
 
 reagent-name-epinephrine = epinephrine
 reagent-desc-epinephrine = An effective stabilizing chemical used to keep a critical person from dying to asphyxiation while patching up minor damage during crit. Flushes heartbreaker toxin out the blood stream at the cost of more epinephrine, but may add histamine. Helps reduce stun time. Commonly found in the form of emergency medipens.

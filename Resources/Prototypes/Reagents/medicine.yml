@@ -282,18 +282,31 @@
     Medicine:
       effects:
       - !type:HealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition # Starlight
+          type: [ Avali, Resomi ]
+          inverted: true
         damage:
           types:
             Asphyxiation: -1
             Bloodloss: -0.5
       - !type:HealthChange
         conditions:
-          - !type:ReagentThreshold
-            min: 20
+        - !type:ReagentThreshold
+          min: 20
         damage:
           types:
             Asphyxiation: 3
             Cold: 1
+      - !type:HealthChange #Starlight
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali, Resomi ]
+        damage:
+          types:
+            Poison: 1.5 # Avali and Resomi blood is ammonia based, so chems made to treat normal bloodloss poison them instead (Lethal Dose: 20u)
+            Asphyxiation: 1
+            Bloodloss: 1
 
 - type: reagent
   id: DexalinPlus
@@ -307,6 +320,10 @@
     Medicine:
       effects:
       - !type:HealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition #starliight
+          type: [ Avali, Resomi ]
+          inverted: true
         damage:
           types:
             Asphyxiation: -3.5
@@ -320,12 +337,21 @@
         amount: -3
       - !type:HealthChange
         conditions:
-          - !type:ReagentThreshold
-            min: 25
+        - !type:ReagentThreshold
+          min: 25
         damage:
           types:
             Asphyxiation: 5
             Cold: 3
+      - !type:HealthChange # Starlight
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Avali, Resomi ]
+        damage:
+          types:
+            Poison: 2.5 # Avali and Resomi blood is ammonia based, so chems made to treat normal bloodloss poison them instead. Dex+ is worse. (Lethal Dose: 15u)
+            Asphyxiation: 1.5
+            Bloodloss: 1
 
 # this ones a doozy
 - type: reagent
@@ -719,7 +745,18 @@
             type: Feroxi
           factor: 2
         - !type:ModifyBloodLevel
+          - !type:MetabolizerTypeCondition
+            type: [ Avali, Resomi ]
+            inverted: true
           amount: 6
+        - !type:HealthChange
+          conditions:
+          - !type:MetabolizerTypeCondition
+            type: [ Avali, Resomi ]
+          damage:
+            types:
+              Caustic: 2 # 30 damage per unit was ridiculous, but I'm leaving some damage to punish mistakes without risking round removal. Adding salt to water shouldn't suddenly make it the strongest toxin in the game by far.
+              Heat: 2
 
 - type: reagent
   id: Siderlac

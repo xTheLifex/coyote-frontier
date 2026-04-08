@@ -12,7 +12,6 @@
       - Pill
       - Crayon
       - Paper
-      - AvianFood
   - type: SolutionContainerManager
     solutions:
       stomach:

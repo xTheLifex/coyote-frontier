@@ -13,3 +13,12 @@
         reagents:
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
+    # CS - Port Resomi Metabolizer from Starlight
+    # CS - TODO: Pending poll
+#    - type: Metabolizer
+#      maxReagents: 2
+#      metabolizerTypes: [ Resomi ]
+#      groups:
+#        - id: Medicine
+#        - id: Poison
+#        - id: Narcotic

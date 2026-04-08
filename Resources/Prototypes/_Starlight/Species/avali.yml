@@ -29,9 +29,8 @@
     - Female
   kind:
   - RaptorLike
+  # CS - CustomName cause error
   # End CS
-  customName: true # Starlight
-
 - type: speciesBaseSprites
   id: MobAvaliSprites
   sprites:

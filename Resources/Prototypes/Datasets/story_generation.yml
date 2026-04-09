@@ -20,7 +20,7 @@
   id: BookCharacters
   values:
     prefix: story-gen-book-character
-    count: 41
+    count: 42
 
 - type: localizedDataset
   id: BookCharacterTraits

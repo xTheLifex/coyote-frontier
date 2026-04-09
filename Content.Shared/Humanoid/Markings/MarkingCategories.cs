@@ -20,6 +20,7 @@ namespace Content.Shared.Humanoid.Markings
         Arms,
         Legs,
         Tail,
+        TailExtras, // Starlight
         Overlay,
         BaseChest,
         BaseHead,
@@ -109,6 +110,7 @@ namespace Content.Shared.Humanoid.Markings
                 HumanoidVisualLayers.LFootBehind     => MarkingCategories.Legs,
                 HumanoidVisualLayers.RFoot               => MarkingCategories.Legs,
                 HumanoidVisualLayers.RFootBehind     => MarkingCategories.Legs,
+                HumanoidVisualLayers.TailExtras => MarkingCategories.TailExtras, // Starlight
                 HumanoidVisualLayers.Tail                => MarkingCategories.Tail,
                 HumanoidVisualLayers.RArmExtension       => MarkingCategories.Arms, // Frontier: species-specific layer
                 HumanoidVisualLayers.LArmExtension       => MarkingCategories.Arms, // Frontier: species-specific layer

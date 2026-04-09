@@ -12,6 +12,7 @@ namespace Content.Shared.Humanoid
     {
         Special, // for the cat ears
         Tail,
+        TailExtras, // Starlight
         Hair,
         FacialHair,
         UndergarmentTop,

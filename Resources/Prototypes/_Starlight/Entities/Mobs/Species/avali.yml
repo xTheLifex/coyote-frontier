@@ -41,7 +41,6 @@
     - NeedHungerDefault
     - NeedThirstDefault
   # End CS
-    baseDecayRate: 0.03
   - type: Icon
     sprite: _Starlight/Mobs/Species/Avali/parts.rsi
     state: full
@@ -130,10 +129,7 @@
         sprite: Mobs/Effects/brute_damage.rsi
         color: "#6C3BAA"
   - type: Bloodstream
-    bloodReferenceSolution:
-      reagents:
-      - ReagentId: AvaliBlood
-        Quantity: 300
+    bloodReagent: AvaliBlood
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Weapons/pierce.ogg

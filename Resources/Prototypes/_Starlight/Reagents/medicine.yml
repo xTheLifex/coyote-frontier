@@ -13,8 +13,6 @@
         conditions:
         - !type:OrganType
           type: Avali
-        #        - !type:OrganType
-        #          type: Resomi
         damage:
           types:
             Asphyxiation: -3.5
@@ -40,9 +38,6 @@
         - !type:OrganType
           type: Avali
           shouldHave: false
-        #        - !type:OrganType
-        #          type: Resomi
-        #          shouldHave: false
         damage:
           types:
             Poison: 1.5 #Ammonia is toxic injected directly into bloodstream
@@ -52,6 +47,4 @@
         conditions:
         - !type:OrganType
           type: Avali
-        #        - !type:OrganType
-        #          type: Resomi
         amount: 3

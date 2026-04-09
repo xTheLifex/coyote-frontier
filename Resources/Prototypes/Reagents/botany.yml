@@ -218,9 +218,6 @@
         - !type:OrganType
           type: Avali
           shouldHave: false
-        # - !type:OrganType
-        #   type: Resomi
-        #   shouldHave: false
         damage:
           types:
             Caustic: 1
@@ -230,8 +227,6 @@
         conditions:
         - !type:OrganType
           type: Avali
-        # - !type:OrganType
-        #   type: Resomi
         damage:
           types:
             Asphyxiation: -1
@@ -245,9 +240,6 @@
         - !type:OrganType
           type: Avali
           shouldHave: false
-#        - !type:OrganType
-#          type: Resomi
-#          shouldHave: false
         - !type:ReagentThreshold
           reagent: Ammonia
           min: 1
@@ -267,9 +259,6 @@
         - !type:OrganType
           type: Avali
           shouldHave: false
-#        - !type:OrganType
-#          type: Resomi
-#          shouldHave: false
         - !type:ReagentThreshold
           reagent: Ammonia
           min: 0.8

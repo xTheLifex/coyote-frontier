@@ -1,32 +1,3 @@
-marking-HairResomiBackstrafe = Backstrafe
-marking-HairResomiBurstShort = Burst, Short
-marking-HairResomiDefault = Default Cut
-marking-HairResomiDroopy = Droopy
-marking-HairResomiEars = Earloof
-marking-HairResomiFluffymohawk = Mohawk (Rebel)
-marking-HairResomiHedge = Hedge
-marking-HairResomiLong = Long
-marking-HairResomiLongway = Longway
-marking-HairResomiMane = Mane
-marking-HairResomiManeBeardless = Mane, Beardless
-marking-HairResomiMohawk = Mohawk
-marking-HairResomiMushroom = Mushroom
-marking-HairResomiNotree = Notree
-marking-HairResomiPointy = Pointy
-marking-HairResomiSpiky = Spiky
-marking-HairResomiTwies = Twies
-marking-HairResomiUpright = Upright
-
-marking-ResomiFluffHead = Face Fluff
-marking-ResomiFluffHeadUp = Head Fluff
-marking-ResomiFluff = Torso Fluff
-marking-ResomiLArmFeathers = Left Arm Feathers
-marking-ResomiRArmFeathers = Right Arm Feathers
-marking-ResomiLLegFeathers = Left Leg Feathers
-marking-ResomiRLegFeathers = Right Leg Feathers
-marking-ResomiTailFeathers = Resomi Tail Feathers
-marking-ResomiTail = (Base) Resomi Tail
-
 marking-UnderwearPantiesBow = Panties, Bow (Alt)
 marking-UnderwearPantiesBowSlim = Panties, Slim w/ Bow (Alt)
 marking-UnderwearPantiesBowThong = Thong, Bow (Alt)

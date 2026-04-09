@@ -11,8 +11,14 @@
       "name": "icon"
     },
     {
+      "name": "icon-large"
+    },
+    {
       "name": "equipped-BACKPACK",
       "directions": 4
+    },
+    {
+      "name": "equipped-BACKPACK-large"
     },
     {
       "name": "inhand-left",
@@ -21,6 +27,12 @@
     {
       "name": "inhand-right",
       "directions": 4
+    },
+    {
+      "name": "inhand-left-large"
+    },
+    {
+      "name": "inhand-right-large"
     }
   ]
 }

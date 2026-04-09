@@ -25,6 +25,9 @@
       {
         "name": "outerclothing_hardsuit",
         "directions": 4
+      },
+      {
+        "name": "bingles"
       }
     ]
   }

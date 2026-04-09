@@ -34,6 +34,10 @@
     {
       "name": "quartz_crab",
       "directions": 4
+    },
+    {
+      "name": "equipped-OUTERCLOTHING-harpy",
+      "directions": 4
     }
   ]
 }

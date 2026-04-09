@@ -64,6 +64,9 @@
         },
         {
             "name": "voucherstationtrafficcontroller"
+        },
+        {
+            "name": "voucherSR"
         }
     ]
 }

@@ -13,65 +13,71 @@
     {
       "name": "lollypop-wrapper"
     },
-	{
+    {
       "name": "lollypop-wrapper-syndicate"
     },
-	{
+    {
       "name": "lollypop-wrapper-nanotrasen"
     },
-	{
+    {
       "name": "lollypop-wrapper-centcomm"
     },
     {
       "name": "lollypop"
     },
-	{
+    {
       "name": "lollypop-rainbow"
     },
-	{
+    {
       "name": "lollypop-carp"
     },
-	{
+    {
       "name": "lollypop-weh"
     },
     {
       "name": "lollypop-weh-inverse"
     },
-	{
+    {
       "name": "lollypop-centcomm"
     },
-	{
+    {
       "name": "lollypop-captain"
     },
-	{
+    {
       "name": "inhand-left",
-	  "directions": 4
+      "directions": 4
     },
-	{
+    {
       "name": "inhand-right",
-	  "directions": 4
+      "directions": 4
     },
-	{
+    {
       "name": "equipped-MASK",
       "directions": 4
     },
-	{
+    {
       "name": "color"
     },
     {
       "name": "lollypop-wrapped"
     },
-	{
+    {
       "name": "lollypop-wrapped-syndicate"
     },
-	{
+    {
       "name": "lollypop-wrapped-nanotrasen"
     },
-	{
+    {
       "name": "lollypop-wrapped-centcomm"
     },
-	{
+    {
       "name": "lollypop-dispenser"
+    },
+    {
+      "name": "rainbow"
+    },
+    {
+      "name": "carp"
     }
   ]
 }

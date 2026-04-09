@@ -303,6 +303,7 @@
       - id: WeaponCaseLongTemperatureGunExpedition # coyote move: banished to tier 5
       - id: WeaponCaseLongPrototypePulseRifleExpedition # Coyote: Re-add to loot tables
       - id: WeaponCaseLongHristovExpedition #Coyote extra trash drop.
+      - id: WeaponCaseLongC19r # Coyote add: C19r because there is finally an SMG that doesnt need to be tier 3. I mean it could be tier 4 but lets keep the prototype rare.
 
 # region explosives
 - type: entityTable

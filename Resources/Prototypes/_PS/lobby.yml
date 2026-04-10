@@ -43,10 +43,6 @@
   background: /Textures/_PS/Lobby/synd.png
 
 - type: lobbyBackground
-  id: FurryThief
-  background: /Textures/_PS/Lobby/thief.png
-
-- type: lobbyBackground
   id: FurryWaldo
   background: /Textures/_PS/Lobby/waldo.png
 

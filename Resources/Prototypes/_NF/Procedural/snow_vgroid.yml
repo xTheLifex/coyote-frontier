@@ -225,30 +225,30 @@
   layers:
   - !type:ExteriorDunGen
     proto: NFSnowyLabs
-  - !type:EntityTableDunGen
-    minCount: 25
-    maxCount: 40
-    table: !type:NestedSelector
-      tableId: SalvageScrapSpawnerCommon
-    perDungeon: true
-  - !type:EntityTableDunGen
-    minCount: 30
-    maxCount: 40
-    table: !type:NestedSelector
-      tableId: SalvageScrapSpawnerValuable
-    perDungeon: true
-  - !type:EntityTableDunGen
-    minCount: 15
-    maxCount: 25
-    table: !type:NestedSelector
-      tableId: SalvageTreasureSpawnerCommon
-    perDungeon: true
-  - !type:EntityTableDunGen
-    minCount: 15
-    maxCount: 25
-    table: !type:NestedSelector
-      tableId: SalvageEquipmentSpawnerCommon
-    perDungeon: true
+  # - !type:EntityTableDunGen # Coyote remove start: Remove MOST of the floor clutter to try and save on lag
+    # minCount: 25
+    # maxCount: 40
+    # able: !type:NestedSelector
+      # tableId: SalvageScrapSpawnerCommon
+    # perDungeon: true
+  # - !type:EntityTableDunGen
+    # minCount: 30
+    # maxCount: 40
+    # table: !type:NestedSelector
+      # ableId: SalvageScrapSpawnerValuable
+    # erDungeon: true
+  # - !type:EntityTableDunGen
+    # minCount: 15
+    # maxCount: 25
+    # table: !type:NestedSelector
+      # tableId: SalvageTreasureSpawnerCommon
+    # perDungeon: true
+  # - !type:EntityTableDunGen
+    # minCount: 15
+    # maxCount: 25
+    # table: !type:NestedSelector
+      # tableId: SalvageEquipmentSpawnerCommon
+    # perDungeon: true # Coyote remove end: Remove MOST of the floor clutter to try and save on lag
   - !type:EntityTableDunGen
     minCount: 15
     maxCount: 20

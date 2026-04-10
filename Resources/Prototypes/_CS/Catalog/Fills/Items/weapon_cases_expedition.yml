@@ -10,6 +10,34 @@
     - id: CSWeaponPistolAnacondaExpedition
       amount: 1
 
+#region rifles
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseLongAkm
+  suffix: Dungeon, AKM
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CSWeaponAssaultRifleAKM
+      amount: 1
+    - id: NFMagazineRifle30
+      amount: 2
+
+#region smgs
+- type: entity
+  parent: WeaponCaseLong
+  id: WeaponCaseLongC19r
+  suffix: Dungeon, C19r
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+    - id: CSWeaponSubMachineGunC19r
+      amount: 1
+    - id: NFMagazineSubMachineGun35
+      amount: 3
+
 ## Coyote .40 pistol
 - type: entity
   parent:

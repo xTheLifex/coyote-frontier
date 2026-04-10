@@ -841,23 +841,23 @@
     - id: VendingMachineRestockClothes
     - id: VendingMachineRestockCostumes
     - id: VendingMachineRestockDinnerware
-    - id: VendingMachineRestockEngineering
+    # - id: VendingMachineRestockEngineering # Coyote remove: useless clutter restock
     - id: VendingMachineRestockGames
     - id: VendingMachineRestockMedical
     - id: VendingMachineRestockNutriMax
-    - id: VendingMachineRestockSalvageEquipment
+    # - id: VendingMachineRestockSalvageEquipment # Coyote remove: useless clutter restock
     - id: VendingMachineRestockSmokes
     - id: VendingMachineRestockSeeds
-    - id: VendingMachineRestockTankDispenser
-    - id: VendingMachineRestockVendomat
-    - id: VendingMachineRestockRobotics
+    # - id: VendingMachineRestockTankDispenser # Coyote remove: useless clutter restock
+    # - id: VendingMachineRestockVendomat # Coyote remove: useless clutter restock
+    # - id: VendingMachineRestockRobotics # Coyote remove: useless clutter restock
     - id: VendingMachineRestockChemVend
-    - id: VendingMachineRestockAstroVend
-    - id: VendingMachineRestockAmmo
-    - id: VendingMachineRestockLessLethalVend
-    - id: VendingMachineRestockNonLethalVend
+    # - id: VendingMachineRestockAstroVend # Coyote remove: useless clutter restock
+    # - id: VendingMachineRestockAmmo # Coyote remove: useless clutter restock
+    # - id: VendingMachineRestockLessLethalVend # Coyote remove: useless clutter restock
+    # - id: VendingMachineRestockNonLethalVend # Coyote remove: useless clutter restock
     - id: VendingMachineRestockAutoTuneVend
-    - id: VendingMachineRestockPottedPlantVend
+    # - id: VendingMachineRestockPottedPlantVend # Coyote remove: useless clutter restock
     - id: VendingMachineRestockBarista # Coyote: Since we added the barista vend, add the restock too!
 
 - type: entityTable

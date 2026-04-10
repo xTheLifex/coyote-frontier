@@ -181,3 +181,10 @@
   - chat-speech-verb-wawa-2
   - chat-speech-verb-wawa-3
   - chat-speech-verb-wawa-4
+
+- type: speechVerb
+  id: Resomi
+  name: chat-speech-verb-name-resomi
+  speechVerbStrings:
+  - chat-speech-verb-resomi-1
+  - chat-speech-verb-resomi-2

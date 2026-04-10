@@ -31,7 +31,7 @@
       Burn:
         sprite: _Starlight/Mobs/Effects/Resomi/burn_damage.rsi
   - type: Bloodstream
-    bloodReagent: AvaliBlood
+    bloodReagent: ResomiBlood
   - type: FireVisuals
     sprite: _Starlight/Mobs/Effects/onfire.rsi
     normalState: Resomi_minor_burning
@@ -262,7 +262,7 @@
     - map: [ "enum.HumanoidVisualLayers.Handcuffs" ] # Doesn't work atm, but who knows in the future.
       color: "#ffffff"
       sprite: _Starlight/Objects/Misc/handcuffs.rsi
-      state: body-overlay-resomi 
+      state: body-overlay-resomi
       visible: false
     - map: [ "id" ]
     - map: [ "gloves" ]
@@ -287,22 +287,16 @@
       sprite: "_Starlight/Effects/creampie.rsi"
       state: "creampie_resomi"
       visible: false
+  # CS - Can't use both Speech and Vocal for some reason
   - type: Vocal
     sounds:
       Male: UnisexResomi
       Female: UnisexResomi
       Unsexed: UnisexResomi
-  - type: Speech
-    speechVerb: Resomi
-    speechSounds: UnisexResomi
   - type: TypingIndicator
     proto: resomi
   - type: Tag
     tags:
-    - CanPilot
-    - FootstepSound
-    - DoorBumpOpener
-    - AnomalyHost
     - Resomi
   # CS - No FlashModifier
 

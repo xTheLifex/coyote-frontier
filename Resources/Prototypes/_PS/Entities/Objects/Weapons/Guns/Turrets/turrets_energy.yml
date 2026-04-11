@@ -1,0 +1,19 @@
+- type: entity
+  parent: WeaponEnergyTurretAI
+  id: WeaponEnergyTurretAIFriendly
+  name: AI sentry turret
+  suffix: NanoTrasen
+  description: A high-tech autonomous weapons system under the direct control of a local artifical intelligence, and programmed to not engage the crew.
+  components:
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletEnergyTurretDisabler
+    fireCost: 25
+  - type: BatteryWeaponFireModes
+    fireModes:
+    - proto: BulletEnergyTurretDisabler
+      fireCost: 25
+    - proto: BulletEnergyTurretLaser
+      fireCost: 100

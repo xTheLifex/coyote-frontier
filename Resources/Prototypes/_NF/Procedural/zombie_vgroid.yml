@@ -38,7 +38,7 @@
       entityMask:
       - WallRock
       entity: NFRockElementalSpawner
-      count: 50 # Coyote: rock spawns halved-ish
+      count: 100
       minGroupSize: 1
       maxGroupSize: 1
     # Ores
@@ -46,84 +46,84 @@
       entityMask:
       - WallRock
       entity: WallRockTin
-      count: 25 # Coyote: rock spawns halved-ish
+      count: 50
       minGroupSize: 10
       maxGroupSize: 15
     - !type:OreDunGen
       entityMask:
       - WallRock
       entity: WallRockCoal
-      count: 25 # Coyote: rock spawns halved-ish
+      count: 50
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - WallRock
       entity: WallRockQuartz
-      count: 25 # Coyote: rock spawns halved-ish
+      count: 50
       minGroupSize: 10
       maxGroupSize: 15
     - !type:OreDunGen
       entityMask:
       - WallRock
       entity: WallRockSalt
-      count: 25 # Coyote: rock spawns halved-ish
+      count: 50
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - WallRock
       entity: WallRockGold
-      count: 20 # Coyote: rock spawns halved-ish
+      count: 40
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - WallRock
       entity: WallRockSilver
-      count: 20 # Coyote: rock spawns halved-ish
+      count: 40
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - WallRock
       entity: WallRockPlasma
-      count: 18 # Coyote: rock spawns halved-ish
+      count: 35
       minGroupSize: 4
       maxGroupSize: 8
     - !type:OreDunGen
       entityMask:
       - WallRock
       entity: WallRockUranium
-      count: 18 # Coyote: rock spawns halved-ish
+      count: 35
       minGroupSize: 4
       maxGroupSize: 8
     - !type:OreDunGen
       entityMask:
       - WallRock
       entity: NFWallCobblebrick
-      count: 50 # Coyote: rock spawns halved-ish
+      count: 100
       minGroupSize: 6
       maxGroupSize: 16
     - !type:OreDunGen
       entityMask:
       - WallRock
       entity: WallRockArtifactFragment
-      count: 13 # Coyote: rock spawns halved-ish
+      count: 25
       minGroupSize: 1
       maxGroupSize: 3
     - !type:OreDunGen
       entityMask:
       - WallRock
       entity: WallRockDiamond
-      count: 8 # Coyote: rock spawns halved-ish
+      count: 15
       minGroupSize: 1
       maxGroupSize: 2
     - !type:OreDunGen
       entityMask:
       - WallRock
       entity: NFWallRockBluespace
-      count: 5 # Coyote: rock spawns halved-ish
+      count: 10
       minGroupSize: 1
       maxGroupSize: 1
     # Mobs
@@ -131,7 +131,7 @@
       tileMask:
       - FloorCaveDrought
       entity: NFSpawnMobZombie
-      count: 3 # Coyote: mobs in the rocks halved-ish
+      count: 5
       minGroupSize: 1
       maxGroupSize: 1
 
@@ -149,8 +149,8 @@
 - type: dungeonConfig
   id: NFVGRoidExteriorDungeonsVirologyLabZombies
   reserveTiles: true
-  minCount: 1 # Coyote change: dungeons to 1-2 instead of 2-3
-  maxCount: 2 # Coyote change: dungeons to 1-2 instead of 2-3
+  minCount: 4
+  maxCount: 5
   layers:
   - !type:ExteriorDunGen
     proto: NFVirologyLab

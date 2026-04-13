@@ -43,7 +43,7 @@
       entityMask:
       - WallRockChromite
       entity: NFChromiteElementalSpawner
-      count: 50 # Coyote: rock spawns halved-ish
+      count: 100
       minGroupSize: 1
       maxGroupSize: 1
     # Ores
@@ -51,84 +51,84 @@
       entityMask:
       - WallRockChromite
       entity: WallRockChromiteTin
-      count: 25 # Coyote: rock spawns halved-ish
+      count: 50
       minGroupSize: 10
       maxGroupSize: 15
     - !type:OreDunGen
       entityMask:
       - WallRockChromite
       entity: WallRockChromiteCoal
-      count: 25 # Coyote: rock spawns halved-ish
+      count: 50
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - WallRockChromite
       entity: WallRockChromiteQuartz
-      count: 25 # Coyote: rock spawns halved-ish
+      count: 50
       minGroupSize: 10
       maxGroupSize: 15
     - !type:OreDunGen
       entityMask:
       - WallRockChromite
       entity: WallRockChromiteSalt
-      count: 25 # Coyote: rock spawns halved-ish
+      count: 50
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - WallRockChromite
       entity: WallRockChromiteGold
-      count: 20 # Coyote: rock spawns halved-ish
+      count: 40
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - WallRockChromite
       entity: WallRockChromiteSilver
-      count: 20 # Coyote: rock spawns halved-ish
+      count: 40
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - WallRockChromite
       entity: WallRockChromitePlasma
-      count: 18 # Coyote: rock spawns halved-ish
+      count: 35
       minGroupSize: 4
       maxGroupSize: 8
     - !type:OreDunGen
       entityMask:
       - WallRockChromite
       entity: WallRockChromiteUranium
-      count: 18 # Coyote: rock spawns halved-ish
+      count: 35
       minGroupSize: 4
       maxGroupSize: 8
     - !type:OreDunGen
       entityMask:
       - WallRockChromite
       entity: NFWallChromiteCobblebrick
-      count: 50 # Coyote: rock spawns halved-ish
+      count: 100
       minGroupSize: 6
       maxGroupSize: 16
     - !type:OreDunGen
       entityMask:
       - WallRockChromite
       entity: WallRockChromiteArtifactFragment
-      count: 13 # Coyote: rock spawns halved-ish
+      count: 25
       minGroupSize: 1
       maxGroupSize: 3
     - !type:OreDunGen
       entityMask:
       - WallRockChromite
       entity: WallRockChromiteDiamond
-      count: 8 # Coyote: rock spawns halved-ish
+      count: 15
       minGroupSize: 1
       maxGroupSize: 2
     - !type:OreDunGen
       entityMask:
       - WallRockChromite
       entity: NFWallRockChromiteBluespace
-      count: 5 # Coyote: rock spawns halved-ish
+      count: 10
       minGroupSize: 1
       maxGroupSize: 1
     # Decoration
@@ -144,7 +144,7 @@
       tileMask:
       - FloorChromite
       entity: SpawnMobBloodCultLeech
-      count: 2 # Coyote: mobs in the rocks halved-ish
+      count: 5
       minGroupSize: 1
       maxGroupSize: 1
 
@@ -153,7 +153,7 @@
   id: NFVGRoidBlobChromite
   layers:
   - !type:NoiseDistanceDunGen
-    size: 200, 200 # Coyote change: reduces max size due to increased spawn cap
+    size: 272, 272
     distanceConfig: !type:DunGenEuclideanSquaredDistance
       blendWeight: 0.80
     layers:
@@ -173,7 +173,7 @@
   maxOffset: 60
   layers:
   - !type:NoiseDistanceDunGen
-    size: 100, 100 # Coyote change: reduces max size due to increased spawn cap
+    size: 150, 150
     distanceConfig: !type:DunGenEuclideanSquaredDistance
     layers:
     - tile: FloorChromite
@@ -199,8 +199,8 @@
 - type: dungeonConfig
   id: NFVGRoidExteriorDungeonsChromite
   reserveTiles: true
-  minCount: 1 # Coyote change: dungeons to 1-2 instead of 2-3
-  maxCount: 2 # Coyote change: dungeons to 1-2 instead of 2-3
+  minCount: 4
+  maxCount: 5
   layers:
   - !type:ExteriorDunGen
     proto: NFVirologyLab

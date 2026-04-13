@@ -43,7 +43,7 @@
       entityMask:
       - WallRockSnow
       entity: NFSnowElementalSpawner
-      count: 50 # Coyote: rock spawns halved-ish
+      count: 100
       minGroupSize: 1
       maxGroupSize: 1
     # Ores
@@ -51,84 +51,84 @@
       entityMask:
       - WallRockSnow
       entity: WallRockSnowTin
-      count: 25 # Coyote: rock spawns halved-ish
+      count: 50
       minGroupSize: 10
       maxGroupSize: 15
     - !type:OreDunGen
       entityMask:
       - WallRockSnow
       entity: WallRockSnowCoal
-      count: 25 # Coyote: rock spawns halved-ish
+      count: 50
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - WallRockSnow
       entity: WallRockSnowQuartz
-      count: 25 # Coyote: rock spawns halved-ish
+      count: 50
       minGroupSize: 10
       maxGroupSize: 15
     - !type:OreDunGen
       entityMask:
       - WallRockSnow
       entity: WallRockSnowSalt
-      count: 25 # Coyote: rock spawns halved-ish
+      count: 50
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - WallRockSnow
       entity: WallRockSnowGold
-      count: 20 # Coyote: rock spawns halved-ish
+      count: 40
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - WallRockSnow
       entity: WallRockSnowSilver
-      count: 20 # Coyote: rock spawns halved-ish
+      count: 40
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - WallRockSnow
       entity: WallRockSnowPlasma
-      count: 18 # Coyote: rock spawns halved-ish
+      count: 35
       minGroupSize: 4
       maxGroupSize: 8
     - !type:OreDunGen
       entityMask:
       - WallRockSnow
       entity: WallRockSnowUranium
-      count: 18 # Coyote: rock spawns halved-ish
+      count: 35
       minGroupSize: 4
       maxGroupSize: 8
     - !type:OreDunGen
       entityMask:
       - WallRockSnow
       entity: NFWallSnowCobblebrick
-      count: 50 # Coyote: rock spawns halved-ish
+      count: 100
       minGroupSize: 6
       maxGroupSize: 16
     - !type:OreDunGen
       entityMask:
       - WallRockSnow
       entity: WallRockSnowArtifactFragment
-      count: 13 # Coyote: rock spawns halved-ish
+      count: 25
       minGroupSize: 1
       maxGroupSize: 3
     - !type:OreDunGen
       entityMask:
       - WallRockSnow
       entity: WallRockSnowDiamond
-      count: 8 # Coyote: rock spawns halved-ish
+      count: 15
       minGroupSize: 1
       maxGroupSize: 2
     - !type:OreDunGen
       entityMask:
       - WallRockSnow
       entity: NFWallRockSnowBluespace
-      count: 5 # Coyote: rock spawns halved-ish
+      count: 10
       minGroupSize: 1
       maxGroupSize: 1
     # Decoration
@@ -174,7 +174,7 @@
   id: NFVGRoidBlobSnow
   layers:
   - !type:NoiseDistanceDunGen
-    size: 200, 200 # Coyote change: reduces max size due to increased spawn cap
+    size: 272, 272
     distanceConfig: !type:DunGenEuclideanSquaredDistance
       blendWeight: 0.80
     layers:
@@ -194,7 +194,7 @@
   maxOffset: 60
   layers:
   - !type:NoiseDistanceDunGen
-    size: 100, 100 # Coyote change: reduces max size due to increased spawn cap
+    size: 150, 150
     distanceConfig: !type:DunGenEuclideanSquaredDistance
     layers:
     - tile: FloorSnow
@@ -220,8 +220,8 @@
 - type: dungeonConfig
   id: NFVGRoidExteriorDungeonsSnow
   reserveTiles: true
-  minCount: 1 # Coyote change: dungeons to 1-2 instead of 2-3
-  maxCount: 2 # Coyote change: dungeons to 1-2 instead of 2-3
+  minCount: 4
+  maxCount: 5
   layers:
   - !type:ExteriorDunGen
     proto: NFSnowyLabs

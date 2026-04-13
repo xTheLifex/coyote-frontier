@@ -41,7 +41,7 @@
       entityMask:
       - NFWallRockScrapPile
       entity: NFAsteroidScrapBotWallSpawner # Wall that spawn mobs
-      count: 50 # Coyote: rock spawns halved-ish
+      count: 100
       minGroupSize: 1
       maxGroupSize: 1
     # Ores
@@ -49,84 +49,84 @@
       entityMask:
       - NFWallRockScrapPile
       entity: NFWallRockScrapPileIron
-      count: 15 # Coyote: rock spawns halved-ish
+      count: 30
       minGroupSize: 10
       maxGroupSize: 15
     - !type:OreDunGen
       entityMask:
       - NFWallRockScrapPile
       entity: NFWallRockScrapPileCoal
-      count: 15 # Coyote: rock spawns halved-ish
+      count: 30
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - NFWallRockScrapPile
       entity: NFWallRockScrapPileQuartz
-      count: 5 # Coyote: rock spawns halved-ish
+      count: 10
       minGroupSize: 10
       maxGroupSize: 15
     - !type:OreDunGen
       entityMask:
       - NFWallRockScrapPile
       entity: NFWallRockScrapPileSalt
-      count: 5 # Coyote: rock spawns halved-ish
+      count: 10
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - NFWallRockScrapPile
       entity: NFWallRockScrapPileGold
-      count: 8 # Coyote: rock spawns halved-ish
+      count: 15
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - NFWallRockScrapPile
       entity: NFWallRockScrapPileSilver
-      count: 8 # Coyote: rock spawns halved-ish
+      count: 15
       minGroupSize: 8
       maxGroupSize: 12
     - !type:OreDunGen
       entityMask:
       - NFWallRockScrapPile
       entity: NFWallRockScrapPilePlasma
-      count: 10 # Coyote: rock spawns halved-ish
+      count: 20
       minGroupSize: 4
       maxGroupSize: 8
     - !type:OreDunGen
       entityMask:
       - NFWallRockScrapPile
       entity: NFWallRockScrapPileUranium
-      count: 10 # Coyote: rock spawns halved-ish
+      count: 20
       minGroupSize: 4
       maxGroupSize: 8
     - !type:OreDunGen
       entityMask:
       - NFWallRockScrapPile
       entity: WallSolidRust
-      count: 35 # Coyote: rock spawns halved-ish
+      count: 70
       minGroupSize: 6
       maxGroupSize: 16
     - !type:OreDunGen
       entityMask:
       - NFWallRockScrapPile
       entity: NFWallRockScrapPileArtifactFragment
-      count: 8 # Coyote: rock spawns halved-ish
+      count: 15
       minGroupSize: 1
       maxGroupSize: 3
     - !type:OreDunGen
       entityMask:
       - NFWallRockScrapPile
       entity: NFWallRockScrapPileDiamond
-      count: 3 # Coyote: rock spawns halved-ish
+      count: 5
       minGroupSize: 1
       maxGroupSize: 2
     - !type:OreDunGen
       entityMask:
       - NFWallRockScrapPile
       entity: NFWallRockScrapPileBluespace
-      count: 5 # Coyote: rock spawns halved-ish
+      count: 10
       minGroupSize: 1
       maxGroupSize: 1
     # Decoration
@@ -158,7 +158,7 @@
   id: NFVGRoidBlobScrap
   layers:
   - !type:NoiseDistanceDunGen
-    size: 200, 200 # Coyote change: reduces max size due to increased spawn cap
+    size: 272, 272
     distanceConfig: !type:DunGenEuclideanSquaredDistance
       blendWeight: 0.80
     layers:
@@ -185,8 +185,8 @@
 - type: dungeonConfig
   id: NFVGRoidExteriorDungeonsScrap
   reserveTiles: true
-  minCount: 1 # Coyote change: dungeons to 1-2 instead of 2-3
-  maxCount: 2 # Coyote change: dungeons to 1-2 instead of 2-3
+  minCount: 4
+  maxCount: 5
   layers:
   - !type:ExteriorDunGen
     proto: NFSalvageOutpost

@@ -19,9 +19,7 @@ using Content.Server.StationEvents.Events;
 using Content.Server._NF.Station.Systems;
 using Content.Server._NF.StationEvents.Components;
 using Robust.Shared.EntitySerialization.Systems;
-using Content.Server._Mono.StationEvents; /// Coyote add: ports monoliths vgroid retention when players are nearby (monolith PR 1981)
 using System.Linq;
-
 
 namespace Content.Server._NF.StationEvents.Events;
 
@@ -43,7 +41,6 @@ public sealed class BluespaceErrorRule : StationEventSystem<BluespaceErrorRuleCo
     [Dependency] private readonly StationRenameWarpsSystems _renameWarps = default!;
     [Dependency] private readonly BankSystem _bank = default!;
     [Dependency] private readonly SharedSalvageSystem _salvage = default!;
-    [Dependency] private readonly AutoExtendRuleSystem _autoExtend = default!; /// Coyote add: ports monoliths vgroid retention when players are nearby (monolith PR 1981)
 
     public override void Initialize()
     {
@@ -125,9 +122,6 @@ public sealed class BluespaceErrorRule : StationEventSystem<BluespaceErrorRuleCo
                 EntityManager.AddComponents(spawned, group.AddComponents);
 
                 component.GridsUid.Add(spawned);
-            
-                if (component.ExtendIfPopulated) /// Coyote add start: ports monoliths vgroid retention when players are nearby (monolith PR 1981)
-                    _autoExtend.AutoExtend(uid, spawned); /// Coyote add end: ports monoliths vgroid retention when players are nearby (monolith PR 1981)
             }
         }
 

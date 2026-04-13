@@ -49,15 +49,6 @@ public sealed partial class BluespaceErrorRuleComponent : Component
     [DataField]
     public bool DeleteGridsOnEnd = true;
 
-    /// Coyote add start: Ports monolith vgroid retention if players are nearby (Monolith PR 1981)
-    /// <summary>  
-    /// Will actively extend the gamerule's duration as long as there's people near or on any of the rule's grids.
-    /// Prevents it being deleted from under you.
-    /// </summary>
-    [DataField]
-    public bool ExtendIfPopulated = true;
-/// Coyote add end: Ports monolith vgroid retention if players are nearby (Monolith PR 1981)
-
     /// <summary>
     /// How much the grid is appraised at upon entering into existence, set after starting the event
     /// </summary>

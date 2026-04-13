@@ -13,13 +13,13 @@ show_reason = true
 custom_reason = "You have not played on a Frontier servers long enough to connect to this server. Please play on Frontier servers until you have more playtime."
 
 [infolinks]
-discord    = "https://discord.com/invite/m7aJ3aKcnZ"
-github     = "https://github.com/ARF-SS13/coyote-frontier"
+discord    = "https://discord.gg/frontier"
+github     = "https://github.com/new-frontiers-14/frontier-station-14"
 website    = "https://www.frontierstation14.com"
 wiki       = "https://frontierstation.wiki.gg"
-patreon    = ""
-bug_report = "https://github.com/ARF-SS13/coyote-frontier/issues"
-appeal     = ""
+patreon    = "https://patreon.com/FrontierStation14"
+bug_report = "https://github.com/new-frontiers-14/frontier-station-14/issues"
+appeal     = "https://discord.gg/akvNtmRd7e"
 
 [net]
 max_connections = 1024

@@ -3187,3 +3187,10 @@ Entries:
   id: 375
   time: '2025-06-29T02:25:21.0000000+00:00'
   url: https://github.com/ARF-SS13/coyote-frontier/pull/10
+- author: Feathernights
+  changes:
+    - type: Fix
+      message: Localization and Kimono not having a proper description.
+  id: 376
+  time: '2026-04-13T03:12:08.0000000+00:00'
+  url: https://github.com/ARF-SS13/coyote-frontier/pull/1149

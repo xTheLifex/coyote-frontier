@@ -39,7 +39,7 @@ namespace Content.Shared.Strip.Components
         public TimeSpan Additive = TimeSpan.Zero;
         public bool Stealth = stealth;
         public readonly string? Slot = slot; // Coyote
-        public readonly SlotFlags SlotFlags = slotFlags;
+        public readonly SlotFlags SlotFlags = slotFlags; // Coyote: Track the targeted inventory slot flags.
 
         public TimeSpan Time => TimeSpan.FromSeconds(MathF.Max(InitialTime.Seconds * Multiplier + Additive.Seconds, 0f));
 
@@ -53,7 +53,7 @@ namespace Content.Shared.Strip.Components
     ///     This is also used by some stripping related interactions, i.e., interactions with items that are currently equipped by another player.
     /// </remarks>
     [ByRefEvent]
-    public sealed class BeforeItemStrippedEvent(TimeSpan initialTime, bool stealth = false, string? slot = null, SlotFlags slotFlags = SlotFlags.NONE) : BaseBeforeStripEvent(initialTime, stealth, slot, slotFlags);
+    public sealed class BeforeItemStrippedEvent(TimeSpan initialTime, bool stealth = false, string? slot = null, SlotFlags slotFlags = SlotFlags.NONE) : BaseBeforeStripEvent(initialTime, stealth, slot, slotFlags); // Coyote: Forward slot context to item strip modifiers.
 
     /// <summary>
     ///     Used to modify strip times. Raised directed at the user.
@@ -62,7 +62,7 @@ namespace Content.Shared.Strip.Components
     ///     This is also used by some stripping related interactions, i.e., interactions with items that are currently equipped by another player.
     /// </remarks>
     [ByRefEvent]
-    public sealed class BeforeStripEvent(TimeSpan initialTime, bool stealth = false, string? slot = null, SlotFlags slotFlags = SlotFlags.NONE) : BaseBeforeStripEvent(initialTime, stealth, slot, slotFlags);
+    public sealed class BeforeStripEvent(TimeSpan initialTime, bool stealth = false, string? slot = null, SlotFlags slotFlags = SlotFlags.NONE) : BaseBeforeStripEvent(initialTime, stealth, slot, slotFlags); // Coyote: Forward slot context to the stripping actor.
 
     /// <summary>
     ///     Used to modify strip times. Raised directed at the target.
@@ -71,7 +71,7 @@ namespace Content.Shared.Strip.Components
     ///     This is also used by some stripping related interactions, i.e., interactions with items that are currently equipped by another player.
     /// </remarks>
     [ByRefEvent]
-    public sealed class BeforeGettingStrippedEvent(TimeSpan initialTime, bool stealth = false, string? slot = null, SlotFlags slotFlags = SlotFlags.NONE) : BaseBeforeStripEvent(initialTime, stealth, slot, slotFlags);
+    public sealed class BeforeGettingStrippedEvent(TimeSpan initialTime, bool stealth = false, string? slot = null, SlotFlags slotFlags = SlotFlags.NONE) : BaseBeforeStripEvent(initialTime, stealth, slot, slotFlags); // Coyote: Forward slot context to the stripping target.
 
     /// <summary>
     ///     Organizes the behavior of DoAfters for <see cref="StrippableSystem">.

@@ -208,7 +208,7 @@ public abstract class SharedStrippableSystem : EntitySystem
             return;
         }
 
-        var (time, stealth) = GetStripTimeModifiers(user, target, held, slotDef.StripTime, slotDef.Name, slotDef.SlotFlags);
+        var (time, stealth) = GetStripTimeModifiers(user, target, held, slotDef.StripTime, slotDef.Name, slotDef.SlotFlags); // Coyote: Pass slot context so excluded slots use default stripping behavior.
 
         if (!stealth)
             _popupSystem.PopupEntity(Loc.GetString("strippable-component-alert-owner-insert",
@@ -299,7 +299,7 @@ public abstract class SharedStrippableSystem : EntitySystem
             return;
         }
 
-        var (time, stealth) = GetStripTimeModifiers(user, target, item, slotDef.StripTime, slotDef.Name, slotDef.SlotFlags);
+        var (time, stealth) = GetStripTimeModifiers(user, target, item, slotDef.StripTime, slotDef.Name, slotDef.SlotFlags); // Coyote: Pass slot context so excluded slots use default stripping behavior.
 
         if (!stealth)
         {
@@ -629,14 +629,14 @@ public abstract class SharedStrippableSystem : EntitySystem
     /// <summary>
     /// Modify the strip time via events. Raised directed at the item being stripped, the player stripping someone and the player being stripped.
     /// </summary>
-    public (TimeSpan Time, bool Stealth) GetStripTimeModifiers(EntityUid user, EntityUid targetPlayer, EntityUid? targetItem, TimeSpan initialTime, string? slot = null, SlotFlags slotFlags = SlotFlags.NONE)
+    public (TimeSpan Time, bool Stealth) GetStripTimeModifiers(EntityUid user, EntityUid targetPlayer, EntityUid? targetItem, TimeSpan initialTime, string? slot = null, SlotFlags slotFlags = SlotFlags.NONE) // Coyote: Accept slot context for slot-aware strip modifiers.
     {
-        var itemEv = new BeforeItemStrippedEvent(initialTime, false, slot, slotFlags);
+        var itemEv = new BeforeItemStrippedEvent(initialTime, false, slot, slotFlags); // Coyote: Preserve slot context when raising strip modifier events.
         if (targetItem != null)
             RaiseLocalEvent(targetItem.Value, ref itemEv);
-        var userEv = new BeforeStripEvent(itemEv.Time, itemEv.Stealth, slot, slotFlags);
+        var userEv = new BeforeStripEvent(itemEv.Time, itemEv.Stealth, slot, slotFlags); // Coyote: Preserve slot context for the stripping actor.
         RaiseLocalEvent(user, ref userEv);
-        var targetEv = new BeforeGettingStrippedEvent(userEv.Time, userEv.Stealth, slot, slotFlags);
+        var targetEv = new BeforeGettingStrippedEvent(userEv.Time, userEv.Stealth, slot, slotFlags); // Coyote: Preserve slot context for the stripping target.
         RaiseLocalEvent(targetPlayer, ref targetEv);
         return (targetEv.Time, targetEv.Stealth);
     }

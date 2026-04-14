@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Content.Shared.Strip.Components;
 
 /// <summary>
@@ -19,4 +21,11 @@ public sealed partial class ThievingComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("stealthy")]
     public bool Stealthy;
+
+    /// <summary>
+    /// Inventory slot names that should use default stripping behavior instead of thieving bonuses.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("blockedSlots")] // Coyote: Configure slots that should ignore thieving bonuses.
+    public HashSet<string> BlockedSlots = new();
 }

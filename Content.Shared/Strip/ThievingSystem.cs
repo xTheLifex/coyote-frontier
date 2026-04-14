@@ -17,6 +17,9 @@ public sealed class ThievingSystem : EntitySystem
 
     private void OnBeforeStrip(EntityUid uid, ThievingComponent component, BeforeStripEvent args)
     {
+        if (args.Slot != null && component.BlockedSlots.Contains(args.Slot)) // Coyote: Excluded slots fall back to default stripping behavior.
+            return;
+
         args.Stealth |= component.Stealthy;
         args.Additive -= component.StripTimeReduction;
     }

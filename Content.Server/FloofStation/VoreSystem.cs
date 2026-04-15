@@ -100,7 +100,13 @@ public sealed class VoreSystem : EntitySystem
 
     private void VoreVerb(EntityUid uid, VoreComponent component, GetVerbsEvent<InnateVerb> args)
     {
-        if (args.User != args.Target)
+        if (!args.CanInteract
+            || !args.CanAccess
+            || args.User != args.Target
+            || !HasComp<VoreComponent>(args.Target)
+            || !_consent.HasConsent(args.Target, "Vore")
+            || !_consent.HasConsent(args.User, "Vore")
+            || HasComp<VoredComponent>(args.User))
             return;
 
         // Add toggle for showing examine text

@@ -47,7 +47,7 @@
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
-      path: /Audio/Announcements/attention.ogg
+      collection: AnnouncementInternGeneric
     earliestStart: 15
     weight: 6
     duration: 50
@@ -73,7 +73,7 @@
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
-      path: /Audio/Announcements/attention.ogg
+      collection: AnnouncementInternGeneric
     weight: 6
     duration: 50
   - type: VentCrittersRule
@@ -92,7 +92,7 @@
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
-      path: /Audio/Announcements/attention.ogg
+      collection: AnnouncementInternGeneric
     weight: 6
     duration: 50
   - type: VentCrittersRule
@@ -111,7 +111,7 @@
   - type: StationEvent
     startAnnouncement: station-event-vent-creatures-nf-start-announcement # Frontier: add nf-
     startAudio:
-      path: /Audio/Announcements/attention.ogg
+      collection: AnnouncementInternGeneric
     earliestStart: 15
     weight: 6
     duration: 50

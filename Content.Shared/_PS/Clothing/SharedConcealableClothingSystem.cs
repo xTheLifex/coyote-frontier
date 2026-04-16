@@ -1,35 +1,32 @@
+using System.Linq;
 using Content.Shared.Actions;
 using Content.Shared.Clothing;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Implants;
+using Content.Shared.Implants.Components;
+using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Item;
+using Content.Shared.Mindshield.Components;
 using Content.Shared.Popups;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._PS.Clothing;
 
-public sealed class ConcealableClothingSystem : EntitySystem
+public abstract class SharedConcealableClothingSystem : EntitySystem
 {
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedItemSystem _item = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<ConcealableClothingComponent, GotUnequippedEvent>(OnGotUnequipped);
-        SubscribeLocalEvent<ConcealableClothingComponent, GotEquippedEvent>(OnGotEquipped);
         SubscribeLocalEvent<ConcealableClothingComponent, GetItemActionsEvent>(GetActions);
         SubscribeLocalEvent<ConcealableClothingComponent, ToggleClothingConcealmentEvent>(OnToggle);
-        SubscribeLocalEvent<ConcealableClothingComponent, GetEquipmentVisualsEvent>(OnGetVisuals);
-    }
-
-    private void OnGetVisuals(EntityUid uid, ConcealableClothingComponent component, GetEquipmentVisualsEvent args)
-    {
-        if (!component.IsConcealed)
-            return;
-
-        args.Layers.Clear();
     }
 
     private void OnToggle(EntityUid uid, ConcealableClothingComponent component, ToggleClothingConcealmentEvent args)
@@ -37,12 +34,19 @@ public sealed class ConcealableClothingSystem : EntitySystem
         // We need a user defined to be able to toggle this.
         if (component.User == null)
             return;
+        var user = (EntityUid) component.User;
+
+        // User must have implant
+        if (!HasConcealableImplant(component))
+            return;
 
         args.Handled = true;
-        var user = (EntityUid) component.User;
+        Log.Info($"OnToggle: {user}");
         component.IsConcealed = !component.IsConcealed;
         _actions.SetToggled(component.ToggleActionEntity, component.IsConcealed);
         Dirty(uid, component);
+        _item.VisualsChanged(uid);
+
 
         // Popup
         var state = component.IsConcealed ? "hidden" : "shown";
@@ -65,16 +69,18 @@ public sealed class ConcealableClothingSystem : EntitySystem
         args.AddAction(ref component.ToggleActionEntity, component.ToggleAction);
     }
 
-    private void OnGotUnequipped(EntityUid uid, ConcealableClothingComponent component, GotUnequippedEvent args)
+    private bool HasConcealableImplant(ConcealableClothingComponent component)
     {
-        component.User = null;
-    }
+        if (component.User == null)
+            return false;
 
-    private void OnGotEquipped(EntityUid uid, ConcealableClothingComponent component, GotEquippedEvent args)
-    {
-        component.User = args.Equipee;
-    }
+        if (component.RequireImplant == false)
+            return true;
 
+        var user = (EntityUid) component.User;
+        return TryComp<ImplantedComponent>(user, out var implanted) &&
+               implanted.ImplantContainer.ContainedEntities.Any(HasComp<ConcealableClothingImplantComponent>);
+    }
 }
 
 public sealed partial class ToggleClothingConcealmentEvent : InstantActionEvent;

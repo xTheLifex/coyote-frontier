@@ -17,7 +17,7 @@ public sealed partial class ConcealableClothingComponent : Component
     /// Action for toggling visibility of this piece of clothing.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public EntityUid? ToggleActionEntity = new();
+    public EntityUid? ToggleActionEntity;
 
     /// <summary>
     /// When <see langword="true"/>, it will require an implant to be used.
@@ -28,7 +28,7 @@ public sealed partial class ConcealableClothingComponent : Component
     /// <summary>
     /// Current user that wears concealable clothing.
     /// </summary>
-    [ViewVariables]
+    [ViewVariables, AutoNetworkedField]
     public EntityUid? User;
 
     /// <summary>

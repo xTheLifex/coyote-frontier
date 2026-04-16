@@ -32,6 +32,8 @@
   - type: ExplosionResistance
     damageCoefficient: 0.9
   - type: AllowsSleepInside # Frontier
+  - type: ConcealableClothing
+    toggleAction: ActionToggleConcealmentBackpack
 
 - type: entity
   parent: NFClothingBackpack # Frontier: ClothingBackpack<NFClothingBackpack

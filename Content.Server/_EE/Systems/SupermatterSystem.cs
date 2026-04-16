@@ -308,7 +308,7 @@ public sealed partial class SupermatterSystem : EntitySystem
             EntityManager.QueueDeleteEntity(target);
             return;
         }
-        // CS End
+        // End CS
 
         if (!sm.HasBeenPowered)
             LogFirstPower(uid, sm, target);

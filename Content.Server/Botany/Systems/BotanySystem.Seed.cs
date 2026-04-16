@@ -205,7 +205,7 @@ public sealed partial class BotanySystem : EntitySystem
                 aphroVisibility.Laced = true;
                 aphroVisibility.Solution = produce.SolutionName;
             }
-            // CS end
+            // End CS
         }
 
         return products;

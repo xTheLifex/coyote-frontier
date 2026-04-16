@@ -183,5 +183,5 @@ public sealed partial class GasTankComponent : Component, IGasMixtureHolder
             JetpackAlertSound = jetpackAlertSound;
         }
     }
-    // CS END
+    // End CS
 }

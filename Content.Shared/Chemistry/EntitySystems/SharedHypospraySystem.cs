@@ -21,7 +21,7 @@ public abstract class SharedHypospraySystem : EntitySystem
     [Dependency] protected readonly MobStateSystem MobState = default!;
     [Dependency] protected readonly SharedCombatModeSystem Combat = default!;
     [Dependency] protected readonly ISharedAdminLogManager AdminLogger = default!;
-    // CS end
+    // End CS
 
     public override void Initialize()
     {

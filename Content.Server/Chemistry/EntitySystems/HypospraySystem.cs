@@ -209,7 +209,7 @@ public sealed class HypospraySystem : SharedHypospraySystem
                 actualDelay = TimeSpan.FromSeconds(0);
             else
                 actualDelay /= 2;
-            // CS end
+            // End CS
             AdminLogger.Add(LogType.Ingestion,
                 $"{EntityManager.ToPrettyString(user):user} is attempting to inject themselves with a solution {SharedSolutionContainerSystem.ToPrettyString(solution):solution}.");
 

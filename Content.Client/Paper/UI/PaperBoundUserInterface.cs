@@ -60,5 +60,5 @@ public sealed partial class PaperBoundUserInterface : BoundUserInterface // Delt
     {
         SendMessage(new PaperSignatureRequestMessage(signatureIndex));
     }
-    // CS end
+    // End CS
 }

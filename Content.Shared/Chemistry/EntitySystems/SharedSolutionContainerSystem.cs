@@ -342,7 +342,7 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
             lacedComp.Laced = true;
             lacedComp.Solution = solution.Name ?? "";
         }
-        // CS end
+        // End CS
 
         UpdateAppearance((uid, comp, null));
 

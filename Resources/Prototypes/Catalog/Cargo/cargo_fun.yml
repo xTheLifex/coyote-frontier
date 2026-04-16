@@ -228,7 +228,7 @@
 #  cost: 25000 # You will surely not regret buying this
 #  category: cargoproduct-category-name-fun
 #  group: market
-#CS End
+#End CS
 
 - type: cargoProduct
   id: FunMysteryFigurines

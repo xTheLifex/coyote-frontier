@@ -40,7 +40,7 @@ public sealed class BlockGameArcadeSystem : EntitySystem
             EntityManager.SpawnEntity(_random.Pick(arcade.PossibleRewards), xform.Coordinates);
         }
     }
-    // CS end
+    // End CS
 
     public override void Update(float frameTime)
     {

@@ -31,5 +31,5 @@ public sealed partial class BlockGameArcadeComponent : Component
     [DataField("possibleRewards", customTypeSerializer: typeof(PrototypeIdListSerializer<EntityPrototype>))]
     public List<string> PossibleRewards = new();
 
-    // CS END
+    // End CS
 }

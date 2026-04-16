@@ -311,7 +311,7 @@ namespace Content.Server.Atmos.EntitySystems
             };
             args.Verbs.Add(verb);
         }
-        // CS END
+        // End CS
 
         /// <summary>
         /// Returns the gas mixture for the gas analyzer

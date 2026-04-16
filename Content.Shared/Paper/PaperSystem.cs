@@ -587,7 +587,7 @@ public sealed class PaperSystem : EntitySystem
                   .Replace("[signature]", string.Empty)
                   .Replace("[check]", "☐");
     }
-    // CS end
+    // End CS
 }
 
 /// <summary>

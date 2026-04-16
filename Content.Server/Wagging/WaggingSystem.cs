@@ -97,7 +97,7 @@ public sealed class WaggingSystem : EntitySystem
             {
                 _humanoidAppearance.SetMarkingId(uid, MarkingCategories.Tail, idx, target, humanoid: humanoid);
             }
-        } // CS end
+        } // End CS
 
         return true;
     }

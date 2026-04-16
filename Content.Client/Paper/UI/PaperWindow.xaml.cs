@@ -58,7 +58,7 @@ namespace Content.Client.Paper.UI
             typeof(FormTagHandler),
             typeof(SignatureTagHandler),
             typeof(CheckTagHandler)
-            // CS end
+            // End CS
         };
 
         public event Action<string>? OnSaved;

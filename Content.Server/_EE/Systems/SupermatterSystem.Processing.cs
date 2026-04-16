@@ -734,7 +734,7 @@ public sealed partial class SupermatterSystem
                 _paracusia.SetDistance(mob, paracusiaDistance, paracusia);
             }
         }*/
-        // CS End.
+        // End CS.
 
         switch (sm.PreferredDelamType)
         {

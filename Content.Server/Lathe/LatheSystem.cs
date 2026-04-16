@@ -227,7 +227,7 @@ namespace Content.Server.Lathe
             */
             if (!DeductMaterials(uid, component, recipe, quantity)) // CS: deduct materials (buffer first, then storage)
                 return false;
-            // CS End
+            // End CS
 
             // Frontier: queue up a batch
             if (component.Queue.Count > 0 && component.Queue[^1].Recipe.ID == recipe.ID)

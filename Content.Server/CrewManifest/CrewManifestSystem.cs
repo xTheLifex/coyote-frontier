@@ -255,7 +255,7 @@ public sealed class CrewManifestSystem : EntitySystem
             var entry = new CrewManifestEntry(name, jobTitle, card.Comp.JobIcon, preset.JobName!.Value);
 
             entriesSort.Add((null, entry));
-        } // CS end
+        } // End CS
 
         entriesSort.Sort((a, b) =>
         {

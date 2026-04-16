@@ -80,7 +80,7 @@ public sealed partial class PaperComponent : Component
             SignatureIndex = signatureIndex;
         }
     }
-    // CS end
+    // End CS
 
     [Serializable, NetSerializable]
     public enum PaperUiKey

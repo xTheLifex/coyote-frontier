@@ -177,7 +177,7 @@
   - type: HumanoidAppearance
     species: IPC
   - type: ModifyUndies  # FLOOF Add
-  - type: RoleplayIncentive  # COYOTE Add
+  - type: RoleplayIncentive  # CS: Add
   - type: ShortWhitelist
     scale: 0.8
     density: 140
@@ -186,9 +186,9 @@
   - type: TallWhitelist
     scale: 1.2
   # CS - Tweaks start
-  - type: Damageable # COYOTE Add
-    damageContainer: IPC # COYOTE Add
-    damageModifierSet: IPC # COYOTE Add
+  - type: Damageable # CS: Add
+    damageContainer: IPC # CS: Add
+    damageModifierSet: IPC # CS: Add
   - type: Bloodstream
     bloodReagent: Oxidant
     maxBleedAmount: 4

@@ -1,7 +1,7 @@
 - type: entity
   id: WeaponProtoKineticAcceleratorBase
   abstract: true
-  parent: [ BaseItem, RecyclableItemSteelMedium ] # Coyote
+  parent: [ BaseItem, RecyclableItemSteelMedium ] # CS
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
@@ -49,5 +49,5 @@
     - Belt
   - type: UseDelay
     delay: 1
-  - type: StaticPrice # Coyote
+  - type: StaticPrice # CS
     price: 35

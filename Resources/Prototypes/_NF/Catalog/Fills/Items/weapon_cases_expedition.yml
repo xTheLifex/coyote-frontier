@@ -572,7 +572,7 @@
     contents:
     - id: NFWeaponRifleCeremonialExpedition
       amount: 1
-    - id: NFAmmunitionBoxRifle20 # Coyote: Align ammotype with weapon from this fill
+    - id: NFAmmunitionBoxRifle20 # CS: Align ammotype with weapon from this fill
       amount: 2
 
 #region Launchers

@@ -140,8 +140,8 @@
   - type: StaticPrice
     price: 20
   - type: CargoSellBlacklist
-  #- type: PirateBountyItem # Coyote: No.
-  #  id: Pda # Coyote: Ditto
+  #- type: PirateBountyItem # CS: No.
+  #  id: Pda # CS: Ditto
   - type: ToggleableGhostRole
     wipeVerbText: pda-wipe-device-verb-text
     wipeVerbPopup: pda-wiped-device
@@ -150,7 +150,7 @@
     preserveOnSale: true
   - type: DeletionCensusExempt
   # End Frontier: extra components
-  - type: BlipCartridge # Coyote: Blip
+  - type: BlipCartridge # CS: Blip
 
 - type: entity
   parent: BasePDA
@@ -1523,7 +1523,7 @@
     state: pda-seniorofficer
 
 - type: entity
-  parent: [ SyndiPDA, NotContraband ] # Frontier: BaseMajorContraband<BaseC3ContrabandNoValue # COYOTE: BaseC3ContrabandNoValue -> BaseC3MetaPirate
+  parent: [ SyndiPDA, NotContraband ] # Frontier: BaseMajorContraband<BaseC3ContrabandNoValue # CS: BaseC3ContrabandNoValue -> BaseC3MetaPirate
   id: PiratePDA
   name: pirate PDA
   description: Yargh!

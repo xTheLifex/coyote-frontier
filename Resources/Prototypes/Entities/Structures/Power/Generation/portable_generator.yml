@@ -331,7 +331,7 @@
     - type: ChemicalFuelGeneratorAdapter
       solution: tank
       reagents:
-        Ethanol: 1 # coyote - ethically sourced fuel so botanists keep winning
+        Ethanol: 1 # CS: - ethically sourced fuel so botanists keep winning
         WeldingFuel: 1
     - type: SolutionContainerManager
       solutions:

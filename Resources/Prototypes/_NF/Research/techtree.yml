@@ -584,7 +584,7 @@
   - MedicalAssemblerMachineCircuitboard
   - HotplateMachineCircuitboard
   - DefibrillatorCompact
-  - JetInjector # Coyote - Port in Jet Injectors from Den
+  - JetInjector # CS: - Port in Jet Injectors from Den
   technologyPrerequisites:
   - NFBasicMedicine
   position: 2, 11
@@ -636,7 +636,7 @@
   name: nf-research-technology-anti-gravitational-fields
   entityIcon: NFClothingShoesBootsMoon
   discipline: NFScience
-  secondaryDiscipline: NFMedical # Coyote: Adds a secondary discipline now that this also has the holo hoverbed.
+  secondaryDiscipline: NFMedical # CS: Adds a secondary discipline now that this also has the holo hoverbed.
   tier: 1
   cost: 5000
   recipeUnlocks:
@@ -1068,7 +1068,7 @@
   cost: 2500
   recipeUnlocks:
   - PlantBagOfHolding
-  - BluespaceTrashBag # Coyote
+  - BluespaceTrashBag # CS
   prerequisiteLineType: Diagonal
   technologyPrerequisites:
   - NFAdvancedHydroponicsEquipment

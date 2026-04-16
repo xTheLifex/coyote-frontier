@@ -156,7 +156,7 @@ public sealed class TipsSystem : EntitySystem
         }
         else
         {
-            // Coyote: Send to chat so people can see it in the chat feed with delay and prefix
+            // CS: Send to chat so people can see it in the chat feed with delay and prefix
             Timer.Spawn(TimeSpan.FromSeconds(3), () =>
             {
                 var wrappedMessage = $"[bold]Tippy:[/bold] {args[1]}";

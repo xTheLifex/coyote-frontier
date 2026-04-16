@@ -31,7 +31,7 @@
         amount: 0.07
 
 - type: reagent
-  id: ABLustine # Coyote: Illegal character removal
+  id: ABLustine # CS: Illegal character removal
   name: reagent-name-ablustine
   parent: BaseAphrodisiacAlcohol
   desc: reagent-desc-ablustine

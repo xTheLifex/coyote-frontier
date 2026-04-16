@@ -24,7 +24,7 @@ public sealed class SharedArmorPlateSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedStaminaSystem _stamina = default!; // Coyote: Changed StaminaSystem to SharedStaminaSystem
+    [Dependency] private readonly SharedStaminaSystem _stamina = default!; // CS: Changed StaminaSystem to SharedStaminaSystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;

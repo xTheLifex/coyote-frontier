@@ -17,7 +17,7 @@
     Fast: 0.5
     Strenght: 0.5
     Inconstancy: 0.5
-    # InconstancyParticle: 0.5 # Coyote - remove this horrible buggy atrocity
+    # InconstancyParticle: 0.5 # CS: - remove this horrible buggy atrocity
     FullUnknown: 0.5
     Jumping: 0.3
     Invisibility: 0.5
@@ -125,7 +125,7 @@
     shuffleOnPulse: true
     prob: 1
 
-# Coyote - remove this horrible buggy atrocity
+# CS: - remove this horrible buggy atrocity
 # - type: anomalyBehavior
 #   id: InconstancyParticle
 #   earnPointModifier: 1.55 # Frontier: 1.8<1.55

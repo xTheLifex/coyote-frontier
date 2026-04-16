@@ -18,7 +18,7 @@
     wideAnimationRotation: 135
     swingLeft: true
     attackRate: 0.75
-    bluntStaminaDamageFactor: 2.40 # Coyote start
+    bluntStaminaDamageFactor: 2.40 # CS: start
     damage:
       types:
         Blunt: 14 # 10->14

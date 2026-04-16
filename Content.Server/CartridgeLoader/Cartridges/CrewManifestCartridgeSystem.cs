@@ -63,9 +63,9 @@ public sealed class CrewManifestCartridgeSystem : EntitySystem
         if (owningStation is null)
             return;
 
-        var entries = _crewManifest.GetCrewManifest(); // coyote: remove name
+        var entries = _crewManifest.GetCrewManifest(); // CS: remove name
 
-        var state = new CrewManifestUiState(entries); // coyote: remove name
+        var state = new CrewManifestUiState(entries); // CS: remove name
         _cartridgeLoader.UpdateCartridgeUiState(loaderUid, state);
     }
 

@@ -76,12 +76,12 @@
   - MercenaryGlasses #Coyote: Pirate Loadout Expansion
   - MercenaryBelt #Coyote: Pirate Loadout Expansion
   - NFPirateEars
-  - PirateEncryptionKey # Coyote: Pirates get comm keys
+  - PirateEncryptionKey # CS: Pirates get comm keys
   - ContractorBoxSurvival
   - SmugglerPDA
   - ContractorWallet
   - PirateBackpackItems
   - ContractorHandItems
-  - ContractorInstruments # Coyote
+  - ContractorInstruments # CS
   - NFSpeciesSpecific
   canCustomizeName: true # pseudonym?

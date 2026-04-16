@@ -240,7 +240,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Smuggler
     - Escort
@@ -261,7 +261,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Smuggler
 
@@ -280,7 +280,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Smuggler
 
@@ -299,7 +299,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Escort
 
@@ -318,7 +318,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - RipperDoc
 
@@ -337,7 +337,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Escort
 
@@ -356,7 +356,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Smuggler
 
@@ -419,7 +419,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Escort
 
@@ -437,7 +437,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Escort
 
@@ -485,7 +485,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Smuggler
 
@@ -503,7 +503,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - RipperDoc
 
@@ -596,7 +596,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - RipperDoc
     - Smuggler
@@ -615,7 +615,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - RipperDoc
     - Smuggler
@@ -634,7 +634,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - RipperDoc
 
@@ -652,7 +652,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - RipperDoc
 
@@ -671,7 +671,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - RipperDoc
 
@@ -690,7 +690,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - RipperDoc
 
@@ -709,7 +709,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - RipperDoc
 
@@ -744,7 +744,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Escort
 
@@ -763,7 +763,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - RipperDoc
     - Escort
@@ -783,7 +783,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - RipperDoc
 
@@ -802,7 +802,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - RipperDoc
 
@@ -821,7 +821,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - RipperDoc
 
@@ -840,7 +840,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Smuggler
 
@@ -876,7 +876,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Smuggler
 
@@ -925,7 +925,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Escort
 
@@ -943,7 +943,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Escort
 
@@ -961,7 +961,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Escort
 
@@ -994,7 +994,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - NFPirate
     - NFPirateFirstMate
@@ -1044,7 +1044,7 @@
     whitelist:
       tags:
       - PirateUplink
-  - !type:BuyerJobCondition # Coyote
+  - !type:BuyerJobCondition # CS
     whitelist:
     - Smuggler
 

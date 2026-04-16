@@ -142,7 +142,7 @@
   - sprite: _Impstation/Mobs/Customization/scars.rsi
     state: torso_incision
 
-# COYOTE moved these down here cus prosthetics
+# CS: moved these down here cus prosthetics
 - type: marking
   id: ArmProstheticLeft
   bodyPart: LArm

@@ -32,7 +32,7 @@
         - Bloodpack
         - Gauze
         - Bottle
-        - RepairPatch # Coyote add
+        - RepairPatch # CS: add
   - type: Dumpable
   - type: MagnetPickup
     magnetEnabled: false

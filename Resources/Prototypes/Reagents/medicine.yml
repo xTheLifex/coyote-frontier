@@ -1034,7 +1034,7 @@
   color: "#b0abaa"
   metabolisms:
     Medicine:
-      metabolismRate: 0.01 #Coyote add: narcoleptics only need a 15u injection every 25 minutes to maintain the effect, but they do block a reagent channel to treat their disability this way.
+      metabolismRate: 0.01 #CS add: narcoleptics only need a 15u injection every 25 minutes to maintain the effect, but they do block a reagent channel to treat their disability this way.
       effects:
       - !type:GenericStatusEffect
         key: Drowsiness

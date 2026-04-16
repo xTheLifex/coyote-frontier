@@ -220,7 +220,7 @@
     - id: ScalpelShiv
     - id: WelderMini
     - id: SawImprov
-    - id: NFWeaponShotgunSawn #Coyote
+    - id: NFWeaponShotgunSawn # CS
       weight: 0.05
 
 - type: entityTable

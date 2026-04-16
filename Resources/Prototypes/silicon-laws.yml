@@ -22,7 +22,7 @@
   - Crewsimov3
   obeysTo: laws-owner-crew
 
-#COYOTE ADD: Freeborg laws
+#CS ADD: Freeborg laws
 - type: siliconLaw
   id: free1
   order: 1

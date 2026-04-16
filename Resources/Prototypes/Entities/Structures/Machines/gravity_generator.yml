@@ -118,7 +118,7 @@
         mask:
         - MachineMask # CS: LargeMobMask>MachineMask
         layer:
-        - MachineLayer #Coyote WallLayer>MachineLayer
+        - MachineLayer #CS WallLayer>MachineLayer
   - type: Destructible
     thresholds:
     - trigger:

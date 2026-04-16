@@ -43,7 +43,7 @@
         - FullTileMask
         layer:
         - WallLayer
-        density: 400 #Coyote
+        density: 400 # CS
   - type: Airtight
   - type: StaticPrice
     price: 25 # Frontier 75<25
@@ -512,7 +512,7 @@
           - FullTileMask
           layer:
           - WallLayer
-          density: 600 #Coyote
+          density: 600 # CS
     - type: Damageable
       damageContainer: StructuralInorganic
       damageModifierSet: StructuralMetallicStrong

@@ -275,7 +275,7 @@
     whitelist:
     - Sheriff
 
-- type: listing #Coyote added hristov to NFSD uplink
+- type: listing #CS added hristov to NFSD uplink
   id: UplinkSecurityHristov
   name:  uplink-security-hristov-name
   description: uplink-security-hristov-desc
@@ -349,7 +349,7 @@
         tags:
           - SecurityUplink
 
-- type: listing #Coyote removed job restrictions for this weapon
+- type: listing #CS removed job restrictions for this weapon
   id: UplinkSecurityDisablerSMG
   name:  uplink-security-disablersmg-name
   description: uplink-security-disablersmg-desc
@@ -763,7 +763,7 @@
   productEntity: ClothingBeltSheathFilled
   icon: { sprite: Objects/Weapons/Melee/captain_sabre.rsi, state: icon }
   cost:
-    FrontierUplinkCoin: 5 #Coyote changed 5>8
+    FrontierUplinkCoin: 5 #CS changed 5>8
   categories:
     - UplinkSecurityWeapons
   conditions:
@@ -948,7 +948,7 @@
 #        tags:
 #          - SecurityUplink
 
-#- type: listing #coyote offering better selling options
+#- type: listing #CS offering better selling options
 #  id: UplinkSecurityCash10000
 #  name:  uplink-security-cash10000-name
 #  description: uplink-security-cash10000-desc
@@ -964,7 +964,7 @@
 #        tags:
 #          - SecurityUplink
 
-#- type: listing #coyote offering better selling options
+#- type: listing #CS offering better selling options
 #  id: UplinkSecurityCash100000
 #  name:  uplink-security-cash100000-name
 #  description: uplink-security-cash100000-desc

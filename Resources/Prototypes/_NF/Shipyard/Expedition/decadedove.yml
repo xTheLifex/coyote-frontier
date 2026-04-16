@@ -29,8 +29,8 @@
   guidebookPage: Null
   class:
   - Expedition
-  - Cargo #Coyote
-  - Salvage #Coyote
+  - Cargo # CS
+  - Salvage # CS
   engine:
   - AME
 

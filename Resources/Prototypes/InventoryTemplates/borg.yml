@@ -8,7 +8,7 @@
     strippingWindowPos: 0,0
     displayName: Head
     offset: 0.015625, -0.09375
-#COYOTE ADD: We want our borgs to be able to buy ships and such
+#CS ADD: We want our borgs to be able to buy ships and such
   - name: id
     slotTexture: id
     slotFlags: IDCARD
@@ -29,7 +29,7 @@
     strippingWindowPos: 0,0
     displayName: Head
     offset: 0.015625, -0.1875
-#COYOTE ADD: We want our borgs to be able to buy ships and such
+#CS ADD: We want our borgs to be able to buy ships and such
   - name: id
     slotTexture: id
     slotFlags: IDCARD
@@ -50,7 +50,7 @@
     strippingWindowPos: 0,0
     displayName: Head
     offset: 0.015625, 0
-#COYOTE ADD: We want our borgs to be able to buy ships and such
+#CS ADD: We want our borgs to be able to buy ships and such
   - name: id
     slotTexture: id
     slotFlags: IDCARD
@@ -72,7 +72,7 @@
     strippingWindowPos: 0,0
     displayName: Head
     offset: 0, 0.09375
-#COYOTE ADD: We want our borgs to be able to buy ships and such
+#CS ADD: We want our borgs to be able to buy ships and such
   - name: id
     slotTexture: id
     slotFlags: IDCARD

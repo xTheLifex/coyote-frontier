@@ -1,4 +1,4 @@
-#COYOTE ADD: Gives borgs hand
+#CS ADD: Gives borgs hand
 - type: body
   id: Borg
   name: "Borg"

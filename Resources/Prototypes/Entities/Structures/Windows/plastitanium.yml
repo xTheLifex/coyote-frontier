@@ -9,7 +9,7 @@
     snap:
     - Window
   components:
-  - type: RCDDeconstructable #Coyote
+  - type: RCDDeconstructable # CS
     deconstructable: true
     cost: 6
     delay: 8

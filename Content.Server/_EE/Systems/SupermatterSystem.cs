@@ -253,7 +253,7 @@ public sealed partial class SupermatterSystem : EntitySystem
 
         args.Handled = true;
     }
-    /* //CS: No Sliver
+    /* CS: No Sliver
     private void OnGetSliver(EntityUid uid, SupermatterComponent sm, ref SupermatterDoAfterEvent args)
     {
         if (args.Cancelled)
@@ -270,7 +270,8 @@ public sealed partial class SupermatterSystem : EntitySystem
 
         sm.DelamTimer /= 2;
     }
-    */ //End of coyote change
+    */
+    // End CS
     private void OnGravPulse(Entity<SupermatterComponent> ent, ref GravPulseEvent args)
     {
         if (!TryComp<GravityWellComponent>(ent, out var gravityWell))

@@ -126,7 +126,7 @@
       # - id: WeaponCrusherGlaive # CS: move: moved to tier 3
       - id: Katana # CS: move: banished to tier 4
       - id: WeaponCaseShortEnergyDaggerExpedition # CS: move: moved to tier 4
-      - id: Sledgehammer #Coyote move: to tier 4
+      - id: Sledgehammer #CS move: to tier 4
       - id: ClothingHandsGlovesBoxingRigged # CS: move: to tier 4
     - !type:NestedSelector
       weight: 0.05
@@ -151,7 +151,7 @@
       - id: MiningDrillDiamond
       - id: EnergyKatana
       - id: Truncheon
-      # - id: Sledgehammer #Coyote move: to tier 4
+      # - id: Sledgehammer #CS move: to tier 4
       - id: ClothingHandsGlovesNorthStar # CS: move: banished to tier 5
     - !type:NestedSelector
       weight: 0.01
@@ -255,10 +255,10 @@
       - id: WeaponCaseLongEnergyGunExpedition # CS: move: why is the energy SMG in tier 5, moving to tier 3
       - id: WeaponCaseLongJackdaw # CS: add: two chances to get this because we need more decent .20 rifles and there are too many dang SMGs
       - id: WeaponCaseShortSvalinnExpedition
-      # - id: WeaponCaseLongHristovExpedition #coyote move: banishing you to tier 4
+      # - id: WeaponCaseLongHristovExpedition #CS move: banishing you to tier 4
       - id: WeaponCaseLongMusketExpedition
     - !type:NestedSelector
-      weight: 0.03 #Coyote further reduction to lower the amount of high tier weapons
+      weight: 0.03 #CS further reduction to lower the amount of high tier weapons
       tableId: TableDungeonLootWeaponsRangedTier4
 
 # region ranged T4
@@ -280,7 +280,7 @@
       - id: WeaponCaseLongLaserCarbineExpedition
       # - id: WeaponCaseLongXrayCannonExpedition # CS: move: banished to tier 5
       # - id: WeaponCaseLongTemperatureGunExpedition # CS: move: banished to tier 5
-      - id: WeaponCaseLongHristovExpedition #coyote move: banished to tier 4
+      - id: WeaponCaseLongHristovExpedition #CS move: banished to tier 4
     - !type:NestedSelector
       weight: 0.01
       tableId: TableDungeonLootWeaponsRangedTier5
@@ -302,7 +302,7 @@
       - id: WeaponCaseLongXrayCannonExpedition # CS: move: banished to tier 5
       - id: WeaponCaseLongTemperatureGunExpedition # CS: move: banished to tier 5
       - id: WeaponCaseLongPrototypePulseRifleExpedition # CS: Re-add to loot tables
-      - id: WeaponCaseLongHristovExpedition #Coyote extra trash drop.
+      - id: WeaponCaseLongHristovExpedition #CS extra trash drop.
       - id: WeaponCaseLongC19r # CS: add: C19r because there is finally an SMG that doesnt need to be tier 3. I mean it could be tier 4 but lets keep the prototype rare.
 
 # region explosives

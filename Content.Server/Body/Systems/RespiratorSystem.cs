@@ -78,10 +78,10 @@ public sealed class RespiratorSystem : EntitySystem
             if (_mobState.IsDead(uid))
                 continue;
 
-            //Coyote Start
+            // CS
             if (TryComp<SSDIndicatorComponent>(uid, out var ssd) && ssd.IsSSD)
                 continue;
-            //Coyote End
+            // End CS
 
             UpdateSaturation(uid, -(float) respirator.UpdateInterval.TotalSeconds, respirator);
 

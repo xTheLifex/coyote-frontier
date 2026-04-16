@@ -10,7 +10,7 @@
     - ActionVendingThrow
   - type: StationAiWhitelist
   - type: AmbientOnPowered
-  - type: AmbientSound #Coyote -9>-12 3>2
+  - type: AmbientSound #CS -9>-12 3>2
     volume: -12
     range: 2
     enabled: false
@@ -109,7 +109,7 @@
     taxAccounts:
       Frontier: 0.25
       Nfsd: 0.05
-      Medical: 0.15 #Coyote adding medical passive income
+      Medical: 0.15 #CS adding medical passive income
     cashSlot:
       whitelist:
         components:

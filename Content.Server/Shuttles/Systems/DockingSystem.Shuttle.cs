@@ -121,7 +121,7 @@ public sealed partial class DockingSystem
     {
         var gridDocks = GetDocks(targetGrid);
         var shuttleDocks = GetDocks(shuttleUid);
-        //Coyote Start
+        //C Start
         // If maxShuttleDocks is set, keep only the closest N shuttle docks to the target grid's center.
         if (maxShuttleDocks.HasValue && shuttleDocks.Count > maxShuttleDocks.Value)
         {
@@ -131,7 +131,7 @@ public sealed partial class DockingSystem
                 .Take(maxShuttleDocks.Value)
                 .ToList();
         }
-        //Coyote End
+        // End CS
         return GetDockingConfigPrivate(shuttleUid, targetGrid, shuttleDocks, gridDocks, priorityTag, dockType); // Frontier: add dockType
     }
 

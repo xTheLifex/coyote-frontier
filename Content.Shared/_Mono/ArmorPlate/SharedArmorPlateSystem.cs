@@ -463,7 +463,7 @@ public sealed class SharedArmorPlateSystem : EntitySystem
         else
             RemComp<ArmorPlateProtectedComponent>(wearerUid);
     }
-    //Coyote Start
+    // CS Start
     private void OnPlateExamined(EntityUid uid, ArmorPlateItemComponent component, ExaminedEvent args)
     {
         if (!args.IsInDetailsRange)
@@ -488,5 +488,5 @@ public sealed class SharedArmorPlateSystem : EntitySystem
                 ("durabilityColor", durabilityColor)));
         }
     }
-    //Coyote End
+    // End CS
 }

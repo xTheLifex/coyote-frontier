@@ -512,7 +512,7 @@
         tags:
           - PirateUplink
   categories:
-  - UplinkPirateMedical #coyote
+  - UplinkPirateMedical # CS
 
 - type: listing
   id: UplinkPirateRepairKit
@@ -576,7 +576,7 @@
         tags:
           - PirateUplink
   categories:
-  - UplinkPirateMachines #coyote
+  - UplinkPirateMachines # CS
 
 - type: listing
   id: UplinkNFPouchPirateCaptain
@@ -636,7 +636,7 @@
         tags:
           - PirateUplink
 
-#- type: listing #Coyote
+#- type: listing # CS
 #  id: UplinkTeleCrystal
 #  name:  uplink-Telecrystal
 #  description: uplink-Telecrystal-desc

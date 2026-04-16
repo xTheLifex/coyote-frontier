@@ -262,11 +262,11 @@
         shader: unshaded
   - type: Storage
     grid:
-    - 0,1,0,4 #Coyote about a toolbelt of slots. Removing previous inventory and nerfing slots a bit
+    - 0,1,0,4 #CS about a toolbelt of slots. Removing previous inventory and nerfing slots a bit
     - 2,1,2,4
     - 4,1,4,4
     - 6,1,6,4
-    #- 5,0,7,2 #Coyote shrinking of the inventory capacity. Removing previous inventory and giving it about a toolbelt of slots
+    #- 5,0,7,2 #CS shrinking of the inventory capacity. Removing previous inventory and giving it about a toolbelt of slots
     #- 0,5,7,5
     #- 6,4,7,5
     #- 9,2,10,3

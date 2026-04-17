@@ -153,6 +153,15 @@
     critHealingModifier: 0
     stasisDamageReduction: 0
     # End CS
+  # CS: Fix no flying vroom vroom
+  - type: Tag
+    tags:
+    - Avali
+    - CanPilot
+    - FootstepSound
+    - DoorBumpOpener
+  # End CS
+
 
 # Chirp!
 

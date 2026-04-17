@@ -296,6 +296,9 @@
   - type: Tag
     tags:
     - Resomi
+    - CanPilot
+    - FootstepSound
+    - DoorBumpOpener
   # CS: No FlashModifier
 
 - type: entity

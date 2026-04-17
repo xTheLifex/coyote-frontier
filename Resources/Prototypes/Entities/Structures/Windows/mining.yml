@@ -48,15 +48,15 @@
     trackAllDamage: true
     damageOverlay:
       sprite: Structures/Windows/cracks.rsi
-  - type: StaticPrice # Coyote
+  - type: StaticPrice # CS
     price: 70
-  - type: RCDDeconstructable # Coyote
+  - type: RCDDeconstructable # CS
     cost: 6
     delay: 8
     fx: EffectRCDDeconstruct8
 
 - type: entity
-  parent: MiningWindow # Coyote
+  parent: MiningWindow # CS
   id: MiningWindowDiagonal
   suffix: diagonal
   placement:

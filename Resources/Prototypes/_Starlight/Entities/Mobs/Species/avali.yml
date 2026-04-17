@@ -24,18 +24,18 @@
 - type: entity
   save: false
   name: Urist McAvali
-  # CS - None of these parent exist
+  # CS: None of these parent exist
   id: BaseMobAvali
-  parent: BaseMobHuman # CS - Inherit from BaseMobHuman
+  parent: BaseMobHuman # CS: Inherit from BaseMobHuman
   abstract: true
   components:
-  # CS - No language system
+  # CS: No language system
   - type: HumanoidAppearance
     species: Avali
     hideLayersOnEquip:
     - Tail
     - HeadTop
-  # CS Start - Use Needs
+  # CS: Use Needs
   - type: Needs
     needs:
     - NeedHungerDefault
@@ -93,7 +93,7 @@
   - type: Speech
     speechVerb: Parrot # RMC did it right.
     speechSounds: MaleAvali
-    # CS - Allow all emote
+    # CS: Allow all emote
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -144,7 +144,7 @@
     updateInterval: 1s
     healingPerUpdate:
       types:
-    # CS - Cosmetic for balancing reason
+    # CS: Cosmetic for balancing reason
         Heat: 0
         Cold: 0
       groups:

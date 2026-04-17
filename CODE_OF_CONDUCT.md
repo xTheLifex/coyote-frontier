@@ -8,7 +8,7 @@ This isn’t an exhaustive list of things that you can’t do. Rather, take it i
 
 This code of conduct applies specifically to the Github repositories, discord community, and other spaces managed by the Frontier Station project or Frontier Station Staff. Some spaces, such as the Frontier Station Discord or the official Frontier Station game servers, have additional rules but are in spirit equal to what may be found in here.
 
-If you believe someone is violating the code of conduct, we ask that you report it by contacting a Maintainer or staff member through [Discord](https://discord.gg/frontier), or emailing [zuus87@gmail.com](mailto:zuus87@gmail.com).
+If you believe someone is violating the code of conduct, we ask that you report it by contacting a Maintainer or staff member through [Discord](https://discord.gg/tpuAT7d3zm/).
 
 - **Be friendly and patient.**
 - **Be welcoming.** We strive to be a community that welcomes and supports people of all backgrounds and identities. This includes, but is not limited to members of any race, ethnicity, culture, national origin, colour, immigration status, social and economic class, educational level, sex, sexual orientation, gender identity and expression, age, size, family status, political belief, religion, and mental and physical ability.
@@ -27,7 +27,7 @@ If you believe someone is violating the code of conduct, we ask that you report 
 
 Original text courtesy of the [Speak Up! project](http://web.archive.org/web/20141109123859/http://speakup.io/coc.html).
 
-## On Comunity Moderation
+## On Community Moderation
 
 Deviating from the Code of Conduct on the Github repository may result in moderative actions taken by project Maintainers. This can involve your content being edited or deleted, and may result in a temporary or permanent block from the repository.
 

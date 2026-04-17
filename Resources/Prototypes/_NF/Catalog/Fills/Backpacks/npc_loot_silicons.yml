@@ -77,7 +77,7 @@
     - id: SpawnDungeonLootPartsEngi
       prob: 0.25
     # Circuit boards
-    - id: BorgChargerCircuitboard # Coyote: more silicon loot
+    - id: BorgChargerCircuitboard # CS: more silicon loot
       prob: 0.25
    # - id: SpawnDungeonLootCircuitBoardEngi
    #   prob: 0.9
@@ -85,20 +85,20 @@
    # - id: SpawnDungeonLootFlatpacks
    #  prob: 0.8
     # Borg modules
-    - id: BorgModuleAdvancedParamedic # Coyote: more silicon loot
+    - id: BorgModuleAdvancedParamedic # CS: more silicon loot
       prob: 0.2
-    - id: BorgModuleDiagnosis # Coyote: more silicon loot
+    - id: BorgModuleDiagnosis # CS: more silicon loot
       prob: 0.2
     # Borg parts
-    - id: LightHeadBorg # Coyote: more silicon loot
+    - id: LightHeadBorg # CS: more silicon loot
       prob: 0.1
-    - id: LeftArmBorg # Coyote: more silicon loot
+    - id: LeftArmBorg # CS: more silicon loot
       prob: 0.1
-    - id: RightArmBorg # Coyote: more silicon loot
+    - id: RightArmBorg # CS: more silicon loot
       prob: 0.1
-    - id: LeftLegBorg # Coyote: more silicon loot
+    - id: LeftLegBorg # CS: more silicon loot
       prob: 0.1
-    - id: RightLegBorg # Coyote: more silicon loot
+    - id: RightLegBorg # CS: more silicon loot
       prob: 0.1
     sound:
       path: /Audio/Machines/windoor_open.ogg
@@ -136,14 +136,14 @@
   #  - id: SpawnDungeonLootFlatpacks
   #    prob: 0.8
     # Borg modules
-    - id: BorgModuleAdvancedTool # Coyote: more silicon loot
+    - id: BorgModuleAdvancedTool # CS: more silicon loot
       prob: 0.2
-    - id: BorgModuleAdvancedCleaning # Coyote: more silicon loot
+    - id: BorgModuleAdvancedCleaning # CS: more silicon loot
       prob: 0.2
     # Borg parts
-    - id: CyborgEndoskeleton # Coyote: more silicon loot
+    - id: CyborgEndoskeleton # CS: more silicon loot
       prob: 0.1
-    - id: TorsoBorg # Coyote: more silicon loot
+    - id: TorsoBorg # CS: more silicon loot
       prob: 0.1
     sound:
       path: /Audio/Machines/windoor_open.ogg
@@ -185,11 +185,11 @@
   #   amount: 2
   #    prob: 0.8
     # Borg modules
-    - id: BorgModuleAdvancedMining # Coyote: more silicon loot
+    - id: BorgModuleAdvancedMining # CS: more silicon loot
       prob: 0.2
-    - id: BorgModuleRCD # Coyote: more silicon loot
+    - id: BorgModuleRCD # CS: more silicon loot
       prob: 0.2
-    - id: BorgModuleSyndicateWeapon # Coyote: more silicon loot
+    - id: BorgModuleSyndicateWeapon # CS: more silicon loot
       prob: 0.05
     sound:
       path: /Audio/Machines/windoor_open.ogg
@@ -235,15 +235,15 @@
    #   amount: 3
    #   prob: 0.8
     # Borg modules
-    - id: BorgModuleL6C # Coyote: more silicon loot
+    - id: BorgModuleL6C # CS: more silicon loot
       prob: 0.05
-    - id: BorgModuleEsword # Coyote: more silicon loot
+    - id: BorgModuleEsword # CS: more silicon loot
       prob: 0.05
     # Syndicate Assault Cyborg Chassis
-    - id: BorgChassisSyndicateAssault # Coyote: more silicon loot
+    - id: BorgChassisSyndicateAssault # CS: more silicon loot
       prob: 0.05
     # Telecrystal
-    - id: Telecrystal1 # Coyote: more silicon loot
+    - id: Telecrystal1 # CS: more silicon loot
       prob: 0.02
       amount: 2
     sound:

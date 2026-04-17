@@ -13,7 +13,8 @@
     groups:
     - id: Medicine
     - id: Cryogenic # Frontier
-    - id: Aphrodisiacs # Coyote edit; Necessary to detect aphrodisiac injected solutions.
+    - id: Aphrodisiacs # CS: Necessary to detect aphrodisiac injected solutions.
+    - id: AphrodisiacDrinks # CS: Necessary to detect aphrodisiac injected solutions.
 #    - id: Poison
 #    - id: Narcotic
 #    - id: Toxins

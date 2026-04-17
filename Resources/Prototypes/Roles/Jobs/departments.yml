@@ -31,7 +31,7 @@
   # - Zookeeper # Frontier
   # - ServiceWorker # Frontier
   - Contractor # Frontier
-  - FoodService # Coyote
+  - FoodService # CS
   - Mercenary # Frontier
   - Pilot # Frontier
   - Borg # Frontier

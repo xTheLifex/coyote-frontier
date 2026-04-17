@@ -16,7 +16,7 @@
   youngAge: 103
   oldAge: 257
   maxAge: 430
-  # CS - CustomName cause error
+  # CS: CustomName cause error
   # CS: Small enough to fit in a bag, maybe too small even
   minHeight: 0.7
   defaultHeight: 1
@@ -58,7 +58,7 @@
 
 - type: markingPoints
   id: MobResomiMarkingLimits
-  # CS - ALlow all markings
+  # CS: ALlow all markings
   points:
     Special:
       points: 10

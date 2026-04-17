@@ -3,9 +3,9 @@
   parent: OrganHumanEyes
   name: eyes
   suffix: Resomi
-  description: "The eyes of a resomi." # CS - Since we have no nightvision, this is purely cosmetic.
-  # CS - No OrganVisualization
-  # CS - No FunctionalOrgan
+  description: "The eyes of a resomi." # CS: Since we have no nightvision, this is purely cosmetic.
+  # CS: No OrganVisualization
+  # CS: No FunctionalOrgan
 
 - type: entity # Starlight
   id: OrganResomiHeart
@@ -21,4 +21,5 @@
     - id: Cryogenic # Frontier
     - id: Poison
     - id: Narcotic
-    - id: Aphrodisiacs # Coyote edit; Necessary to detect aphrodisiac injected solutions.
+    - id: Aphrodisiacs # CS: Necessary to detect aphrodisiac injected solutions.
+    - id: AphrodisiacDrinks # CS: Necessary to detect aphrodisiac injected solutions.

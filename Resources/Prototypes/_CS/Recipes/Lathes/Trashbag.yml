@@ -1,4 +1,4 @@
-- type: latheRecipe #Coyote
+- type: latheRecipe # CS
   id: BluespaceTrashBag
   result: BluespaceTrashBag
   completetime: 5

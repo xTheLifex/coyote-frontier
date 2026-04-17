@@ -171,7 +171,7 @@ namespace Content.Client.Stylesheets
         public static readonly string SecurityButtonClass = "SecurityButton";
         public static readonly string ServiceButtonClass = "ServiceButton";
 
-        // CS - AAC button variables
+        // CS: AAC button variables
         public static readonly string NFSDButtonClass = "NFSDButton";
         public static readonly string PirateButtonClass = "PirateButton";
 
@@ -194,12 +194,12 @@ namespace Content.Client.Stylesheets
         public static readonly Color ServiceColorHovered = Color.FromHex("#667A76");
         // End DeltaV
 
-        // Coyote Frontier - AAC button colors
+        // CS: Frontier - AAC button colors
         public static readonly Color NFSDButttonColorDefault = Color.FromHex("#4b653e");
         public static readonly Color NFSDButtonColorHovered = Color.FromHex("#667A76");
         public static readonly Color PirateButtonColorDefault = Color.FromHex("#61503A");
         public static readonly Color PirateButtonColorHovered = Color.FromHex("#675C64");
-        // end Coyote Frontier
+        // End CS
 
         //Bwoink
         public const string StyleClassPinButtonPinned = "pinButtonPinned";

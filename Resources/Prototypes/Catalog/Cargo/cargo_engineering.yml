@@ -154,7 +154,7 @@
 
 - type: cargoProduct
   id: EngineeringSpaceHeater
-  abstract: true # Coyote
+  abstract: true # CS
   icon:
     sprite: Structures/Piping/Atmospherics/Portable/portable_sheater.rsi
     state: sheaterOff

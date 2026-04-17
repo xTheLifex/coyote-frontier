@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseMachinePowered, ConstructibleMachine] # Coyote Sector - Wizden cherrypick
+  parent: [BaseMachinePowered, ConstructibleMachine] # CS: Wizden cherrypick
   id: DVSmartFridge
   name: SmartFridge
   description: A refrigerated storage unit for keeping items cold and fresh.
@@ -53,8 +53,8 @@
       - Produce
       - Seed
       - Hypospray
-      - Food # Coyote Sector start
-      - Healing # Coyote Sector end
+      - Food # CS
+      - Healing # CS
       tags:
       - PillCanister
       - Bottle

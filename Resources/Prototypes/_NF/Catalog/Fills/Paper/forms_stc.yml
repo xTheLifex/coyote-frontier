@@ -19,7 +19,7 @@
     - state: folder-base
   - type: StorageFill
     contents:
-#    - id: PaperWrittenStcFormCitationParking CS - these papers are defunct until completely rewritten in adherence with new policy, SOP, and command structure
+#    - id: PaperWrittenStcFormCitationParking CS: these papers are defunct until completely rewritten in adherence with new policy, SOP, and command structure
 #    - id: PaperWrittenStcFormCitationTraffic
 #    - id: PaperWrittenStcFormProsecutionRequest
 #    - id: PaperWrittenStcFormTrafficLog

@@ -924,14 +924,16 @@
     - ChemicalBarrelCornoil
     - ChemicalBarrelOliveoil
     - ChemicalBarrelSpaceLube
-    - ChemicalBarrelSpaceCleaner # Coyote: after this line, added barrels
+    - ChemicalBarrelSpaceCleaner
+    # CS: added barrels
     - ChemicalBarrelFlour
     - ChemicalBarrelBbqSauce
     - ChemicalBarrelCornmeal
     - ChemicalBarrelGrenadine
     - ChemicalBarrelHoney
     - ChemicalBarrelHotsauce
-    - ChemicalBarrelRice # Coyote: end of added barrels
+    - ChemicalBarrelRice
+    # End CS
     chance: 0.95
     offset: 0.1 # Little offset, it's free-standing
 
@@ -961,7 +963,8 @@
     - ChemicalBarrelVermouth
     - ChemicalBarrelVodka
     - ChemicalBarrelWhiskey
-    - ChemicalBarrelWine # Coyote: After this line, added drinkables
+    - ChemicalBarrelWine
+    # CS: added drinkables
     - ChemicalBarrelCoffee
     - ChemicalBarrelJuiceApple
     - ChemicalBarrelJuiceBerry
@@ -975,7 +978,8 @@
     - ChemicalBarrelMilkSoy
     - ChemicalBarrelTea
     - ChemicalBarrelGreenTea
-    - ChemicalBarrelRootBeer # Coyote: End of additions
+    - ChemicalBarrelRootBeer
+    # End CS
     rareChance: 0.5
     chance: 0.95
     offset: 0.1 # Little offset, it's free-standing

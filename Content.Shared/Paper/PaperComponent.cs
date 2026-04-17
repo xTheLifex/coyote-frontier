@@ -69,7 +69,7 @@ public sealed partial class PaperComponent : Component
         }
     }
 
-    // Coyote start: Ports in fillable forms from RMC
+    // CS: Ports in fillable forms from RMC
     [Serializable, NetSerializable]
     public sealed class PaperSignatureRequestMessage : BoundUserInterfaceMessage
     {
@@ -80,7 +80,7 @@ public sealed partial class PaperComponent : Component
             SignatureIndex = signatureIndex;
         }
     }
-    // Coyote end
+    // End CS
 
     [Serializable, NetSerializable]
     public enum PaperUiKey

@@ -1,0 +1,16 @@
+[game]
+hostname = "[EN][MRP][18+] Coyote Sector"
+desc = "(18+, WHITELIST ONLY.) Welcome to the Coyote Sector! We're a fork of Frontier focused on (Erotic) Roleplay, both serious and silly. With features like the Roleplay Incentive system, you can easily find yourself immersed in a dangerous frontier of possibility (and profit). So, come on down, we have a shuttle just waiting for you!"
+
+[infolinks]
+discord    = "https://discord.gg/m7aJ3aKcnZ"
+github     = "https://github.com/ARF-SS13/coyote-frontier"
+website    = ""
+wiki       = ""
+patreon    = ""
+bug_report = ""
+appeal     = ""
+
+[hub]
+server_url = "ss14://ss14.coyotebayou.com:1212/"
+tags = "18+,lang:en-US,region:am_n_e,rp:med,no_tag_infer"

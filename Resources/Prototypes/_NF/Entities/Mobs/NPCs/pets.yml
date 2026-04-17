@@ -368,7 +368,7 @@
     implants:
     - RedLightImplant
     - DissonantWhispersImplant
-    #- MedicalTrackingImplant # Coyote
+    #- MedicalTrackingImplant # CS
   - type: IntrinsicRadioTransmitter
     channels:
     - Science

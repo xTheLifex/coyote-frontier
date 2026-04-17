@@ -6,7 +6,7 @@
     sprite: _NF/Objects/Power/big_ame_jar.rsi
     state: jar
   product: CrateEngineeringAMEJarBig
-  cost: 150000 # Frontier - Up the price Coyote: very slight discount for almost 3 days of fuel
+  cost: 150000 # Frontier - Up the price CS: very slight discount for almost 3 days of fuel
   category: cargoproduct-category-name-engineering
   group: market
 

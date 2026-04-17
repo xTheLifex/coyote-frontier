@@ -25,7 +25,7 @@
     - Female
   kind:
   - RaptorLike
-  # CS - CustomName cause error
+  # CS: CustomName cause error
 - type: speciesBaseSprites
   id: MobAvaliSprites
   sprites:
@@ -54,7 +54,7 @@
 
 - type: markingPoints
   id: MobAvaliMarkingLimits
-  # CS - Allow all markings
+  # CS: Allow all markings
   points:
     Hair:
       points: 1

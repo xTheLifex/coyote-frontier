@@ -565,14 +565,14 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         name = FormattedMessage.EscapeText(name);
 
-        // COYOTESTATION ADD - shoults go fartur
+        // CS: shoults go fartur
         float floatRange = VoiceRange;
         if (speech.Bold)
             floatRange = ShoutRange; // Shouts are louder, so they can be heard further away.
-        // COYOTESTATION ADD END
+        // End CS
         var chatColorSemiTransparent = Color.FromHex(chatColor ?? Color.White.ToHex());
-        chatColorSemiTransparent.A = 0.5f; // COYOTESTATION ADD - make the chat color semi-transparent, so it looks better
-        var chatColorSemiTransparentActually = chatColorSemiTransparent.ToHex(); // COYOTATION ADD - make the chat color semi-transparent, so it looks better
+        chatColorSemiTransparent.A = 0.5f; // CS: make the chat color semi-transparent, so it looks better
+        var chatColorSemiTransparentActually = chatColorSemiTransparent.ToHex(); // CS: make the chat color semi-transparent, so it looks better
 
         var wrappedMessage = Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
             ("entityName", name),
@@ -580,17 +580,17 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("fontType", speech.FontId),
             ("fontSize", speech.FontSize),
             ("message", FormattedMessage.EscapeText(message)),
-            ("chatColor", chatColor ?? Color.White.ToHex())); // COYOTESTATION ADD - makes the your name color right
+            ("chatColor", chatColor ?? Color.White.ToHex())); // CS: makes the your name color right
         // and the above message, but the font is shrunken by like 20%
         // COYSTATION ADD - ensmallen messages that are occluded by walls but go thru em
         var wrappedMessageSmall = Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
             ("entityName", name),
             ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
             ("fontType", speech.FontId),
-            ("fontSize", Convert.ToInt16(speech.FontSize * 0.7)), // COYOTESTATION ADD - shrunken by 20%
+            ("fontSize", Convert.ToInt16(speech.FontSize * 0.7)), // CS: shrunken by 20%
             ("message", FormattedMessage.EscapeText(message)),
-            ("chatColor", chatColorSemiTransparentActually)); // COYOTESTATION ADD - makes the your name color right
-        // COYOTESTATION ADD END
+            ("chatColor", chatColorSemiTransparentActually)); // CS: makes the your name color right
+        // End CS
 
         SendInVoiceRange(
             ChatChannel.Local,
@@ -598,9 +598,9 @@ public sealed partial class ChatSystem : SharedChatSystem
             wrappedMessage,
             source,
             range,
-            voiceRange: floatRange, // COYOTESTATION ADD - shouts go further
-            blockedByOcclusion: !SayGoesThroughWalls, // COYOTESTATION ADD - some things dont do thru walls
-            ensmallenedByOcclusion: SayEffectedByOcclusion, // COYOTESTATION ADD - some things do get ensmallened by occlusion
+            voiceRange: floatRange, // CS: shouts go further
+            blockedByOcclusion: !SayGoesThroughWalls, // CS: some things dont do thru walls
+            ensmallenedByOcclusion: SayEffectedByOcclusion, // CS: some things do get ensmallened by occlusion
             occludedMessage: wrappedMessageSmall);
 
         var ev = new EntitySpokeEvent(source, message, null, null);
@@ -736,7 +736,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool checkEmote = true,
         bool ignoreActionBlocker = false,
         NetUserId? author = null,
-        string? chatColor = null // COYOTESTATION ADD - makes the your name color right
+        string? chatColor = null // CS: makes the your name color right
         )
     {
         if (!_actionBlocker.CanEmote(source) && !ignoreActionBlocker)
@@ -751,7 +751,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entityName", name),
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkupOrThrow(action)),
-            ("chatColor", chatColor ?? Color.White.ToHex())); // COYOTESTATION ADD - makes the your name color right
+            ("chatColor", chatColor ?? Color.White.ToHex())); // CS: makes the your name color right
 
         bool soundEmoteSent = true; // Frontier: if check emote is false, assume somebody's sending an emote
         if (checkEmote)
@@ -771,9 +771,9 @@ public sealed partial class ChatSystem : SharedChatSystem
             source,
             range,
             author,
-            voiceRange: EmoteRange, // COYOTESTATION ADD - emotes go further
-            blockedByOcclusion: !EmotesGoesThroughWalls, // COYOTESTATION ADD - some things dont do thru walls
-            ensmallenedByOcclusion: false); // COYOTESTATION ADD - emotes dont get ensmallened by occlusion
+            voiceRange: EmoteRange, // CS: emotes go further
+            blockedByOcclusion: !EmotesGoesThroughWalls, // CS: some things dont do thru walls
+            ensmallenedByOcclusion: false); // CS: emotes dont get ensmallened by occlusion
         if (!hideLog)
             if (name != Name(source))
                 _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Emote from {ToPrettyString(source):user} as {name}: {action}");
@@ -789,7 +789,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool hideLog = false,
         bool ignoreActionBlocker = false,
         NetUserId? author = null,
-        string? chatColor = null // COYOTESTATION ADD - makes the your name color right
+        string? chatColor = null // CS: makes the your name color right
         )
     {
         if (!_actionBlocker.CanEmote(source) && !ignoreActionBlocker)
@@ -802,7 +802,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("entityName", name),
             ("entity", ent),
             ("message", FormattedMessage.RemoveMarkupOrThrow(action)),
-            ("chatColor", chatColor ?? Color.White.ToHex())); // COYOTESTATION ADD - makes the your name color right
+            ("chatColor", chatColor ?? Color.White.ToHex())); // CS: makes the your name color right
         var numHeareded = 0;
         foreach (var (session, data) in GetRecipients(
                      source,
@@ -852,7 +852,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         var wrappedMessage = Loc.GetString("chat-manager-entity-looc-wrap-message",
             ("entityName", name),
-            ("chatColor", nameColorString), // COYOTESTATION ADD - makes the your name color right
+            ("chatColor", nameColorString), // CS: makes the your name color right
             ("message", FormattedMessage.EscapeText(message)));
 
         SendInVoiceRange(
@@ -864,9 +864,9 @@ public sealed partial class ChatSystem : SharedChatSystem
                 ? ChatTransmitRange.HideChat
                 : ChatTransmitRange.Normal,
             player.UserId,
-            voiceRange: LOOCRange, // COYOTESTATION ADD - LOOC goes further
-            blockedByOcclusion: !LOOCGoesThroughWalls, // COYOTESTATION ADD - some things dont do thru walls
-            ensmallenedByOcclusion: false); // COYOTESTATION ADD - LOOC dont get ensmallened by occlusion
+            voiceRange: LOOCRange, // CS: LOOC goes further
+            blockedByOcclusion: !LOOCGoesThroughWalls, // CS: some things dont do thru walls
+            ensmallenedByOcclusion: false); // CS: LOOC dont get ensmallened by occlusion
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"LOOC from {player:Player}: {message}");
     }
 
@@ -895,7 +895,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         var wrappedMessage = Loc.GetString(
             "chat-manager-entity-subtle-looc-wrap-message",
             ("entityName", name),
-            ("chatColor", nameColorString), // COYOTESTATION ADD - makes the your name color right
+            ("chatColor", nameColorString), // CS: makes the your name color right
             ("message", FormattedMessage.EscapeText(message)));
 
         SendInVoiceRange(
@@ -910,7 +910,7 @@ public sealed partial class ChatSystem : SharedChatSystem
             voiceRange: SubtleLOOCRange,
             blockedByOcclusion: !SubtleLOOCGoesThroughWalls,
             ensmallenedByOcclusion: false,
-            noGhosts: true); // COYOTESTATION ADD - Subtle LOOC does not go to ghosts, so we set noGhosts to true
+            noGhosts: true); // CS: Subtle LOOC does not go to ghosts, so we set noGhosts to true
         _adminLogger.Add(
             LogType.Chat,
             LogImpact.Low,
@@ -1006,11 +1006,11 @@ public sealed partial class ChatSystem : SharedChatSystem
         EntityUid source,
         ChatTransmitRange range,
         NetUserId? author = null,
-        bool blockedByOcclusion = false, // COYOTESTATION ADD - some things dont do thru walls
-        bool ensmallenedByOcclusion = false, // COYOTESTATION ADD - some things do get ensmallened by occlusion
-        float voiceRange = 10f, // COYOTESTATION ADD - shouts go further
+        bool blockedByOcclusion = false, // CS: some things dont do thru walls
+        bool ensmallenedByOcclusion = false, // CS: some things do get ensmallened by occlusion
+        float voiceRange = 10f, // CS: shouts go further
         string? occludedMessage = null,
-        bool noGhosts = false) // COYOTESTATION ADD - some things do not go to ghosts
+        bool noGhosts = false) // CS: some things do not go to ghosts
     {
         var numHeareded = 0;
         foreach (var (session, data) in GetRecipients(

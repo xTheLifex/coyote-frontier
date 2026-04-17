@@ -1,9 +1,9 @@
 using System.Linq;
-using Content.Server.Access.Components; // Coyote
-using Content.Server.Access.Systems; // Coyote
+using Content.Server.Access.Components; // CS
+using Content.Server.Access.Systems; // CS
 using Content.Server.Administration;
 using Content.Server.EUI;
-using Content.Server.Medical.SuitSensors; // Coyote
+using Content.Server.Medical.SuitSensors; // CS
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Server.StationRecords;
@@ -13,7 +13,7 @@ using Content.Shared.CCVar;
 using Content.Shared.CrewManifest;
 using Content.Shared.GameTicking;
 using Content.Shared.Roles;
-using Content.Shared.SSDIndicator; // Coyote
+using Content.Shared.SSDIndicator; // CS
 using Content.Shared.StationRecords;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
@@ -30,7 +30,7 @@ public sealed class CrewManifestSystem : EntitySystem
     [Dependency] private readonly EuiManager _euiManager = default!;
     [Dependency] private readonly IConfigurationManager _configManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IdCardSystem _idCardSystem = default!; // Coyote
+    [Dependency] private readonly IdCardSystem _idCardSystem = default!; // CS
 
     /// <summary>
     ///     Cached crew manifest entries. The alternative is to outright
@@ -83,19 +83,19 @@ public sealed class CrewManifestSystem : EntitySystem
     // wrt the amount of players readied up.
     private void AfterGeneralRecordCreated(AfterGeneralRecordCreatedEvent ev)
     {
-        // BuildCrewManifest(); // coyote: NOP, we build on open
+        // BuildCrewManifest(); // CS: NOP, we build on open
         // UpdateEuis(ev.Key.OriginStation);
     }
 
     private void OnRecordModified(RecordModifiedEvent ev)
     {
-        // BuildCrewManifest(); // coyote: NOP, we build on open
+        // BuildCrewManifest(); // CS: NOP, we build on open
         // UpdateEuis(ev.Key.OriginStation);
     }
 
     private void OnRecordRemoved(RecordRemovedEvent ev)
     {
-        // BuildCrewManifest(); // coyote: NOP, we build on open
+        // BuildCrewManifest(); // CS: NOP, we build on open
         // UpdateEuis(ev.Key.OriginStation);
     }
 
@@ -117,9 +117,9 @@ public sealed class CrewManifestSystem : EntitySystem
     ///     Gets the crew manifest for a given station, along with the name of the station.
     /// </summary>
     /// <returns>The name and crew manifest entries (unordered) of the station.</returns>
-    public CrewManifestEntries GetCrewManifest() // coyote: remove args, remove name
+    public CrewManifestEntries GetCrewManifest() // CS: remove args, remove name
     {
-        return BuildCrewManifest(); // coyote
+        return BuildCrewManifest(); // CS
     }
 
     private void UpdateEuis(EntityUid station)
@@ -224,12 +224,12 @@ public sealed class CrewManifestSystem : EntitySystem
     /// </summary>
     private CrewManifestEntries BuildCrewManifest()
     {
-        var sensors = EntityQueryEnumerator<SuitSensorComponent>(); // Coyote
+        var sensors = EntityQueryEnumerator<SuitSensorComponent>(); // CS
 
         var entries = new CrewManifestEntries();
         var entriesSort = new List<(JobPrototype? job, CrewManifestEntry entry)>();
 
-        while (sensors.MoveNext(out var uid, out var sensor)) // Coyote start
+        while (sensors.MoveNext(out var uid, out var sensor)) // CS
         {
             if (sensor.User == null ||
                 (TryComp<SSDIndicatorComponent>(sensor.User, out var indicator) && indicator.IsSSD))
@@ -255,7 +255,7 @@ public sealed class CrewManifestSystem : EntitySystem
             var entry = new CrewManifestEntry(name, jobTitle, card.Comp.JobIcon, preset.JobName!.Value);
 
             entriesSort.Add((null, entry));
-        } // Coyote end
+        } // End CS
 
         entriesSort.Sort((a, b) =>
         {
@@ -267,8 +267,8 @@ public sealed class CrewManifestSystem : EntitySystem
         });
 
         entries.Entries = entriesSort.Select(x => x.entry).ToArray();
-        // _cachedEntries[station] = entries; // coyote: causes problems
-        return entries; // coyote
+        // _cachedEntries[station] = entries; // CS: causes problems
+        return entries; // CS
     }
 }
 

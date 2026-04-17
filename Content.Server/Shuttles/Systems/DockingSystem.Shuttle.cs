@@ -117,11 +117,11 @@ public sealed partial class DockingSystem
     /// Tries to get a valid docking configuration for the shuttle to the target grid.
     /// </summary>
     /// <param name="priorityTag">Priority docking tag to prefer, e.g. for emergency shuttle</param>
-    public DockingConfig? GetDockingConfig(EntityUid shuttleUid, EntityUid targetGrid, string? priorityTag = null, DockType dockType = DockType.Airlock, int? maxShuttleDocks = null) // Frontier: add dockType //Coyote: Add maxShuttleDocks
+    public DockingConfig? GetDockingConfig(EntityUid shuttleUid, EntityUid targetGrid, string? priorityTag = null, DockType dockType = DockType.Airlock, int? maxShuttleDocks = null) // Frontier: add dockType // CS: Add maxShuttleDocks
     {
         var gridDocks = GetDocks(targetGrid);
         var shuttleDocks = GetDocks(shuttleUid);
-        //Coyote Start
+        //C Start
         // If maxShuttleDocks is set, keep only the closest N shuttle docks to the target grid's center.
         if (maxShuttleDocks.HasValue && shuttleDocks.Count > maxShuttleDocks.Value)
         {
@@ -131,7 +131,7 @@ public sealed partial class DockingSystem
                 .Take(maxShuttleDocks.Value)
                 .ToList();
         }
-        //Coyote End
+        // End CS
         return GetDockingConfigPrivate(shuttleUid, targetGrid, shuttleDocks, gridDocks, priorityTag, dockType); // Frontier: add dockType
     }
 

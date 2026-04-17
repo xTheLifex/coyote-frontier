@@ -2,7 +2,7 @@
   parent: [BaseMob, StripableInventoryBase]
   id: BaseBorgChassisNotIonStormable
   name: cyborg
-  description: A synthetic that assists in station activity. They love being asked to state their laws over and over. #COYOTE CHANGE: was A man-machine hybrid that assists in station activity. They love being asked to state their laws over and over.
+  description: A synthetic that assists in station activity. They love being asked to state their laws over and over. # CS CHANGE: was A man-machine hybrid that assists in station activity. They love being asked to state their laws over and over.
   save: false
   abstract: true
   components:
@@ -82,7 +82,7 @@
   - type: EmagSiliconLaw
     stunTime: 5
   - type: SiliconLawProvider
-    laws: Free #COYOTE CHANGE: was Crewsimov
+    laws: Free # CS CHANGE: was Crewsimov
   - type: Inventory
     templateId: borg
   - type: Hands
@@ -96,28 +96,28 @@
     - Binary
     - Common
     - Science
-#COYOTE ADD: Ring ring! We want our borgs to be able to talk in shortband too!
+# CS: Ring ring! We want our borgs to be able to talk in shortband too!
     - Traffic
-#COYOTE END
+#End CS
   - type: ActiveRadio
     channels:
     - Binary
     - Common
     - Science
-#COYOTE ADD: Ring ring! We want our borgs to be able to talk in shortband too!
+# CS: Ring ring! We want our borgs to be able to talk in shortband too!
     - Traffic
-#COYOTE END
+#End CS
   - type: ZombieImmune
   - type: Repairable
     doAfterDelay: 10
-    allowSelfRepair: true #COYOTE CHANGE: Was false, but we don't want to torture our cyborg players
+    allowSelfRepair: true # CS CHANGE: Was false, but we don't want to torture our cyborg players
   - type: BorgChassis
   - type: LockingWhitelist
     blacklist:
       components:
-      #COYOTE TWEAK: We want borgs to be able to fix eachother and themselves
+      # CS TWEAK: We want borgs to be able to fix eachother and themselves
       #- BorgChassis
-      #END COYOTE
+      # End CS
       - RoboticsConsole
   - type: WiresPanel
     openingTool: Prying
@@ -149,10 +149,10 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
   - type: Body
-#COYOTE ADD: This allows borgs to use one singular hand, to be able to interact with the world effectively. Also lets them have incentive pay
+# CS: This allows borgs to use one singular hand, to be able to interact with the world effectively. Also lets them have incentive pay
     prototype: Borg
   - type: RoleplayIncentive
-#END COYOTE
+# End CS
   - type: StatusEffects
     allowed:
     - Stun

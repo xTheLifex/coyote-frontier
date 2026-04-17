@@ -30,11 +30,11 @@
   - type: Thieving
     stripTimeReduction: 2
     stealthy: true
-    # Coyote Start: Slots blocked from thief's gloves bonus
+    # CS: Slots blocked from thief's gloves bonus
     blockedSlots:
     - back
     - ears
     - id
     - jumpsuit
     - suitstorage
-    # Coyote End
+    # End CS

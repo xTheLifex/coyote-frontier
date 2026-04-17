@@ -54,17 +54,17 @@ namespace Content.Client.Paper.UI
             typeof(HeadingTag),
             typeof(ItalicTag),
             typeof(MonoTag),
-            // Coyote start: Port in fillable forms from RMC
+            // CS: Port in fillable forms from RMC
             typeof(FormTagHandler),
             typeof(SignatureTagHandler),
             typeof(CheckTagHandler)
-            // Coyote end
+            // End CS
         };
 
         public event Action<string>? OnSaved;
         public event Action? Typing; // DeltaV
         public event Action? SubmitPressed; // DeltaV
-        public event Action<int>? OnSignatureRequested; // Coyote
+        public event Action<int>? OnSignatureRequested; // CS
 
         private int _MaxInputLength = -1;
         public int MaxInputLength

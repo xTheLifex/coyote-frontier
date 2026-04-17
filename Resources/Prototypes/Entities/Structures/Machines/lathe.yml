@@ -151,8 +151,8 @@
     - NFServiceKitchenStatic # Frontier
     - NFEvaSuitCommon # Frontier
     - AACTableStatic # DeltaV - AAC Tablets
-    - CSPlumbingStatic # CS - showers, sinks, drains
-    - CSFolderStatic # Coyote - folders and clipboard
+    - CSPlumbingStatic # CS: showers, sinks, drains
+    - CSFolderStatic # CS: - folders and clipboard
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NfsdAmmoStatic # Frontier: SecurityAmmoStatic<NfsdAmmoStatic
@@ -364,7 +364,7 @@
     - RoboticsStatic
     - BorgModulesStatic
     - BorgLimbsStatic
-    - CSIPCTopicalsStatic # Coyote - IPC Topicals
+    - CSIPCTopicalsStatic # CS: - IPC Topicals
     dynamicPacks:
     - Robotics
     - BorgModules
@@ -500,7 +500,7 @@
       staticPacks:
       - NfsdAmmoStatic # Frontier: SecurityAmmoStatic<NfsdAmmoStatic
       - NFMercenaryMagazineStatic
-      - CSMagazineStatic # CS - Add .40 mags
+      - CSMagazineStatic # CS: Add .40 mags
     - type: MaterialStorage
       whitelist:
         tags:
@@ -563,7 +563,7 @@
     - NFTopicalsStatic # Frontier
     - NFMedicalArchetypeStatic # Frontier
     - AACTableStatic # DeltaV - AAC Tablets
-    - CSIPCTopicalsStatic # Coyote - IPC Topicals
+    - CSIPCTopicalsStatic # CS: - IPC Topicals
     # dynamicPacks: # Frontier
     # - Chemistry # Frontier
   - type: Machine
@@ -620,8 +620,8 @@
     - NFWallets # Frontier
     - ClothingSocksAndSuch # Floof
     - ClothingCollars # Floof
-    - ClothingBags # Coyote
-    - ClothingTowels # Coyote
+    - ClothingBags # CS
+    - ClothingTowels # CS
     dynamicPacks: # Frontier
     - NFPouches # Frontier
   - type: EmagLatheRecipes
@@ -704,13 +704,13 @@
     spriteLayers:
     - beaker
   # End Frontier: emag lathe recipes, item mapper
-  # Coyote Start: Biogenerator Buffer System
+  # CS: Biogenerator Buffer System
   - type: BiogeneratorBuffer
     current: 0
     max: 100
     regenAmount: 5
     regenInterval: 10
-  # End Coyote
+  # End CS
 
 - type: entity
   parent: BaseLathe

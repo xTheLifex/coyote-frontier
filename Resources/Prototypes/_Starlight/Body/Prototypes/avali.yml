@@ -11,7 +11,7 @@
         brain: OrganAvaliBrain
         eyes: OrganAvaliEyes
         tongue: OrganHumanTongue
-        # CS - Nexus no ported
+        # CS: Nexus no ported
     torso:
       part: TorsoAvali
       connections:
@@ -35,11 +35,11 @@
       - left hand
     right hand:
       part: RightHandAvali
-      # CS - Null cause error
+      # CS: Null cause error
     left hand:
       part: LeftHandAvali
       organs:
-      # CS - Null cause error
+      # CS: Null cause error
     right leg:
       part: RightLegAvali
       connections:

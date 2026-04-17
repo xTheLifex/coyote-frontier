@@ -584,7 +584,7 @@
   - MedicalAssemblerMachineCircuitboard
   - HotplateMachineCircuitboard
   - DefibrillatorCompact
-  - JetInjector # Coyote - Port in Jet Injectors from Den
+  - JetInjector # CS: - Port in Jet Injectors from Den
   technologyPrerequisites:
   - NFBasicMedicine
   position: 2, 11
@@ -636,12 +636,12 @@
   name: nf-research-technology-anti-gravitational-fields
   entityIcon: NFClothingShoesBootsMoon
   discipline: NFScience
-  secondaryDiscipline: NFMedical # Coyote: Adds a secondary discipline now that this also has the holo hoverbed.
+  secondaryDiscipline: NFMedical # CS: Adds a secondary discipline now that this also has the holo hoverbed.
   tier: 1
   cost: 5000
   recipeUnlocks:
   - NFClothingShoesBootsMoon
-  # Begin DeltaV Additions -- Coyote: Add Holographic Hoverbeds to the same research as moon boots. Seems fitting...?
+  # Begin DeltaV Additions -- CS: Add Holographic Hoverbeds to the same research as moon boots. Seems fitting...?
   - HoverBedHoloSpawnFolded
   # End DeltaV Additions
   technologyPrerequisites:
@@ -1068,7 +1068,7 @@
   cost: 2500
   recipeUnlocks:
   - PlantBagOfHolding
-  - BluespaceTrashBag # Coyote
+  - BluespaceTrashBag # CS
   prerequisiteLineType: Diagonal
   technologyPrerequisites:
   - NFAdvancedHydroponicsEquipment

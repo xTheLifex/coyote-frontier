@@ -384,7 +384,7 @@
 - type: emote
   id: Chirp
   name: chat-emote-name-chirp
-  category: Lizard #Changed from Avali to Lizard due to no Avali. Repurposing for Coyote lizard chrips
+  category: Avali
   available: true
   icon: Interface/Emotes/chirp.png
   whitelist:

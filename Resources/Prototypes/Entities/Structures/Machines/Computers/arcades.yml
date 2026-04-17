@@ -211,15 +211,16 @@
       state: panel
       visible: false
   - type: BlockGameArcade
-    possibleRewards: # Coyote start
-    - PrizeTicket10
+    possibleRewards:
+    # CS
     - PrizeTicket10
     - PrizeTicket10
     - PrizeTicket10
     - PrizeTicket10
     - PrizeTicket30
     - PrizeTicket30
-    - PrizeTicket60 # Coyote end
+    - PrizeTicket60
+    # End CS
   - type: ActivatableUI
     key: enum.BlockGameUiKey.Key
   - type: ActivatableUIRequiresPower

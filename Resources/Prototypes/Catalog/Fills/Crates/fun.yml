@@ -429,7 +429,7 @@
         amount: 1
         prob: 0.05
 
-#Coyote Start
+#CS
 #- type: entity
 #  name: hydrated scurret
 #  description: Wait, what?
@@ -448,4 +448,4 @@
 #    - id: ClothingHeadHatHardhatYellow
 #    - id: ClothingNeckMantleQM
 #    - id: ClothingHeadsetCargo
-#Coyote End
+#End CS

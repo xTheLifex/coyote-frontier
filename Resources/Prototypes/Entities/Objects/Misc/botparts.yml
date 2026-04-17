@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ BaseItem, RecyclableItemDeviceSmall ] # Coyote
+  parent: [ BaseItem, RecyclableItemDeviceSmall ] # CS
   id: ProximitySensor
   name: proximity sensor
   description: Senses things in close proximity.

@@ -116,7 +116,7 @@
         Blunt: -20
         Bloodloss: -20 # CS: Reduces bloodloss damage but does not restore blood level for IPCs
         Structural: -2.5 # similar to caustic.
-# END COYOTE
+# End CS
 
 - type: entity
   name: industrial welding tool

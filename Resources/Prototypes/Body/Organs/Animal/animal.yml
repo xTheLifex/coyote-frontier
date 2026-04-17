@@ -90,7 +90,7 @@
     groups:
     - id: Food
     - id: Drink
-    - id: AphrodisiacDrink # Coyote edit; Necessary to detect aphrodisiac injected solutions.
+    - id: AphrodisiacDrink # CS: edit; Necessary to detect aphrodisiac injected solutions.
   - type: Item
     size: Small
     heldPrefix: stomach
@@ -145,7 +145,7 @@
     - id: Cryogenic # Frontier
     - id: Poison
     - id: Narcotic
-    - id: Aphrodisiac # Coyote edit; Necessary to detect aphrodisiac injected solutions.
+    - id: Aphrodisiac # CS: edit; Necessary to detect aphrodisiac injected solutions.
   - type: Item
     size: Small
     heldPrefix: heart

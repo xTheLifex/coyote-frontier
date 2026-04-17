@@ -160,7 +160,7 @@
     interactSuccessString: pat-success-generic
     interactSuccessSound: /Audio/Effects/thudswoosh.ogg
     messagePerceivedByOthers: pat-success-generic-others
-  # CS: end
+  # # End CS
 
 
 - type: entity

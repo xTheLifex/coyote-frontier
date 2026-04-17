@@ -20,7 +20,7 @@
   kind:
   - BasicHumanlike
   - BasicFurry
-  # CS: end
+  # # End CS
 
 - type: markingPoints
   id: MobTajaranMarkingLimits

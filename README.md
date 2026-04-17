@@ -1,5 +1,5 @@
 <div class="header" align="center">
-<img alt="Frontier Station" height="308" src="https://github.com/ARF-SS13/coyote-frontier/blob/master/Resources/Textures/_CS/Logo/logo.png?raw=true" />
+<img alt="Coyote Sector" height="308" src="Resources/Textures/_CS/Logo/logo.png?raw=true" />
 </div>
 
 Coyote Sector is a fork of [Frontier Station](https://github.com/new-frontiers-14/frontier-station-14), which itself is a fork of [Space Station 14](https://github.com/space-wizards/space-station-14) that runs on [Robust Toolbox](https://github.com/space-wizards/RobustToolbox) engine written in C#.
@@ -11,23 +11,35 @@ If you want to host or create content for Coyote Sector, this is the repo you ne
 
 ## Links
 
+#### Coyote Sector
 <div class="header" align="center">
 
-[Discord](https://discord.com/invite/m7aJ3aKcnZ) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Wiki](https://frontierstation.wiki.gg/)
+[Discord](https://discord.com/invite/m7aJ3aKcnZ)
 
 </div>
 
-## Documentation/Wiki
 
-Our [wiki](https://frontierstation.wiki.gg/) has documentation on Frontier Station's content.
+#### Frontier Station
+<div class="header" align="center">
+
+[Discord](https://discord.gg/tpuAT7d3zm/) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Patreon](https://www.patreon.com/frontierstation14) | [Wiki](https://frontierstation.wiki.gg/)
+
+</div>
+
+#### Space Station 14
+<div class="header" align="center">
+
+[Website](https://spacestation14.io/) | [Discord](https://discord.ss14.io/) | [Forum](https://forum.spacestation14.io/) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Standalone Download](https://spacestation14.io/about/nightlies/)
+
+</div>
 
 ## Contributing
 
-We are happy to accept contributions from anybody. Get in Discord if you want to help. We've got a [list of ideas]TBA that can be done and anybody can pick them up. Don't be afraid to ask for help either!
+We are happy to accept contributions from anybody. Get in Discord if you want to help. We've got a [list of ideas](TBA) that can be done and anybody can pick them up. Don't be afraid to ask for help either!
 
 We are not currently accepting translations of the game on our main repository. If you would like to translate the game into another language, consider creating a fork or contributing to a fork.
 
-If you make any contributions, note that any changes made to files belonging to our upstream should be properly marked with comments (see the "Changes to upstream files" section in [CONTRIBUTING.md](https://github.com/ARF-SS13/coyote-frontier/blob/master/CONTRIBUTING.md)).
+If you make any contributions, note that any changes made to files belonging to our upstream should be properly marked with comments (see the "Changes to upstream files" section in [CONTRIBUTING.md](CONTRIBUTING.md)).
 
 ## Building
 
@@ -48,7 +60,7 @@ Build the server using `dotnet build`.
 
 ## License
 
-Read [LEGAL.md](https://github.com/ARF-SS13/coyote-frontier/blob/master/LEGAL.md) for legal information regarding code licensing, including a table of attributions for each namespace within the codebase.
+Read [LEGAL.md](LEGAL.md) for legal information regarding code licensing, including a table of attributions for each namespace within the codebase.
 
 Most assets are licensed under CC-BY-SA 3.0 unless stated otherwise. Assets have their license and the copyright in the metadata file. Example.
 

@@ -64,24 +64,24 @@
   groups:
   - NFPirateHead
 #  - NFPirateNeck
-  - ContractorNeck #Coyote: Pirate Loadout Expansion
+  - ContractorNeck # CS: Pirate Loadout Expansion
   - NFPirateJumpsuit
 #  - NFPirateGloves
-  - MercenaryGloves #Coyote: Pirate Loadout Expansion
+  - MercenaryGloves # CS: Pirate Loadout Expansion
   - ContractorBackpack
   - NFPirateForcedOuterClothing
-  - MercenaryOuterClothing #Coyote: Pirate Loadout Expansion
+  - MercenaryOuterClothing # CS: Pirate Loadout Expansion
   - NFPirateShoes
   - NFPirateFace
-  - MercenaryGlasses #Coyote: Pirate Loadout Expansion
-  - MercenaryBelt #Coyote: Pirate Loadout Expansion
+  - MercenaryGlasses # CS: Pirate Loadout Expansion
+  - MercenaryBelt # CS: Pirate Loadout Expansion
   - NFPirateEars
-  - PirateEncryptionKey # Coyote: Pirates get comm keys
+  - PirateEncryptionKey # CS: Pirates get comm keys
   - ContractorBoxSurvival
   - SmugglerPDA
   - ContractorWallet
   - PirateBackpackItems
   - ContractorHandItems
-  - ContractorInstruments # Coyote
+  - ContractorInstruments # CS
   - NFSpeciesSpecific
   canCustomizeName: true # pseudonym?

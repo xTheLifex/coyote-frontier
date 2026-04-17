@@ -68,7 +68,7 @@
   materials:
     Steel: 1200
 
-- type: latheRecipe # Coyote
+- type: latheRecipe # CS
   id: WeaponCaseHeavyAmmo
   parent: WeaponCaseHeavy
   result: WeaponCaseHeavyAmmo

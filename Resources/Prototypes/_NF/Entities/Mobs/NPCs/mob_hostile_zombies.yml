@@ -104,7 +104,7 @@
   #   maxVocalizeInterval: 120
   # - type: DatasetVocalizer
   #   dataset: spacepunkhumanoidchatter
-  # CS: end
+  # # End CS
   - type: AutoWakeUp
   - type: StinkyTrait
   # CS: old style mob vocalisations
@@ -113,7 +113,7 @@
     minimumWait: 30
     maximumWait: 120
     nextAdvertisementTime: 10
-  # CS: end
+  # # End CS
 
 # region loot
 - type: entityTable

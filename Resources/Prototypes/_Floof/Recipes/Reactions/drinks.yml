@@ -17,7 +17,7 @@
     7DeadlySins: 7
 
 - type: reaction
-  id: ABLustine # Coyote: Illegal character removal
+  id: ABLustine # CS: Illegal character removal
   requiredMixerCategories:
   - Shake
   reactants:

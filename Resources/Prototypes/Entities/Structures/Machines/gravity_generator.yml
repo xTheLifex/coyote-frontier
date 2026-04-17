@@ -90,7 +90,7 @@
   description: It's what keeps you to the floor, now in fun size.
   components:
   - type: StationAiWhitelist
-  - type: AmbientSound # Coyote Added
+  - type: AmbientSound # CS: Added
     enabled: false
     volume: -7
     range: 3.5
@@ -114,11 +114,11 @@
         shape:
           !type:PhysShapeAabb
           bounds: "-0.4,-0.4,0.4,0.4"
-        density: 250 # Coyote 3125>250
+        density: 250 # CS: 3125>250
         mask:
-        - MachineMask # Coyote LargeMobMask>MachineMask
+        - MachineMask # CS: LargeMobMask>MachineMask
         layer:
-        - MachineLayer #Coyote WallLayer>MachineLayer
+        - MachineLayer # CS WallLayer>MachineLayer
   - type: Destructible
     thresholds:
     - trigger:

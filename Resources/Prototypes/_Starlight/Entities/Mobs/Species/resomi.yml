@@ -5,7 +5,7 @@
   abstract: true
   components:
   # Starlight-end
-  # CS Start - Use Needs
+  # CS: Use Needs
   - type: Needs
     needs:
     - NeedHungerDefault

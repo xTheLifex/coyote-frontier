@@ -23,7 +23,7 @@
   - type: Tag
     tags:
     - Igniter
-  # Coyote
+  # CS
   - type: StaticPrice
     price: 20
   - type: PhysicalComposition

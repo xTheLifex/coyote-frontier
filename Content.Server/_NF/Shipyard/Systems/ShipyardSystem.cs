@@ -143,7 +143,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
 
         _sawmill.Info($"Shuttle {shuttlePath} was purchased at {ToPrettyString(stationUid)} for {price:f2}");
         //can do TryFTLDock later instead if we need to keep the shipyard map paused
-        _shuttle.TryFTLDock(shuttleGrid.Value, shuttleComponent, targetGrid.Value, maxShuttleDocks: 9); //Coyote: Add maxShuttleDocks, aka, how many airlocks should we check against, tops?
+        _shuttle.TryFTLDock(shuttleGrid.Value, shuttleComponent, targetGrid.Value, maxShuttleDocks: 9); // CS: Add maxShuttleDocks, aka, how many airlocks should we check against, tops?
         shuttleEntityUid = shuttleGrid;
         return true;
     }

@@ -160,8 +160,8 @@
     onlyAffectsMobs: false
     injectOnly: true
     preventCombatInjection: true # Frontier
-    injectTime: 2 # Coyote
-    instantSelfInject: true # Coyote
+    injectTime: 2 # CS
+    instantSelfInject: true # CS
   - type: Appearance
   - type: SolutionContainerVisuals
     maxFillLevels: 1

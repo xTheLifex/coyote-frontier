@@ -124,10 +124,10 @@
       collection: VulpkaninSnarls
     Bark:
       collection: VulpkaninBarks
-    Yip: # Coyote - yip & whine [
+    Yip: # CS: - yip & whine [
       collection: VulpkaninYips
     Whine:
-      collection: VulpkaninWhines  # Coyote - yip & whine ]
+      collection: VulpkaninWhines  # CS: - yip & whine ]
     Howl:
       collection: VulpkaninHowls
     Awoo:
@@ -180,10 +180,10 @@
       collection: VulpkaninSnarls
     Bark:
       collection: VulpkaninBarks
-    Yip: # Coyote - yip & whine [
+    Yip: # CS: - yip & whine [
       collection: VulpkaninYips
     Whine:
-      collection: VulpkaninWhines  # Coyote - yip & whine ]
+      collection: VulpkaninWhines  # CS: - yip & whine ]
     Howl:
       collection: VulpkaninHowls
     Awoo:
@@ -214,10 +214,10 @@
       collection: VulpkaninSnarls
     Bark:
       collection: VulpkaninBarks
-    Yip: # Coyote - yip & whine [
+    Yip: # CS: - yip & whine [
       collection: VulpkaninYips
     Whine:
-      collection: VulpkaninWhines  # Coyote - yip & whine ]
+      collection: VulpkaninWhines  # CS: - yip & whine ]
     Howl:
       collection: VulpkaninHowls
     Awoo:

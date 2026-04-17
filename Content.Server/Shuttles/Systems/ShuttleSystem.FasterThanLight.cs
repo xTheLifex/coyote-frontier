@@ -571,7 +571,7 @@ public sealed partial class ShuttleSystem
         var ftlEvent = new FTLCompletedEvent(uid, _mapSystem.GetMap(mapId));
         RaiseLocalEvent(uid, ref ftlEvent, true);
 
-        // COYOTE: when the shuttle arrives, go through all the mobs on the grid
+        // CS: when the shuttle arrives, go through all the mobs on the grid
         // and attempt to set off their deathrattle implants
         var shuttleGridId = xform.GridUid;
         var implantedQuery = EntityQueryEnumerator<ImplantedComponent, MobStateComponent, TransformComponent>();
@@ -739,9 +739,9 @@ public sealed partial class ShuttleSystem
         EntityUid targetUid,
         string? priorityTag = null,
         DockType dockType = DockType.Airlock, // Frontier
-        int? maxShuttleDocks = null) // Coyote
+        int? maxShuttleDocks = null) // CS
     {
-        return TryFTLDock(shuttleUid, component, targetUid, out _, priorityTag, dockType, maxShuttleDocks); // Frontier: add dockType // Coyote: add maxShuttleDocks
+        return TryFTLDock(shuttleUid, component, targetUid, out _, priorityTag, dockType, maxShuttleDocks); // Frontier: add dockType // CS: add maxShuttleDocks
     }
 
     /// <summary>
@@ -755,7 +755,7 @@ public sealed partial class ShuttleSystem
         [NotNullWhen(true)] out DockingConfig? config,
         string? priorityTag = null,
         DockType dockType = DockType.Airlock, // Frontier
-        int? maxShuttleDocks = null) // Coyote
+        int? maxShuttleDocks = null) // CS
     {
         config = null;
 
@@ -767,7 +767,7 @@ public sealed partial class ShuttleSystem
             return false;
         }
 
-        config = _dockSystem.GetDockingConfig(shuttleUid, targetUid, priorityTag, dockType, maxShuttleDocks); // Frontier: add dockType // Coyote: add maxShuttleDocks
+        config = _dockSystem.GetDockingConfig(shuttleUid, targetUid, priorityTag, dockType, maxShuttleDocks); // Frontier: add dockType // CS: add maxShuttleDocks
 
         if (config != null)
         {

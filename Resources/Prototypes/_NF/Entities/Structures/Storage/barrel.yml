@@ -1270,7 +1270,7 @@
   - type: Paper
     content: reagent-label-mead
 
-# Coyote: After here there are some drink and ingredient barrels.
+# CS: After here there are some drink and ingredient barrels.
 
 
 - type: entity
@@ -1802,7 +1802,7 @@
     content: reagent-label-juice-watermelon
 
 
-# Coyote - end added juice and ingredient barrels
+# CS: - end added juice and ingredient barrels
 
 
 

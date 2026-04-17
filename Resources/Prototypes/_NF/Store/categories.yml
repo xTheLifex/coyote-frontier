@@ -48,22 +48,22 @@
   id: UplinkPirateExplosives
   name: store-category-pirateexplosives
 
-- type: storeCategory #coyote
+- type: storeCategory # CS
   id: UplinkPirateMedical
   name: store-category-piratemedical
 
-- type: storeCategory #coyote
+- type: storeCategory # CS
   id: UplinkPirateDeception
   name: store-category-piratedeception
 
-- type: storeCategory #coyote
+- type: storeCategory # CS
   id: UplinkPirateLoot
   name: store-category-pirateloot
 
-- type: storeCategory #coyote
+- type: storeCategory # CS
   id: UplinkPirateWearables
   name: store-category-piratewearables
 
-- type: storeCategory #coyote
+- type: storeCategory # CS
   id: UplinkPirateMachines
   name: store-category-piratemachines

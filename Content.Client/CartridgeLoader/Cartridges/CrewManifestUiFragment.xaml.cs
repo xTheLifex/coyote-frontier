@@ -19,13 +19,13 @@ public sealed partial class CrewManifestUiFragment : BoxContainer
         VerticalExpand = true;
     }
 
-    public void UpdateState(CrewManifestEntries? entries) // coyote: remove name
+    public void UpdateState(CrewManifestEntries? entries) // CS: remove name
     {
         CrewManifestListing.DisposeAllChildren();
         CrewManifestListing.RemoveAllChildren();
 
         StationNameContainer.Visible = entries != null;
-        StationName.Text = "Crew Manifest"; // coyote: remove name
+        StationName.Text = "Crew Manifest"; // CS: remove name
 
         if (entries == null)
             return;

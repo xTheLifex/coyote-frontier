@@ -185,7 +185,7 @@ namespace Content.Shared.Random.Helpers
             throw new InvalidOperationException($"Invalid weighted pick for {prototype.ID}!");
         }
 
-        // Coyote start. Used by CatchableSystem, ported from... upstream, I think.
+        // CS: Used by CatchableSystem, ported from... upstream, I think.
         public static int HashCodeCombine(params int[] values)
         {
             return HashCodeCombine((IReadOnlyCollection<int>)values);

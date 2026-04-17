@@ -52,10 +52,10 @@
       rateModifier: 5
       skipEffects: true
     # REVIEW: Should IPCs get affected by aphros?
-    - id: Aphrodisiac # Coyote edit; Necessary to detect aphrodisiac injected solutions.
+    - id: Aphrodisiac # CS: edit; Necessary to detect aphrodisiac injected solutions.
       rateModifier: 5
       skipEffects: true
-    - id: AphrodisiacDrink # Coyote edit; Necessary to detect aphrodisiac injected solutions.
+    - id: AphrodisiacDrink # CS: edit; Necessary to detect aphrodisiac injected solutions.
       rateModifier: 5
       skipEffects: true
     removeEmpty: true

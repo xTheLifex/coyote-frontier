@@ -21,4 +21,4 @@
     - id: Cryogenic # Frontier
     - id: Poison
     - id: Narcotic
-    - id: Aphrodisiac # Coyote edit; Necessary to detect aphrodisiac injected solutions.
+    - id: Aphrodisiac # CS: edit; Necessary to detect aphrodisiac injected solutions.

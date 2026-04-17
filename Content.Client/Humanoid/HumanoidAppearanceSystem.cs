@@ -169,7 +169,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         if (proto.BaseSprite != null)
         {
             SpriteSpecifier appropriateSprite = proto.BaseSprite;
-            // COYOTE: add support for cute digitigrade legs
+            // CS: add support for cute digitigrade legs
             if (component.LegStyle != HumanoidLegStyle.Plantigrade
                 && proto.AltSprites.Count > 0)
             {
@@ -197,7 +197,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                 }
                 // shader will be appliesed lader
             }
-            // END COYOTE (PLEASE)
+            // End CS
             sprite.LayerSetSprite(layerIndex, appropriateSprite);
         }
     }

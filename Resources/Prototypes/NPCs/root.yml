@@ -55,7 +55,7 @@
 #              opaqueKey: true
           operator: !type:GunOperator
             targetKey: Target
-#            opaqueKey: true # Coyote
+#            opaqueKey: true # CS
           services:
             - !type:UtilityService
               id: RangedService

@@ -81,7 +81,7 @@ public sealed partial class HumanoidSpeciesSpriteLayer : IPrototype
     public bool ForcedColoring { get; private set; }
 
     /// <summary>
-    ///     Coyote: If set, thisll load a marking's sprites to use for alternate leg styles.
+    ///     CS: If set, thisll load a marking's sprites to use for alternate leg styles.
     ///     Used for digitigrade legs that are cute as heck.
     ///     My butts dont lie
     /// </summary>

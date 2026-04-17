@@ -194,12 +194,12 @@ namespace Content.Client.Stylesheets
         public static readonly Color ServiceColorHovered = Color.FromHex("#667A76");
         // End DeltaV
 
-        // Coyote Frontier - AAC button colors
+        // CS: Frontier - AAC button colors
         public static readonly Color NFSDButttonColorDefault = Color.FromHex("#4b653e");
         public static readonly Color NFSDButtonColorHovered = Color.FromHex("#667A76");
         public static readonly Color PirateButtonColorDefault = Color.FromHex("#61503A");
         public static readonly Color PirateButtonColorHovered = Color.FromHex("#675C64");
-        // end Coyote Frontier
+        // End CS
 
         //Bwoink
         public const string StyleClassPinButtonPinned = "pinButtonPinned";

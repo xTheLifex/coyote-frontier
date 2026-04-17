@@ -1,4 +1,4 @@
-using Content.Shared._Coyote.Needs;
+using Content.Shared._CS.Needs;
 using Content.Shared._DV.Abilities;
 using Content.Shared._DV.Abilities.Felinid;
 using Content.Shared.Nutrition;

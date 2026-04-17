@@ -1,7 +1,7 @@
 using System.Linq;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
-using Content.Shared._Coyote.Needs;
+using Content.Shared._CS.Needs;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Nutrition.Components;
 

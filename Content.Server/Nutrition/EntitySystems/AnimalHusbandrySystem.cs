@@ -1,7 +1,7 @@
-using Content.Server._Coyote.Needs;
+using Content.Server._CS.Needs;
 using Content.Server.Administration.Logs;
 using Content.Server.Popups;
-using Content.Shared._Coyote.Needs;
+using Content.Shared._CS.Needs;
 using Content.Shared.Database;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction.Components;

@@ -1,4 +1,4 @@
-using Content.Client._COYOTE.Helpers;
+using Content.Client._CS.Helpers;
 using Content.Client.UserInterface.Systems.Chat.Controls;
 using Content.Shared._EE.CCVars; // EE - chat stacking
 using Content.Shared.CCVar;

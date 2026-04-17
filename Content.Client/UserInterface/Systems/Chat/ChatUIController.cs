@@ -873,7 +873,7 @@ public sealed partial class ChatUIController : UIController
 
             if (!isOwnMessage && isAllowedChannel)
             {
-                _audio.PlayGlobal("/Audio/_COYOTE/UserInterface/mention.ogg", Filter.Local(), false);
+                _audio.PlayGlobal("/Audio/_CS/UserInterface/mention.ogg", Filter.Local(), false);
             }
         }
 
@@ -887,7 +887,7 @@ public sealed partial class ChatUIController : UIController
             {
                 if ((currentTime - _lastLoocSoundTime) >= SoundCooldown)
                 {
-                    _audio.PlayGlobal("/Audio/_COYOTE/UserInterface/looc_sound.ogg", Filter.Local(), false);
+                    _audio.PlayGlobal("/Audio/_CS/UserInterface/looc_sound.ogg", Filter.Local(), false);
                 }
                 // Reset cooldown timer on each message to avoid interrupting conversations
                 _lastLoocSoundTime = currentTime;
@@ -904,7 +904,7 @@ public sealed partial class ChatUIController : UIController
             {
                 if ((currentTime - _lastSubtleSoundTime) >= SoundCooldown)
                 {
-                    _audio.PlayGlobal("/Audio/_COYOTE/UserInterface/subtle_sound.ogg", Filter.Local(), false);
+                    _audio.PlayGlobal("/Audio/_CS/UserInterface/subtle_sound.ogg", Filter.Local(), false);
                 }
                 // Reset cooldown timer on each message to avoid interrupting conversations
                 _lastSubtleSoundTime = currentTime;

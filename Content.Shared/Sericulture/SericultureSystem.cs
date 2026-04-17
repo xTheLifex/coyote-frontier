@@ -1,4 +1,4 @@
-using Content.Shared._Coyote.Needs;
+using Content.Shared._CS.Needs;
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
 using Content.Shared.Nutrition.EntitySystems;

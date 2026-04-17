@@ -1,4 +1,4 @@
-using Content.Server._Coyote;
+using Content.Server._CS;
 using Content.Server.DeviceLinking.Systems;
 using Content.Server.DeviceNetwork;
 using Content.Server.DeviceNetwork.Systems;
@@ -6,7 +6,7 @@ using Content.Server.Emp;
 using Content.Server.Ghost;
 using Content.Server.Light.Components;
 using Content.Server.Power.Components;
-using Content.Shared._Coyote.RolePlayIncentiveShared;
+using Content.Shared._CS.RolePlayIncentiveShared;
 using Content.Shared.Audio;
 using Content.Shared.Damage;
 using Content.Shared.DeviceLinking.Events;

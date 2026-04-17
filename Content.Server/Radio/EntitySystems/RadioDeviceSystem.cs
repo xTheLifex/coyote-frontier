@@ -7,7 +7,7 @@ using Content.Server.Power.EntitySystems;
 using Content.Server.Radio.Components;
 using Content.Server.Speech;
 using Content.Server.Speech.Components;
-using Content.Shared._Coyote.RadioNoises;
+using Content.Shared._CS.RadioNoises;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Power;

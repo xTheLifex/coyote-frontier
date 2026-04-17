@@ -1,12 +1,12 @@
 using System.Numerics;
-using Content.Server._Coyote.Needs;
+using Content.Server._CS.Needs;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Systems;
 using Content.Server.NPC;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Server.Popups;
-using Content.Shared._Coyote.Needs;
+using Content.Shared._CS.Needs;
 using Content.Shared.Atmos;
 using Content.Shared.Dataset;
 using Content.Shared.Nutrition.Components;

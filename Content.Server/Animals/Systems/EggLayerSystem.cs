@@ -1,8 +1,8 @@
-using Content.Server._Coyote.Needs;
+using Content.Server._CS.Needs;
 using Content.Server.Actions;
 using Content.Server.Animals.Components;
 using Content.Server.Popups;
-using Content.Shared._Coyote.Needs;
+using Content.Shared._CS.Needs;
 using Content.Shared.Actions.Events;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;

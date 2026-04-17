@@ -2550,3 +2550,10 @@ Entries:
   id: 292
   time: '2026-04-16T07:01:52.0000000+00:00'
   url: https://github.com/ARF-SS13/coyote-frontier/pull/1160
+- author: tank8673
+  changes:
+    - type: Remove
+      message: Removed fun! Reverted tweaks to vgroid and UIV spawn rates
+  id: 293
+  time: '2026-04-17T02:06:43.0000000+00:00'
+  url: https://github.com/ARF-SS13/coyote-frontier/pull/1164

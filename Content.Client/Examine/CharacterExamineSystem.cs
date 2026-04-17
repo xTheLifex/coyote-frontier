@@ -53,6 +53,7 @@ public sealed class CharacterExamineSystem : EntitySystem
 
         // Create and show new window
         var window = new CharacterDetailWindow();
+        window.SetPreviewEntity(uid);
         _openWindows[netEntity] = window;
 
         window.OnClose += () =>

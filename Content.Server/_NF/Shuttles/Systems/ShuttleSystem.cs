@@ -35,8 +35,6 @@ public sealed partial class ShuttleSystem
     [Dependency] private readonly IPlayerManager _players = default!;
     [Dependency] private readonly PopupSystem _popupSystem = null!;
     [Dependency] private readonly AutopilotSystem _autopilot = default!; // Wayfarer: Autopilot
-    public TimeSpan BrakeDelay = TimeSpan.FromSeconds(10);
-    public TimeSpan NextBrakeCheck = TimeSpan.Zero;
 
     private const float SpaceFrictionStrength = 0.000f; // slip slide
     private const float DampenDampingStrength = 0.25f;
@@ -264,10 +262,6 @@ public sealed partial class ShuttleSystem
     /// </summary>
     public void ShouldEmergencyBrake()
     {
-        var curTime = _gameTiming.CurTime;
-        if (curTime < NextBrakeCheck)
-            return;
-        NextBrakeCheck = curTime + BrakeDelay;
         var query = EntityQueryEnumerator<ShuttleComponent>();
         var whereIsEveryone = GetPlayerShipsWithPeopleOnThem();
 
@@ -289,6 +283,12 @@ public sealed partial class ShuttleSystem
 
         while (query.MoveNext(out var uid, out var shuttle))
         {
+            var curTime = _gameTiming.CurTime;
+            if (curTime < shuttle.NextBrakeCheck)
+                continue;
+
+            shuttle.NextBrakeCheck = curTime + shuttle.BrakeDelay;
+
             if (shuttle.EBrakeActive)
             {
                 continue;

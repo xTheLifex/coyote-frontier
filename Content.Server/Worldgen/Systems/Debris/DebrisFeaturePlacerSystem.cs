@@ -9,6 +9,9 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Content.Server._NF.Worldgen.Components.Debris; // Frontier
@@ -31,6 +34,10 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+
+    private const float IdleDebrisLinearVelocityEpsilon = 0.05f;
+    private const float IdleDebrisAngularVelocityEpsilon = 0.01f;
 
     private ISawmill _sawmill = default!;
 
@@ -123,8 +130,27 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
             owned.LastKey = pending.Point;
 
             EnsureComp<SpaceDebrisComponent>(ent); // Frontier
+            TrySleepDebris(ent);
 
             _spawnsThisTick++;
+        }
+    }
+
+    private void TrySleepDebris(EntityUid uid)
+    {
+        if (!TryComp<PhysicsComponent>(uid, out var body))
+            return;
+
+        if (body.BodyType != BodyType.Dynamic)
+            return;
+
+        _physics.SetSleepingAllowed(uid, body, true);
+
+        if (body.Awake &&
+            body.LinearVelocity.LengthSquared() <= IdleDebrisLinearVelocityEpsilon * IdleDebrisLinearVelocityEpsilon &&
+            MathF.Abs(body.AngularVelocity) <= IdleDebrisAngularVelocityEpsilon)
+        {
+            _physics.SetAwake(uid, body, false);
         }
     }
 

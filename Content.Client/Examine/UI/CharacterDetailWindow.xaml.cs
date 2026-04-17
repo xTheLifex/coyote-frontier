@@ -15,6 +15,18 @@ public sealed partial class CharacterDetailWindow : FancyWindow
     private TabContainer _tabContainer = default!;
     private RichTextLabel _descriptionText = default!;
     private RichTextLabel _consentText = default!;
+    private SpriteView _characterPreview = default!;
+    private Button _rotateLeftButton = default!;
+    private Button _rotateRightButton = default!;
+    private int _previewDirectionIndex;
+
+    private static readonly Direction[] PreviewDirections =
+    {
+        Direction.South,
+        Direction.West,
+        Direction.North,
+        Direction.East,
+    };
 
     public CharacterDetailWindow()
     {
@@ -25,10 +37,33 @@ public sealed partial class CharacterDetailWindow : FancyWindow
         _tabContainer = FindControl<TabContainer>("TabContainer");
         _descriptionText = FindControl<RichTextLabel>("DescriptionText");
         _consentText = FindControl<RichTextLabel>("ConsentText");
+        _characterPreview = FindControl<SpriteView>("CharacterPreview");
+        _rotateLeftButton = FindControl<Button>("RotateLeftButton");
+        _rotateRightButton = FindControl<Button>("RotateRightButton");
+
+        _previewDirectionIndex = 0;
+        ApplyPreviewDirection();
+
+        _rotateLeftButton.OnPressed += _ =>
+        {
+            _previewDirectionIndex = (_previewDirectionIndex + PreviewDirections.Length - 1) % PreviewDirections.Length;
+            ApplyPreviewDirection();
+        };
+
+        _rotateRightButton.OnPressed += _ =>
+        {
+            _previewDirectionIndex = (_previewDirectionIndex + 1) % PreviewDirections.Length;
+            ApplyPreviewDirection();
+        };
 
         // Set tab titles
         _tabContainer.SetTabTitle(0, Loc.GetString("character-window-tab-description"));
         _tabContainer.SetTabTitle(1, Loc.GetString("character-window-tab-consent"));
+    }
+
+    public void SetPreviewEntity(EntityUid uid)
+    {
+        _characterPreview.SetEntity(uid);
     }
 
     public void SetCharacterInfo(string characterName, string jobTitle)
@@ -46,5 +81,10 @@ public sealed partial class CharacterDetailWindow : FancyWindow
     public void SetConsent(FormattedMessage consent)
     {
         _consentText.SetMessage(consent);
+    }
+
+    private void ApplyPreviewDirection()
+    {
+        _characterPreview.OverrideDirection = PreviewDirections[_previewDirectionIndex];
     }
 }

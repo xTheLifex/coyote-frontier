@@ -1,8 +1,8 @@
 <controls:FancyWindow xmlns="https://spacestation14.io"
               xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-              MinSize="400 300"
-              SetSize="550 550">
-    <BoxContainer Orientation="Vertical">
+              MinSize="520 420"
+              SetSize="760 620">
+    <BoxContainer Orientation="Vertical" SeparationOverride="8">
         <!-- Header with character name and job - This area is draggable -->
         <PanelContainer StyleClasses="AngleRect" MinHeight="60">
             <BoxContainer Orientation="Vertical" Margin="10 10 10 10">
@@ -17,29 +17,45 @@
 
         <!-- Content area - Make non-draggable -->
         <PanelContainer StyleClasses="AngleRect" VerticalExpand="True" MouseFilter="Stop">
-            <TabContainer Name="TabContainer" VerticalExpand="True">
-                <!-- Description Tab -->
-                <BoxContainer Name="DescriptionTab" Orientation="Vertical">
-                    <ScrollContainer VerticalExpand="True">
-                        <RichTextLabel Name="DescriptionText"
-                                      Margin="10"
-                                      MaxWidth="510"
-                                      VerticalExpand="True"
-                                      VerticalAlignment="Top"/>
-                    </ScrollContainer>
-                </BoxContainer>
+            <BoxContainer Orientation="Horizontal" Margin="12 12 12 12" SeparationOverride="12" VerticalExpand="True">
+                <TabContainer Name="TabContainer" HorizontalExpand="True" VerticalExpand="True">
+                    <!-- Description Tab -->
+                    <BoxContainer Name="DescriptionTab" Orientation="Vertical">
+                        <ScrollContainer VerticalExpand="True">
+                            <RichTextLabel Name="DescriptionText"
+                                          Margin="10"
+                                          VerticalExpand="True"
+                                          VerticalAlignment="Top"/>
+                        </ScrollContainer>
+                    </BoxContainer>
 
-                <!-- OOC Consent Tab -->
-                <BoxContainer Name="ConsentTab" Orientation="Vertical">
-                    <ScrollContainer VerticalExpand="True">
-                        <RichTextLabel Name="ConsentText"
-                                      Margin="10"
-                                      MaxWidth="510"
-                                      VerticalExpand="True"
-                                      VerticalAlignment="Top"/>
-                    </ScrollContainer>
+                    <!-- OOC Consent Tab -->
+                    <BoxContainer Name="ConsentTab" Orientation="Vertical">
+                        <ScrollContainer VerticalExpand="True">
+                            <RichTextLabel Name="ConsentText"
+                                          Margin="10"
+                                          VerticalExpand="True"
+                                          VerticalAlignment="Top"/>
+                        </ScrollContainer>
+                    </BoxContainer>
+                </TabContainer>
+
+                <BoxContainer Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom" SeparationOverride="6">
+                    <PanelContainer StyleClasses="AngleRect" MinSize="180 180">
+                        <SpriteView Name="CharacterPreview"
+                                    OverrideDirection="South"
+                                    Scale="11 11"
+                                    HorizontalExpand="True"
+                                    VerticalExpand="True"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                    </PanelContainer>
+                    <BoxContainer Orientation="Horizontal" SeparationOverride="6" HorizontalAlignment="Center">
+                        <Button Name="RotateLeftButton" Text="◀" MinSize="64 28"/>
+                        <Button Name="RotateRightButton" Text="▶" MinSize="64 28"/>
+                    </BoxContainer>
                 </BoxContainer>
-            </TabContainer>
+            </BoxContainer>
         </PanelContainer>
     </BoxContainer>
 </controls:FancyWindow>

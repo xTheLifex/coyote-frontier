@@ -2564,3 +2564,12 @@ Entries:
   id: 294
   time: '2026-04-17T04:21:23.0000000+00:00'
   url: https://github.com/ARF-SS13/coyote-frontier/pull/1162
+- author: QTNeen
+  changes:
+    - type: Add
+      message: Character sprite preview to character details window
+    - type: Tweak
+      message: Re-arranged junk in the trunk
+  id: 295
+  time: '2026-04-17T04:22:47.0000000+00:00'
+  url: https://github.com/ARF-SS13/coyote-frontier/pull/1163

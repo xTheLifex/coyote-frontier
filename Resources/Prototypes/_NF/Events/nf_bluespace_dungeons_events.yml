@@ -29,8 +29,8 @@
     groups:
       vgroid: !type:DungeonSpawnGroup
         nameDataset: NamesBorer
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 2 # Coyote add: to two instances
+        # minCount: 1 # Coyote add: make it vary from one
+        # maxCount: 2 # Coyote add: to two instances
         minimumDistance: 2500 # Coyote add: 1500 -> 2500m
         maximumDistance: 3500 # Coyote add: 2500 -> 3500m
         addComponents: &dungeonComponents
@@ -60,8 +60,8 @@
     groups:
       vgroid: !type:DungeonSpawnGroup
         nameDataset: NamesBorer
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 2 # Coyote add: to two instances
+        # minCount: 1 # Coyote add: make it vary from one
+        # maxCount: 2 # Coyote add: to two instances
         minimumDistance: 2500 # Coyote add: 1500 -> 2500m
         maximumDistance: 3500 # Coyote add: 2500 -> 3500m
         addComponents: *dungeonComponents
@@ -77,8 +77,8 @@
     groups:
       vgroid: !type:DungeonSpawnGroup
         nameDataset: NamesBorer
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 2 # Coyote add: to two instances
+        # minCount: 1 # Coyote add: make it vary from one
+        # maxCount: 2 # Coyote add: to two instances
         minimumDistance: 2500 # Coyote add: 1500 -> 2500m
         maximumDistance: 3500 # Coyote add: 2500 -> 3500m
         addComponents: *dungeonComponents
@@ -94,8 +94,8 @@
     groups:
       vgroid: !type:DungeonSpawnGroup
         nameDataset: NamesBorer
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 2 # Coyote add: to two instances
+        # minCount: 1 # Coyote add: make it vary from one
+        # maxCount: 2 # Coyote add: to two instances
         minimumDistance: 2500 # Coyote add: 1500 -> 2500m
         maximumDistance: 3500 # Coyote add: 2500 -> 3500m
         addComponents: *dungeonComponents
@@ -111,8 +111,8 @@
     groups:
       vgroid: !type:DungeonSpawnGroup
         nameDataset: NamesBorer
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 2 # Coyote add: to two instances
+        # minCount: 1 # Coyote add: make it vary from one
+        # maxCount: 2 # Coyote add: to two instances
         minimumDistance: 2500 # Coyote add: 1500 -> 2500m
         maximumDistance: 3500 # Coyote add: 2500 -> 3500m
         addComponents: *dungeonComponents
@@ -128,8 +128,8 @@
     groups:
       vgroid: !type:DungeonSpawnGroup
         nameDataset: NamesBorer
-        minCount: 1 # Coyote add: make it vary from one
-        maxCount: 2 # Coyote add: to two instances
+        # minCount: 1 # Coyote add: make it vary from one
+        # maxCount: 2 # Coyote add: to two instances
         minimumDistance: 2500 # Coyote add: 1500 -> 2500m
         maximumDistance: 3500 # Coyote add: 2500 -> 3500m
         addComponents: *dungeonComponents

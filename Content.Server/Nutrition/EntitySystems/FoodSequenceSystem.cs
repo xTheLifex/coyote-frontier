@@ -15,7 +15,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Server._NF.Kitchen.Components; // Frontier
-using Content.Shared._Coyote.AphroLacedVisibility; // Coyote
+using Content.Shared._CS.AphroLacedVisibility; // Coyote
 
 namespace Content.Server.Nutrition.EntitySystems;
 

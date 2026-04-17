@@ -83,7 +83,7 @@
 - type: guideEntry
   id: Avali
   name: species-name-avali
-  text: "/ServerInfo/Guidebook/Mobs/_StarLight/Avali.xml"
+  text: "/ServerInfo/Guidebook/Mobs/_Starlight/Avali.xml"
 
 - type: guideEntry
   id: Resomi

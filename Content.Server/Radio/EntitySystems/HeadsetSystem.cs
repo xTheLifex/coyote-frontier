@@ -1,7 +1,7 @@
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Radio.Components;
-using Content.Shared._Coyote.RadioNoises;
+using Content.Shared._CS.RadioNoises;
 using Content.Shared.Chat;
 using Content.Shared.Ghost;
 using Content.Shared.Inventory.Events;

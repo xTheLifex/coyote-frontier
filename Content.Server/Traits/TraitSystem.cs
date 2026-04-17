@@ -1,5 +1,5 @@
-using Content.Shared._Coyote.HornyQuirks;
-using Content.Shared._Coyote.SniffAndSmell;
+using Content.Shared._CS.HornyQuirks;
+using Content.Shared._CS.SniffAndSmell;
 using Content.Shared.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;

@@ -5,7 +5,7 @@ using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Robust.Shared.Console;
 using System.Linq;
-using Content.Shared._Coyote.Needs;
+using Content.Shared._CS.Needs;
 
 namespace Content.Server.Nutrition;
 

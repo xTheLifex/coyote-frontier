@@ -1,4 +1,4 @@
-using Content.Shared._Coyote.RolePlayIncentiveShared;
+using Content.Shared._CS.RolePlayIncentiveShared;
 using Content.Shared.Access;
 using Content.Shared.Guidebook;
 using Content.Shared.Players.PlayTimeTracking;

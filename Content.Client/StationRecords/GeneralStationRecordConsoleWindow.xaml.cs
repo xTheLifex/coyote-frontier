@@ -6,7 +6,7 @@ using Robust.Shared.Prototypes; // Frontier
 using Content.Shared.Roles; // Frontier
 using Robust.Shared.Utility; // Frontier
 using Content.Client._NF.StationRecords;
-using Content.Shared._Coyote;
+using Content.Shared._CS;
 using Robust.Client.Player; // Frontier
 
 namespace Content.Client.StationRecords;

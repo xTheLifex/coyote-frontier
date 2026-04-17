@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Content.Client.DisplacementMap;
 using Content.Shared.CCVar;
 using System.Numerics;
-using Content.Shared._Coyote;
+using Content.Shared._CS;
 using Content.Shared.DisplacementMap;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;

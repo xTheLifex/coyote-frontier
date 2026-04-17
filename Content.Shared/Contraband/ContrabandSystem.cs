@@ -8,8 +8,8 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
-using Content.Server._Coyote;
-using Content.Shared._Coyote;
+using Content.Server._CS;
+using Content.Shared._CS;
 
 namespace Content.Shared.Contraband;
 

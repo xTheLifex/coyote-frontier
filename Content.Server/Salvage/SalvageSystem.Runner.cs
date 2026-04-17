@@ -21,7 +21,7 @@ using Content.Server.Body.Components;
 using Content.Server.Buckle.Systems;
 using Content.Server.Temperature.Components;
 using Content.Server.Temperature.Systems;
-using Content.Shared._Coyote;
+using Content.Shared._CS;
 using Content.Shared.Atmos;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Damage;
@@ -302,7 +302,7 @@ public sealed partial class SalvageSystem
                                         shuttleGrid.Value);
                                     Spawn("EffectSparks", Transform(mobUid).Coordinates);
                                     Spawn("EffectGravityPulse", Transform(mobUid).Coordinates);
-                                    SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_COYOTE/ExpedReturnToBed.ogg");
+                                    SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_CS/ExpedReturnToBed.ogg");
                                     _audio.PlayPvs(Sound, mobUid);
                                 }
                             }

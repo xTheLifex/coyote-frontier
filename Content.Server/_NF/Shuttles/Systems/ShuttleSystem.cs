@@ -11,7 +11,7 @@ using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Shuttles.Components;
-using Content.Shared._Coyote;
+using Content.Shared._CS;
 using Content.Shared._NF.Shuttles.Events;
 using Content.Shared._NF.Shipyard.Components;
 using Content.Shared.Audio;
@@ -413,8 +413,8 @@ public sealed partial class ShuttleSystem
         {
             SoundSpecifier eBrakeBeep = quietly switch
             {
-                true => new SoundPathSpecifier("/Audio/_COYOTE/ShuttleStuff/ShuttleEBrakeEngagedQuietly.ogg"),
-                false => new SoundPathSpecifier("/Audio/_COYOTE/ShuttleStuff/ShuttleEBrakeEngaged.ogg"),
+                true => new SoundPathSpecifier("/Audio/_CS/ShuttleStuff/ShuttleEBrakeEngagedQuietly.ogg"),
+                false => new SoundPathSpecifier("/Audio/_CS/ShuttleStuff/ShuttleEBrakeEngaged.ogg"),
             };
             var audioParams = quietly switch
             {

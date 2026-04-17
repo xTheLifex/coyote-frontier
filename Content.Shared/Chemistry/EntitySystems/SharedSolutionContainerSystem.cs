@@ -20,8 +20,8 @@ using Content.Shared.Hands.EntitySystems;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Dependency = Robust.Shared.IoC.DependencyAttribute;
-using Content.Shared._Coyote.Helpers; // Coyote
-using Content.Shared._Coyote.AphroLacedVisibility;
+using Content.Shared._CS.Helpers; // Coyote
+using Content.Shared._CS.AphroLacedVisibility;
 using Content.Shared.Mind.Components;
 using Content.Shared.Tag; // Coyote
 

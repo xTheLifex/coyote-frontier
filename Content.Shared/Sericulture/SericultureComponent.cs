@@ -1,4 +1,4 @@
-using Content.Shared._Coyote.Needs;
+using Content.Shared._CS.Needs;
 using Content.Shared.Nutrition.Components;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;

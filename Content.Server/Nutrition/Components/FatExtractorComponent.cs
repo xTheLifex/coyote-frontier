@@ -1,6 +1,6 @@
-﻿using Content.Server._Coyote.Needs;
+﻿using Content.Server._CS.Needs;
 using Content.Server.Nutrition.EntitySystems;
-using Content.Shared._Coyote.Needs;
+using Content.Shared._CS.Needs;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Nutrition.Components;
 using Robust.Shared.Audio;

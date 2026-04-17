@@ -1,4 +1,4 @@
-﻿using Content.Shared._Coyote;
+﻿using Content.Shared._CS;
 using Content.Shared._NF.CryoSleep;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Bed.Sleep;

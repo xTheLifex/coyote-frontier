@@ -1,5 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
-using Content.Server._Coyote;
+using Content.Server._CS;
 using Content.Server.Administration.Logs;
 using Content.Server.CartridgeLoader.Cartridges;
 using Content.Server.CartridgeLoader;

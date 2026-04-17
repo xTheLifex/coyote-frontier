@@ -31,7 +31,7 @@ using Robust.Server.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
-using Content.Shared._Coyote.Needs;
+using Content.Shared._CS.Needs;
 
 namespace Content.Server.NPC.Systems;
 

@@ -1,4 +1,4 @@
-using Content.Shared._Coyote.Needs;
+using Content.Shared._CS.Needs;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.DoAfter;

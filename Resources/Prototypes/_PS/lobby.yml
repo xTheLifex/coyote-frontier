@@ -29,10 +29,6 @@
   background: /Textures/_PS/Lobby/sadf.png
 
 - type: lobbyBackground
-  id: ShipSpace
-  background: /Textures/_PS/Lobby/ship.png
-
-- type: lobbyBackground
   id: FurryShooting
   background: /Textures/_PS/Lobby/shootingf.png
 

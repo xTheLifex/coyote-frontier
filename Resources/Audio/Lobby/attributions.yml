@@ -75,3 +75,13 @@
   license: "CC-BY-NC-SA-3.0"
   copyright: "every light is blinking at once by Sunbeamstress/Lauren Loveless."
   source: "https://soundcloud.com/sunbeamstress/every-light-is-blinking-at-once"
+
+- files: ["welcometoourworld.ogg"]
+  license: "Custom"
+  copyright: "Welcome to our world by Digital Insanity"
+  source: "https://www.youtube.com/watch?v=0dCPcdpRUkA"
+
+- files: ["NI4NI.ogg"]
+  license: "Custom"
+  copyright: "NI4NI by Vylet Pony"
+  source: "https://youtu.be/Yiy-plVqG64"

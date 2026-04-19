@@ -1,8 +1,7 @@
-using Content.Server.Actions;
-using Content.Server.Popups;
 using Content.Shared._PS.Clothing;
+using Content.Shared.Implants;
 using Content.Shared.Inventory.Events;
-using Robust.Shared.Timing;
+using Robust.Shared.Containers;
 
 namespace Content.Server._PS.Clothing;
 
@@ -11,17 +10,36 @@ public sealed class ServerConcealableClothingSystem : SharedConcealableClothingS
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<ConcealableClothingComponent, GotUnequippedEvent>(OnGotUnequipped);
-        SubscribeLocalEvent<ConcealableClothingComponent, GotEquippedEvent>(OnGotEquipped);
+        SubscribeLocalEvent<ConcealableClothingImplantComponent, ImplantImplantedEvent>(OnImplanted);
+        SubscribeLocalEvent<ConcealableClothingImplantComponent, EntGotRemovedFromContainerMessage>(OnRemoved);
     }
 
-    private void OnGotEquipped(EntityUid uid, ConcealableClothingComponent component, GotEquippedEvent args)
+    private void OnRemoved(Entity<ConcealableClothingImplantComponent> ent, ref EntGotRemovedFromContainerMessage args)
     {
-        component.User = args.Equipee;
+        if (!TryComp<ConcealableClothingUserComponent>(args.Container.Owner, out var comp))
+            return;
+
+        var category = ent.Comp.Category;
+
+        comp.Categories.Remove(string.IsNullOrEmpty(category) ? "*" : category);
+
+        if (comp.Categories.Count == 0)
+            RemCompDeferred<ConcealableClothingUserComponent>(args.Container.Owner);
+        else
+            Dirty(args.Container.Owner, comp);
     }
 
-    private void OnGotUnequipped(EntityUid uid, ConcealableClothingComponent component, GotUnequippedEvent args)
+    private void OnImplanted(EntityUid uid, ConcealableClothingImplantComponent component, ImplantImplantedEvent args)
     {
-        component.User = null;
+        if (args.Implanted == null)
+            return;
+
+        var user = args.Implanted.Value;
+        var userComponent = EnsureComp<ConcealableClothingUserComponent>(user);
+        var category = component.Category;
+
+        userComponent.Categories.Add(string.IsNullOrEmpty(category) ? "*" : category);
+
+        Dirty(user, userComponent);
     }
 }

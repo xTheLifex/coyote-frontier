@@ -14,6 +14,12 @@ public sealed partial class ConcealableClothingComponent : Component
     public EntProtoId ToggleAction = "ActionToggleConcealment";
 
     /// <summary>
+    /// The category that this is able to hide.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public string Category = string.Empty;
+
+    /// <summary>
     /// Action for toggling visibility of this piece of clothing.
     /// </summary>
     [DataField, AutoNetworkedField]
@@ -23,13 +29,7 @@ public sealed partial class ConcealableClothingComponent : Component
     /// When <see langword="true"/>, it will require an implant to be used.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool RequireImplant = false;
-
-    /// <summary>
-    /// Current user that wears concealable clothing.
-    /// </summary>
-    [ViewVariables, AutoNetworkedField]
-    public EntityUid? User;
+    public bool RequireImplant = true;
 
     /// <summary>
     /// Whether the clothing is to be displayed or not.

@@ -31,22 +31,17 @@ public abstract class SharedConcealableClothingSystem : EntitySystem
 
     private void OnToggle(EntityUid uid, ConcealableClothingComponent component, ToggleClothingConcealmentEvent args)
     {
-        // We need a user defined to be able to toggle this.
-        if (component.User == null)
-            return;
-        var user = (EntityUid) component.User;
+        var user = args.Performer;
 
         // User must have implant
-        if (!HasConcealableImplant(component))
+        if (!HasConcealableImplant(user, component))
             return;
 
         args.Handled = true;
-        Log.Info($"OnToggle: {user}");
         component.IsConcealed = !component.IsConcealed;
         _actions.SetToggled(component.ToggleActionEntity, component.IsConcealed);
         Dirty(uid, component);
         _item.VisualsChanged(uid);
-
 
         // Popup
         var state = component.IsConcealed ? "hidden" : "shown";
@@ -66,20 +61,24 @@ public abstract class SharedConcealableClothingSystem : EntitySystem
 
     private void GetActions(EntityUid uid, ConcealableClothingComponent component, GetItemActionsEvent args)
     {
-        args.AddAction(ref component.ToggleActionEntity, component.ToggleAction);
+        if (HasConcealableImplant(args.User, component))
+            args.AddAction(ref component.ToggleActionEntity, component.ToggleAction);
     }
 
-    private bool HasConcealableImplant(ConcealableClothingComponent component)
-    {
-        if (component.User == null)
-            return false;
 
-        if (component.RequireImplant == false)
+    private bool HasConcealableImplant(EntityUid user, ConcealableClothingComponent component)
+    {
+        if (!component.RequireImplant)
             return true;
 
-        var user = (EntityUid) component.User;
-        return TryComp<ImplantedComponent>(user, out var implanted) &&
-               implanted.ImplantContainer.ContainedEntities.Any(HasComp<ConcealableClothingImplantComponent>);
+        if (!TryComp<ConcealableClothingUserComponent>(user, out var userComponent))
+            return false;
+
+        // universal implant
+        if (userComponent.Categories.Contains("*"))
+            return true;
+
+        return string.IsNullOrEmpty(component.Category) || userComponent.Categories.Contains(component.Category);
     }
 }
 

@@ -1436,6 +1436,8 @@
   cost: 7500
   recipeUnlocks:
   - HolofanProjector
+  - RPD
+  - RPDAmmo
 #  - FireExtinguisherBluespace # DeltaV
   technologyPrerequisites:
   - NFAtmosphericTech

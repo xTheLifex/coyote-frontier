@@ -43,6 +43,8 @@
   - Igniter
   - TRayScanner
   - LightReplacer
+  - RPD
+  - RPDAmmo
 
 - type: latheRecipePack
   id: NFBasicEVAToolsStatic

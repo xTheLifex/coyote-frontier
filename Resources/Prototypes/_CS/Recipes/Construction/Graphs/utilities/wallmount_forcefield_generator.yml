@@ -42,33 +42,36 @@
         - tag: WallmountForceFieldGeneratorElectronics
           store: machine_board
           name: construction-graph-tag-field-matrix-core
+          icon:
+            sprite: "Objects/Misc/module.rsi"
+            state: "cpuboard_super"
           doAfter: 1
         - machinePart: Capacitor
           store: machine_parts
           name: construction-graph-tag-capacitor
           icon:
-            sprite: "Objects/Misc/stock_parts.rsi"
+            sprite: "_NF/Objects/Misc/stock_parts.rsi"
             state: "capacitor"
           doAfter: 1
         - machinePart: Capacitor
           store: machine_parts
           name: construction-graph-tag-capacitor
           icon:
-            sprite: "Objects/Misc/stock_parts.rsi"
+            sprite: "_NF/Objects/Misc/stock_parts.rsi"
             state: "capacitor"
           doAfter: 1
         - machinePart: Capacitor
           store: machine_parts
           name: construction-graph-tag-capacitor
           icon:
-            sprite: "Objects/Misc/stock_parts.rsi"
+            sprite: "_NF/Objects/Misc/stock_parts.rsi"
             state: "capacitor"
           doAfter: 1
         - machinePart: Capacitor
           store: machine_parts
           name: construction-graph-tag-capacitor
           icon:
-            sprite: "Objects/Misc/stock_parts.rsi"
+            sprite: "_NF/Objects/Misc/stock_parts.rsi"
             state: "capacitor"
           doAfter: 1
         - machinePart: PowerCell

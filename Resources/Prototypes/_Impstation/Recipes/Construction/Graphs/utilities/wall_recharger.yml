@@ -54,9 +54,12 @@
     edges:
     - to: electronics
       steps:
-      - material: Capacitor
+      - machinePart: Capacitor
         store: machine_parts
         amount: 2
+        icon:
+          sprite: "_NF/Objects/Misc/stock_parts.rsi"
+          state: "capacitor"
         doAfter: 1
       - component: NFWeaponChargerCircuitboard # Frontier: tag<component
         store: machine_board

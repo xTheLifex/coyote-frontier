@@ -48,17 +48,19 @@
             sprite: "Objects/Misc/module.rsi"
             state: "charger_APC"
           doAfter: 0.5
-        - anyTags:
-            - PowerCell
-            - PowerCellSmall
+        - machinePart: PowerCell
           store: powercell
           name: construction-graph-tag-power-cell
           icon:
             sprite: "Objects/Power/power_cells.rsi"
             state: "medium"
           doAfter: 0.5
-        - material: Manipulator
+        - machinePart: Capacitor
           amount: 1
+          name: construction-graph-tag-capacitor
+          icon:
+            sprite: "_NF/Objects/Misc/stock_parts.rsi"
+            state: "capacitor"
           doAfter: 0.5
       - to: frame
         completed:

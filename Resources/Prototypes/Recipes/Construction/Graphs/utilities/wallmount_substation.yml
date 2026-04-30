@@ -57,6 +57,7 @@
           doAfter: 0.5
         - machinePart: Capacitor
           amount: 1
+          name: construction-graph-tag-capacitor
           icon:
             sprite: "_NF/Objects/Misc/stock_parts.rsi"
             state: "capacitor"

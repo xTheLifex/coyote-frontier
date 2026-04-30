@@ -57,6 +57,7 @@
       - machinePart: Capacitor
         store: machine_parts
         amount: 2
+        name: construction-graph-tag-capacitor
         icon:
           sprite: "_NF/Objects/Misc/stock_parts.rsi"
           state: "capacitor"

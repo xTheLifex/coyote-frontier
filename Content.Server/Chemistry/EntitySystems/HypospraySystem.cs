@@ -116,7 +116,8 @@ public sealed class HypospraySystem : SharedHypospraySystem
 
         var doAfterDelay = TimeSpan.FromSeconds(0);
 
-        if (!entity.Comp.BypassBlockInjection && TryComp<BlockInjectionComponent>(target, out var blockComponent)) // DeltaV
+        if (!entity.Comp.BypassBlockInjection && TryComp<BlockInjectionComponent>(target, out var blockComponent) // DeltaV
+            && blockComponent.BlockHypospray) //Coyote
         {
             var msg = Loc.GetString($"injector-component-deny-user",
                 ("target", Identity.Entity(target, EntityManager)));
@@ -203,13 +204,13 @@ public sealed class HypospraySystem : SharedHypospraySystem
         }
         else
         {
-            // CS: Keep in line with Frontier's instant chemical medipens and such.
+            // Coyote: Keep in line with Frontier's instant chemical medipens and such.
             // Self-injections take half as long.
             if (comp.InstantSelfInject)
                 actualDelay = TimeSpan.FromSeconds(0);
             else
                 actualDelay /= 2;
-            // End CS
+            // Coyote End
             AdminLogger.Add(LogType.Ingestion,
                 $"{EntityManager.ToPrettyString(user):user} is attempting to inject themselves with a solution {SharedSolutionContainerSystem.ToPrettyString(solution):solution}.");
 

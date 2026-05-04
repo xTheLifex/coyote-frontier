@@ -52,14 +52,9 @@
 - type: markingPoints
   id: MobVulpkaninMarkingLimits
   points:
-    Hair:
-      points: 35
-      required: false
-    FacialHair:
-      points: 35
-      required: false
+    # Coyote: Allow unlimited markings
     Tail:
-      points: 35
+      points: 999 # Coyote: Allow unlimited markings
       required: true
       defaultMarkings: [ VulpTail ]
     Head:
@@ -86,7 +81,7 @@
       required: false
     # End Frontier
     HeadTop:
-      points: 35
+      points: 999 # Coyote: Allow unlimited markings
       required: true
       defaultMarkings: [ VulpEar ]
     # Copypaste these into every species I HATE THIS CODE

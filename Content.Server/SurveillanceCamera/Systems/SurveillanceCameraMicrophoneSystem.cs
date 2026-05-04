@@ -15,6 +15,8 @@ public sealed class SurveillanceCameraMicrophoneSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _xforms = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
 
+    // _CS Start: emote and MIDI relay expansion
+
     public override void Initialize()
     {
         base.Initialize();
@@ -193,8 +195,11 @@ public sealed class SurveillanceCameraMicrophoneSystem : EntitySystem
         else
             RemCompDeferred<ActiveListenerComponent>(uid);
     }
+
+    // _CS End: emote and MIDI relay expansion
 }
 
+// _CS Start: surveillance camera relay event payloads
 public sealed class SurveillanceCameraSpeechSendEvent : EntityEventArgs
 {
     public EntityUid Speaker { get; }
@@ -234,4 +239,5 @@ public sealed class SurveillanceCameraMidiChannelFilterSyncEvent : EntityEventAr
         Filtered = filtered;
     }
 }
+// _CS End: surveillance camera relay event payloads
 

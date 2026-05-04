@@ -20,6 +20,7 @@ namespace Content.Server.SurveillanceCamera;
 /// </summary>
 public sealed class SurveillanceCameraSpeakerSystem : EntitySystem
 {
+    // _CS Start: TV relay controls and MIDI synchronization
     private const float MinRelayVolumeDb = -20f;
     private const float RelayVolumeStepDb = 5f;
     private static readonly TimeSpan MidiRelayIdleTimeout = TimeSpan.FromSeconds(1.5f);
@@ -299,4 +300,6 @@ public sealed class SurveillanceCameraSpeakerSystem : EntitySystem
         _instrumentSystem.SetFilteredChannel(uid, tvInstrument, args.Channel,
             sourceInstrument.FilteredChannels[args.Channel]);
     }
+
+    // _CS End: TV relay controls and MIDI synchronization
 }

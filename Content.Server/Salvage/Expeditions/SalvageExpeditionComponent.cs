@@ -117,6 +117,7 @@ public sealed partial class SalvageExpeditionComponent : SharedSalvageExpedition
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public HashSet<EntityUid> ForcedDepartureShuttles = new();
 
+    // _CS Start: weather system fields
     // Weather system fields — not serialized; reconstructed when the first shuttle arrives.
 
     /// <summary>
@@ -148,4 +149,6 @@ public sealed partial class SalvageExpeditionComponent : SharedSalvageExpedition
     /// Duration of each phase in the currently running staged sequence.
     /// </summary>
     public TimeSpan WeatherPhaseDuration;
+
+    // _CS End: weather system fields
 }

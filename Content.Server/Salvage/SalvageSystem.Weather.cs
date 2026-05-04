@@ -10,6 +10,7 @@ namespace Content.Server.Salvage;
 
 public sealed partial class SalvageSystem
 {
+    // _CS Start: expedition weather system
     [Dependency] private readonly WeatherSystem _weatherSystem = default!;
 
     /// <summary>
@@ -206,4 +207,6 @@ public sealed partial class SalvageSystem
 
         return result;
     }
+
+    // _CS End: expedition weather system
 }

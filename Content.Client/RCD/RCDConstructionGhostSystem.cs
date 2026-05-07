@@ -83,9 +83,10 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
         if (_playerManager.LocalSession?.AttachedEntity is not { } player)
             return;
 
-        var heldEntity = _hands.GetActiveItem(player);
-        if (heldEntity == null)
+        if (!TryComp<HandsComponent>(player, out var hands))
             return;
+
+        var heldEntity = hands.ActiveHand?.HeldEntity;
 
         if (!TryComp<RCDComponent>(heldEntity, out var rcd))
         {

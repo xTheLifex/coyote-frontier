@@ -58,6 +58,10 @@
     guides:
     - AtmosphericNetworkMonitor
     - DeviceMonitoringAndControl
+  - type: RCDDeconstructable
+    cost: 1
+    delay: 0
+    rpd: true
 
 - type: entity
   parent: GasPipeSensor

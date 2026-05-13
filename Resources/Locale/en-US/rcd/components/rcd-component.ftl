@@ -42,6 +42,24 @@ rcd-component-piping = Piping
 rcd-component-atmosphericutility = Atmospheric Utility
 rcd-component-pumps = Pumps & Valves
 rcd-component-vents = Vents
+rcd-component-sensorsmonitors = Sensors & Monitors
+
+
+### Color names
+
+default = Default
+red = Red
+yellow = Yellow
+brown = Brown
+green = Green
+cyan = Cyan
+blue = Blue
+white = White
+black = Black
+waste = Waste
+distro = Distro
+air = Air
+mix = Mix
 
 
 ### Prototype names (note: constructable items will be puralized)

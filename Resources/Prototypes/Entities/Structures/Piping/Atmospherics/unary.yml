@@ -19,6 +19,10 @@
           nodeGroupID: Pipe
           pipeDirection: South
     - type: CollideOnAnchor
+    - type: RCDDeconstructable
+      cost: 1
+      delay: 0
+      rpd: true
 
 - type: entity
   parent: [GasUnaryBase, AirSensorBase]

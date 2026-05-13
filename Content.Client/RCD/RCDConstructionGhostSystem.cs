@@ -16,6 +16,7 @@ namespace Content.Client.RCD;
 public sealed class RCDConstructionGhostSystem : EntitySystem
 {
     private const string PlacementMode = nameof(AlignRCDConstruction);
+    private const string RpdPlacementMode = nameof(AlignRPDAtmosPipeLayers);
 
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPlacementManager _placementManager = default!;
@@ -104,7 +105,12 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
         }
 
         var useProto = (_useMirrorPrototype && !string.IsNullOrEmpty(prototype.MirrorPrototype)) ? prototype.MirrorPrototype : prototype.Prototype;
-        if (heldEntity != placerEntity || useProto != placerProto)
+        if (rcd.IsRpd && useProto != null && !prototype.NoLayers)
+        {
+            _placementManager.Clear();
+            CreateLayeredPlacer(heldEntity.Value, rcd, useProto);
+        }
+        else if (heldEntity != placerEntity || useProto != placerProto)
         {
             CreatePlacer(heldEntity.Value, rcd, useProto, prototype.Mode);
         }
@@ -123,6 +129,22 @@ public sealed class RCDConstructionGhostSystem : EntitySystem
         };
 
         _placementManager.Clear();
+        _placementManager.BeginPlacing(newObjInfo);
+    }
+
+    private void CreateLayeredPlacer(EntityUid uid, RCDComponent component, string? prototype)
+    {
+        var rcdProto = _protoManager.Index(component.ProtoId);
+        var newObjInfo = new PlacementInformation
+        {
+            MobUid = uid,
+            PlacementOption = RpdPlacementMode,
+            EntityType = prototype,
+            Range = (int) Math.Ceiling(SharedInteractionSystem.InteractionRange),
+            IsTile = (rcdProto.Mode == RcdMode.ConstructTile),
+            UseEditorContext = false,
+        };
+
         _placementManager.BeginPlacing(newObjInfo);
     }
 }

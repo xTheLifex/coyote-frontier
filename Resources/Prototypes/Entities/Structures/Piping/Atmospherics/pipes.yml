@@ -65,6 +65,10 @@
     bodyType: static
   - type: StaticPrice
     price: 12 # Frontier: 30<12
+  - type: RCDDeconstructable
+    cost: 1
+    delay: 0
+    rpd: true
 
 - type: entity
   abstract: true

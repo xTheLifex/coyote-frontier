@@ -12,6 +12,10 @@
     - type: SubFloorHide
       blockInteractions: false
       blockAmbience: false
+    - type: RCDDeconstructable
+      cost: 1
+      delay: 0
+      rpd: true
     - type: NodeContainer
       nodes:
         inlet:

@@ -26,6 +26,9 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using System.Linq;
 using Robust.Shared.Audio;
+using Content.Shared.Atmos.Components;
+using Content.Shared.Atmos.EntitySystems;
+using System.Numerics;
 
 namespace Content.Shared.RCD.Systems;
 
@@ -46,8 +49,11 @@ public sealed class RCDSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tags = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
+    [Dependency] private readonly SharedAtmosPipeLayersSystem _pipeLayersSystem = default!;
 
     private readonly int _instantConstructionDelay = 0;
+    private AtmosPipeLayer _currentLayer = AtmosPipeLayer.Primary;
     private readonly EntProtoId _instantConstructionFx = "EffectRCDConstruct0";
     private readonly ProtoId<RCDPrototype> _deconstructTileProto = "DeconstructTile";
     private readonly ProtoId<RCDPrototype> _deconstructLatticeProto = "DeconstructLattice";
@@ -66,6 +72,8 @@ public sealed class RCDSystem : EntitySystem
         SubscribeLocalEvent<RCDComponent, RCDDoAfterEvent>(OnDoAfter);
         SubscribeLocalEvent<RCDComponent, DoAfterAttemptEvent<RCDDoAfterEvent>>(OnDoAfterAttempt);
         SubscribeLocalEvent<RCDComponent, RCDSystemMessage>(OnRCDSystemMessage);
+        SubscribeLocalEvent<RCDComponent, RCDColorChangeMessage>(OnColorChange);
+        SubscribeNetworkEvent<RPDEyeRotationEvent>(OnRPDEyeRotationEvent);
         SubscribeNetworkEvent<RCDConstructionGhostRotationEvent>(OnRCDconstructionGhostRotationEvent);
         SubscribeNetworkEvent<RCDConstructionGhostFlipEvent>(OnRCDConstructionGhostFlipEvent);
     }
@@ -99,6 +107,12 @@ public sealed class RCDSystem : EntitySystem
         // Set the current RCD prototype to the one supplied
         component.ProtoId = args.ProtoId;
         Dirty(uid, component);
+    }
+
+    private void OnColorChange(Entity<RCDComponent> entity, ref RCDColorChangeMessage args)
+    {
+        entity.Comp.PipeColor = args.PipeColor;
+        Dirty(entity);
     }
 
     private void OnExamine(EntityUid uid, RCDComponent component, ExaminedEvent args)
@@ -147,6 +161,26 @@ public sealed class RCDSystem : EntitySystem
         }
         var tile = _mapSystem.GetTileRef(gridUid.Value, mapGrid, location);
         var position = _mapSystem.TileIndicesFor(gridUid.Value, mapGrid, location);
+
+        // RPD layer calculation based on mouse click position relative to tile center
+        if (component.IsRpd && !prototype.NoLayers)
+        {
+            var tileSize = mapGrid.TileSize;
+            var tileCenter = new Vector2(tile.X + tileSize / 2, tile.Y + tileSize / 2);
+            var mouseCoordsDiff = args.ClickLocation.Position - tileCenter - new Vector2(0.5f, 0.5f);
+            var mouseDeadzoneRadius = 0.25f;
+
+            _currentLayer = AtmosPipeLayer.Primary;
+
+            if (mouseCoordsDiff.Length() > mouseDeadzoneRadius && component.LastKnownEyeRotation.HasValue)
+            {
+                var gridRotation = _transform.GetWorldRotation(gridUid.Value);
+                var angle = new Angle(mouseCoordsDiff);
+                var eyeRotation = new Angle(component.LastKnownEyeRotation.Value);
+                var direction = (angle + eyeRotation + gridRotation + Math.PI / 2).GetCardinalDir();
+                _currentLayer = (direction == Direction.North || direction == Direction.East) ? AtmosPipeLayer.Secondary : AtmosPipeLayer.Tertiary;
+            }
+        }
 
         if (!IsRCDOperationStillValid(uid, component, gridUid.Value, mapGrid, tile, position, args.Target, args.User))
             return;
@@ -357,6 +391,25 @@ public sealed class RCDSystem : EntitySystem
         // Update the mirror prototype setting
         rcd.UseMirrorPrototype = ev.UseMirrorPrototype;
         Dirty(uid, rcd);
+    }
+
+    private void OnRPDEyeRotationEvent(RPDEyeRotationEvent ev, EntitySessionEventArgs session)
+    {
+        var uid = GetEntity(ev.NetEntity);
+
+        if (session.SenderSession.AttachedEntity is not { } player)
+            return;
+
+        if (!TryComp<HandsComponent>(player, out var hands) || uid != hands.ActiveHand?.HeldEntity)
+            return;
+
+        if (!TryComp<RCDComponent>(uid, out var rcd))
+            return;
+
+        if (rcd.LastKnownEyeRotation != ev.EyeRotation)
+        {
+            rcd.LastKnownEyeRotation = ev.EyeRotation;
+        }
     }
 
     #endregion
@@ -616,6 +669,17 @@ public sealed class RCDSystem : EntitySystem
                     ? prototype.MirrorPrototype
                     : prototype.Prototype;
 
+                // Select layer-specific prototype for RPD
+                if (component.IsRpd && !prototype.NoLayers)
+                {
+                    if (_protoManager.TryIndex<EntityPrototype>(proto, out var entityProto) &&
+                        entityProto.TryGetComponent<AtmosPipeLayersComponent>(out var atmosPipeLayers, EntityManager.ComponentFactory) &&
+                        _pipeLayersSystem.TryGetAlternativePrototype(atmosPipeLayers, _currentLayer, out var newProtoId))
+                    {
+                        proto = newProtoId;
+                    }
+                }
+
                 // Calculate rotation and apply it before spawning
                 var rotation = prototype.Rotation switch
                 {
@@ -629,6 +693,12 @@ public sealed class RCDSystem : EntitySystem
                 var entityCoords = _mapSystem.GridTileToLocal(gridUid, mapGrid, position);
                 var mapCoords = _transform.ToMapCoordinates(entityCoords);
                 var ent = Spawn(proto, mapCoords, rotation: rotation);
+
+                // Apply pipe color if set
+                if (component.PipeColor.Key != "default" && component.PipeColor.Color != null)
+                {
+                    _appearanceSystem.SetData(ent, Content.Shared.Atmos.Piping.PipeColorVisuals.Color, component.PipeColor.Color.Value);
+                }
 
                 _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to spawn {ToPrettyString(ent)} at {position} on grid {gridUid}");
                 break;

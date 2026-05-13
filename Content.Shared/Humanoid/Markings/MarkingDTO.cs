@@ -22,6 +22,16 @@ namespace Content.Shared.Humanoid.Markings
         public bool? Visible { get; set; }
 
         /// <summary>
+        ///     If this genital marking should render over clothing instead of underneath it.
+        /// </summary>
+        public bool? RenderGenitalsOverClothing { get; set; }
+
+        /// <summary>
+        ///     If this marking should render over clothing when possible.
+        /// </summary>
+        public bool? RenderOverClothing { get; set; }
+
+        /// <summary>
         ///     If this marking is can be toggled on or off by the user.
         /// </summary>
         public string? CustomName { get; set; }

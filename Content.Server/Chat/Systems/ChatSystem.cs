@@ -749,11 +749,16 @@ public sealed partial class ChatSystem : SharedChatSystem
         string name = FormattedMessage.EscapeText(nameOverride ?? Name(ent));
 
         // Emotes use Identity.Name, since it doesn't actually involve your voice at all.
-        var wrappedMessage = Loc.GetString("chat-manager-entity-me-wrap-message",
-            ("entityName", name),
-            ("entity", ent),
-            ("message", FormattedMessage.RemoveMarkupOrThrow(action)),
-            ("chatColor", chatColor ?? Color.White.ToHex())); // Coyote: makes the your name color right
+        var wrappedMessage = nameOverride != null
+            ? Loc.GetString("chat-manager-entity-me-wrap-message-override",
+                ("entityName", name),
+                ("message", FormattedMessage.RemoveMarkupOrThrow(action)),
+                ("chatColor", chatColor ?? Color.White.ToHex()))
+            : Loc.GetString("chat-manager-entity-me-wrap-message",
+                ("entityName", name),
+                ("entity", ent),
+                ("message", FormattedMessage.RemoveMarkupOrThrow(action)),
+                ("chatColor", chatColor ?? Color.White.ToHex())); // Coyote: makes the your name color right
 
         bool soundEmoteSent = true; // Frontier: if check emote is false, assume somebody's sending an emote
         if (checkEmote)
@@ -765,6 +770,9 @@ public sealed partial class ChatSystem : SharedChatSystem
             var ev = new NFEntityEmotedEvent(source, action);
             RaiseLocalEvent(source, ev, true);
         }
+
+        var surveillanceEmoteEv = new SurveillanceCameraEmoteMessageEvent(source, action);
+        RaiseLocalEvent(source, surveillanceEmoteEv, true);
         // End Frontier
 
         SendInVoiceRange(ChatChannel.Emotes,
@@ -1358,6 +1366,21 @@ public sealed class NFEntityEmotedEvent : EntityEventArgs
     }
 }
 // End Frontier
+
+/// <summary>
+///     Raised on an entity when it sends a public emote message.
+/// </summary>
+public sealed class SurveillanceCameraEmoteMessageEvent : EntityEventArgs
+{
+    public readonly EntityUid Source;
+    public readonly string Message;
+
+    public SurveillanceCameraEmoteMessageEvent(EntityUid source, string message)
+    {
+        Source = source;
+        Message = message;
+    }
+}
 
 /// <summary>
 ///     InGame IC chat is for chat that is specifically ingame (not lobby) but is also in character, i.e. speaking.

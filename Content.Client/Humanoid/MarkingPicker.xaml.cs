@@ -178,6 +178,7 @@ public sealed partial class MarkingPicker : Control
         CanPutOnToggle.OnToggled += x => SetCanToggle(x.Pressed);
         CanPutOnByOtherToggle.OnToggled += x => SetOtherCanToggle(x.Pressed);
         HideTogglePopupToggle.OnToggled += x => SetHideTogglePopup(x.Pressed);
+        RenderOverClothingToggle.OnToggled += x => SetRenderOverClothing(x.Pressed);
         StartVisibleToggle.OnToggled += x => SetVisible(x.Pressed);
 
         CustomNameTextEdit.OnTextChanged += x => SetCustomText();
@@ -791,6 +792,7 @@ public sealed partial class MarkingPicker : Control
         CanPutOnToggle.Pressed = marking.CanToggleVisible;
         CanPutOnByOtherToggle.Pressed = marking.OtherCanToggleVisible;
         HideTogglePopupToggle.Pressed = marking.HideTogglePopup;
+        RenderOverClothingToggle.Pressed = marking.RenderOverClothing;
         PutOnTextEdit.Text = marking.PutOnVerb ?? Loc.GetString("marking-toggle-self-default-verb-on");
         TakeOffTextEdit.Text = marking.TakeOffVerb ?? Loc.GetString("marking-toggle-self-default-verb-off");
         PutOnOtherTextEdit.Text = marking.PutOnVerb2p ?? Loc.GetString("marking-toggle-other-default-verb-on");
@@ -844,6 +846,10 @@ public sealed partial class MarkingPicker : Control
 
         HideTogglePopupLabel.Visible = togglePopupVisible;
         HideTogglePopupToggle.Visible = togglePopupVisible;
+
+        // Show render over clothing toggle only for genital markings
+        RenderOverClothingLabel.Visible = _selectedMarkingCategory == MarkingCategories.Genital;
+        RenderOverClothingToggle.Visible = _selectedMarkingCategory == MarkingCategories.Genital;
     }
 
     private void ColorChanged(int colorIndex)
@@ -968,6 +974,21 @@ public sealed partial class MarkingPicker : Control
 
         var marking = new Marking(_currentMarkings.Markings[_selectedMarkingCategory][markingIndex]);
         marking.HideTogglePopup = hide;
+        _currentMarkings.Replace(_selectedMarkingCategory, markingIndex, marking);
+
+        OnMarkingDataChanged?.Invoke(_currentMarkings);
+    }
+
+    private void SetRenderOverClothing(bool renderOver)
+    {
+        if (_selectedMarking is null) return;
+        var markingPrototype = (MarkingPrototype)_selectedMarking.Metadata!;
+        int markingIndex = _currentMarkings.FindIndexOf(_selectedMarkingCategory, markingPrototype.ID);
+
+        if (markingIndex < 0) return;
+
+        var marking = new Marking(_currentMarkings.Markings[_selectedMarkingCategory][markingIndex]);
+        marking.RenderOverClothing = renderOver;
         _currentMarkings.Replace(_selectedMarkingCategory, markingIndex, marking);
 
         OnMarkingDataChanged?.Invoke(_currentMarkings);

@@ -397,9 +397,14 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
 
     private void ApplyMarkingSet(EntityUid uid, HumanoidAppearanceComponent humanoid, SpriteComponent sprite)
     {
-        // I am lazy and I CBF resolving the previous mess, so I'm just going to nuke the markings.
-        // Really, markings should probably be a separate component altogether.
-        ClearAllMarkings(humanoid, sprite);
+        // Only nuke and rebuild sprite layers when the marking set actually changed.
+        // Skipping ClearAllMarkings when markings are unchanged avoids expensive AddLayer/RemoveLayer churn.
+        var markingsUnchanged =
+            humanoid.MarkingSet.Markings.Count == humanoid.ClientOldMarkings.Markings.Count
+            && humanoid.MarkingSet.Equals(humanoid.ClientOldMarkings);
+
+        if (!markingsUnchanged)
+            ClearAllMarkings(humanoid, sprite);
 
         // var censorNudity = _configurationManager.GetCVar(CCVars.AccessibilityClientCensorNudity) ||
         //                    _configurationManager.GetCVar(CCVars.AccessibilityServerCensorNudity);
@@ -430,12 +435,13 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                     newMarking.MarkingColors,
                     newMarking.MarkingGlow,
                     newMarking.Visible,
+                    newMarking.RenderOverClothing,
                     humanoid,
                     sprite,
                     // Coyote Start
                     newMarking.MarkingScale,
                     newMarking.GetOffset(facingDirection));
-                    // Coyote End
+                // Coyote End
             }
         }
 
@@ -539,6 +545,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         IReadOnlyList<Color>? colors,
         IReadOnlyList<float>? glowLevels,
         bool visible,
+        bool renderOverClothing,
         HumanoidAppearanceComponent humanoid,
         SpriteComponent sprite,
         // Coyote Start
@@ -621,6 +628,21 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                     layerSlot = Enum.Parse<HumanoidVisualLayers>(layerName);
                 }
             }
+
+            // Keep genital render routing deterministic regardless of prototype layering.
+            // Toggle off: render beneath clothing on the Genital layer.
+            // Toggle on: render above clothing on TailOversuit.
+            if (markingPrototype.MarkingCategory == MarkingCategories.Genital
+                || markingPrototype.BodyPart == HumanoidVisualLayers.Genital)
+            {
+                layerSlot = renderOverClothing
+                    ? HumanoidVisualLayers.TailOversuit
+                    : HumanoidVisualLayers.Genital;
+            }
+            else if (renderOverClothing && layerSlot == HumanoidVisualLayers.Genital)
+            {
+                layerSlot = HumanoidVisualLayers.TailOversuit;
+            }
             // update the layerDict
             // if it doesnt have this, add it at 0, otherwise increment it
             if (layerDict.TryGetValue(layerSlot.ToString(), out var layerIndex))
@@ -637,14 +659,30 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                 continue;
             }
 
-            visible &= !IsHidden(humanoid, markingPrototype.BodyPart);
-            visible &= humanoid.BaseLayers.TryGetValue(markingPrototype.BodyPart, out var setting)
+            visible &= !IsHidden(humanoid, layerSlot);
+            visible &= humanoid.BaseLayers.TryGetValue(layerSlot, out var setting)
                        && setting.AllowsMarkings;
 
             var layerId = $"{markingPrototype.ID}-{rsi.RsiState}";
             var glowLayerId = $"{layerId}-glow";
             // FLOOF CHANGE END
             var targLayerAdj = targetLayer + layerDict[layerSlot.ToString()] + 1;
+
+            // Keep genital markings beneath clothing when render-over-clothing is disabled.
+            // Multi-state markings can otherwise increment past nearby clothing anchors.
+            if (!renderOverClothing
+                && (markingPrototype.MarkingCategory == MarkingCategories.Genital
+                    || markingPrototype.BodyPart == HumanoidVisualLayers.Genital))
+            {
+                if (sprite.LayerMapTryGet("jumpsuit", out var jumpsuitLayer))
+                    targLayerAdj = Math.Min(targLayerAdj, jumpsuitLayer - 1);
+
+                if (sprite.LayerMapTryGet("outerClothing", out var outerClothingLayer))
+                    targLayerAdj = Math.Min(targLayerAdj, outerClothingLayer - 1);
+
+                if (targLayerAdj < 0)
+                    targLayerAdj = 0;
+            }
 
 
             if (!sprite.LayerMapTryGet(layerId, out _))
@@ -735,28 +773,6 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                     layerId,
                     out _);
             }
-            // if (humanoid.LegStyle == HumanoidLegStyle.Digitigrade
-            //          && markingPrototype.BodyPart is HumanoidVisualLayers.LFoot
-            //              or HumanoidVisualLayers.RFoot
-            //              or HumanoidVisualLayers.LLeg
-            //              or HumanoidVisualLayers.RLeg
-            //          && _prototypeManager.TryIndex(humanoid.Species, out SpeciesPrototype? speciesProto)
-            //          && speciesProto.AllowDigilegDisplacement
-            //          && humanoid.LegDisplacements.TryGetValue(
-            //              humanoid.LegStyle,
-            //              out var legDisplacementId)
-            //          && _prototypeManager.TryIndex(legDisplacementId, out LegDisplacementPrototype?
-            //              legDisplacementProto)
-            //          && legDisplacementProto.Displacements.TryGetValue("jumpsuit", out DisplacementData? legDisplacementData)
-            //          && markingPrototype.CanBeDisplaced)
-            // {
-            //     _displacement.TryAddDisplacement(
-            //         legDisplacementData,
-            //         sprite,
-            //         targetLayer + j + 1,
-            //         layerId,
-            //         out _);
-            // }
         }
 
         if (MarkingCategoriesConversion.Category2Layer(
@@ -831,7 +847,7 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
                 if (_markingManager.TryGetMarking(marking, out var markingPrototype) && markingPrototype.BodyPart == layer)
                 {
                     // Coyote Start
-                    ApplyMarking(markingPrototype, marking.MarkingColors, marking.MarkingGlow, marking.Visible, ent, sprite, marking.MarkingScale, marking.GetOffset(facingDirection));
+                    ApplyMarking(markingPrototype, marking.MarkingColors, marking.MarkingGlow, marking.Visible, marking.RenderOverClothing, ent, sprite, marking.MarkingScale, marking.GetOffset(facingDirection));
                     // Coyote End
                 }
             }
@@ -875,8 +891,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         out DisplacementData? femaleDisplacementData
         )
     {
-        baseDisplacementData   = baseDisplacementDataIn;
-        maleDisplacementData   = maleDisplacementDataIn;
+        baseDisplacementData = baseDisplacementDataIn;
+        maleDisplacementData = maleDisplacementDataIn;
         femaleDisplacementData = femaleDisplacementDataIn;
         if (!Resolve(uid, ref humanoidAppearance))
             return;
@@ -898,8 +914,8 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             return;
         }
 
-        baseDisplacementData   = ldp.Displacements!.GetValueOrDefault(slot, baseDisplacementDataIn);
-        maleDisplacementData   = ldp.MaleDisplacements!.GetValueOrDefault(slot, maleDisplacementDataIn);
+        baseDisplacementData = ldp.Displacements!.GetValueOrDefault(slot, baseDisplacementDataIn);
+        maleDisplacementData = ldp.MaleDisplacements!.GetValueOrDefault(slot, maleDisplacementDataIn);
         femaleDisplacementData = ldp.FemaleDisplacements!.GetValueOrDefault(slot, femaleDisplacementDataIn);
     }
 }

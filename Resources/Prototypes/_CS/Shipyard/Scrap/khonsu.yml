@@ -21,7 +21,7 @@
   minPlayers: 0
   stations:
     Khonsu:
-      stationProto: StandardFrontierVessel
+      stationProto: StandardFrontierExpeditionVessel
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Khonsu {1}'

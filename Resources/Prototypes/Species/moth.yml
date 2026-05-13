@@ -34,10 +34,6 @@
     RArm: MobMothRArm
     LHand: MobMothLHand
     RHand: MobMothRHand
-    LLegBehind: MobHumanoidAnyMarking
-    RLegBehind: MobHumanoidAnyMarking
-    LFootBehind: MobHumanoidAnyMarking
-    RFootBehind: MobHumanoidAnyMarking
     LLeg: MobMothLLeg
     RLeg: MobMothRLeg
     LFoot: MobMothLFoot

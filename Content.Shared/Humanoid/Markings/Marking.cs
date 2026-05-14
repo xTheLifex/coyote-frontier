@@ -18,26 +18,26 @@ namespace Content.Shared.Humanoid.Markings
         [DataField("glow")]
         private float _legacyGlow;
 
-    // Coyote Start
-    [DataField("scale")]
-    private float _markingScale = 1.0f;
+        // Coyote Start
+        [DataField("scale")]
+        private float _markingScale = 1.0f;
 
-    [DataField("offsetX")]
-    private float _markingOffsetX;
+        [DataField("offsetX")]
+        private float _markingOffsetX;
 
-    [DataField("offsetY")]
-    private float _markingOffsetY;
+        [DataField("offsetY")]
+        private float _markingOffsetY;
 
-    [DataField("offsetFrontX")]
-    private float _markingOffsetFrontX;
+        [DataField("offsetFrontX")]
+        private float _markingOffsetFrontX;
 
-    [DataField("offsetFrontY")]
-    private float _markingOffsetFrontY;
+        [DataField("offsetFrontY")]
+        private float _markingOffsetFrontY;
 
-    [DataField("offsetBehindX")]
-    private float _markingOffsetBehindX;
+        [DataField("offsetBehindX")]
+        private float _markingOffsetBehindX;
 
-    [DataField("offsetBehindY")]
+        [DataField("offsetBehindY")]
     private float _markingOffsetBehindY;
 
     [DataField("offsetLeftX")]
@@ -155,6 +155,7 @@ namespace Content.Shared.Humanoid.Markings
             TakeOffVerb = other.TakeOffVerb;
             TakeOffVerb2p = other.TakeOffVerb2p;
             ShowAtStart = other.ShowAtStart;
+            RenderOverClothing = other.RenderOverClothing;
             _markingGlow = new(other.MarkingGlow);
             _legacyGlow = other._legacyGlow;
             _markingScale = other._markingScale; // Coyote
@@ -176,6 +177,7 @@ namespace Content.Shared.Humanoid.Markings
             MarkingId = other.MarkingId ?? MarkingId;
             _markingColors = new(other.MarkingColors.Select(x => Color.FromHex(x)) ?? _markingColors);
             ShowAtStart = other.Visible ?? ShowAtStart;
+            RenderOverClothing = other.RenderOverClothing ?? other.RenderGenitalsOverClothing ?? RenderOverClothing;
             CustomName = other.CustomName ?? CustomName;
             CanToggleVisible = other.CanToggleVisible ?? CanToggleVisible;
             OtherCanToggleVisible = other.OtherCanToggleVisible ?? OtherCanToggleVisible;
@@ -241,6 +243,21 @@ namespace Content.Shared.Humanoid.Markings
         /// </summary>
         [DataField("showAtStart")]
         public bool ShowAtStart = true;
+
+        /// <summary>
+        ///     If this genital marking should render over clothing instead of underneath it.
+        /// </summary>
+        [DataField("renderOverClothing")]
+        public bool RenderOverClothing = false;
+
+        /// <summary>
+        ///     Compatibility alias for renamed preferences payloads.
+        /// </summary>
+        public bool RenderGenitalsOverClothing
+        {
+            get => RenderOverClothing;
+            set => RenderOverClothing = value;
+        }
 
         /// <summary>
         ///     If this marking is can be toggled on or off by the user.
@@ -414,6 +431,7 @@ namespace Content.Shared.Humanoid.Markings
                 && TakeOffVerb == other.TakeOffVerb
                 && TakeOffVerb2p == other.TakeOffVerb2p
                 && ShowAtStart == other.ShowAtStart
+                && RenderOverClothing == other.RenderOverClothing
                 && _markingGlow.SequenceEqual(other._markingGlow)
                 && _markingScale == other._markingScale // Coyote
                 && _markingOffsetX == other._markingOffsetX // Coyote
@@ -443,6 +461,8 @@ namespace Content.Shared.Humanoid.Markings
                 PutOnVerb2p = PutOnVerb2p,
                 TakeOffVerb = TakeOffVerb,
                 TakeOffVerb2p = TakeOffVerb2p,
+                RenderOverClothing = RenderOverClothing,
+                RenderGenitalsOverClothing = RenderOverClothing,
                 GlowLevels = _markingGlow.ToList(),
                 Glow = _markingGlow.FirstOrDefault(),
                 Scale = _markingScale, // Coyote

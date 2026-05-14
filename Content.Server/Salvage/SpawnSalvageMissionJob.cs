@@ -34,6 +34,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Server.Shuttles.Components;
+// _CS Start: shared objective radar blips
 using Content.Server._NF.Radar;
 using Content.Server._NF.Salvage.Expeditions; // _CS
 using Content.Server.Station.Components; // _CS
@@ -42,6 +43,7 @@ using Content.Server.Shuttles.Systems;
 using Content.Server._NF.Salvage.Expeditions.Structure; // _CS
 using Content.Shared.NPC.Prototypes;
 using Content.Shared._NF.Radar;
+// _CS End: shared objective radar blips
 
 namespace Content.Server.Salvage;
 
@@ -1089,6 +1091,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
                 ConfigureObjectiveNpcSpawner(uid, mission.Faction);
                 _entManager.AddComponent<SalvageStructureComponent>(uid);
 
+                // _CS Start: shared objective radar blips
                 if (_missionParams.OpenContract)
                 {
                     var blip = _entManager.EnsureComponent<RadarBlipComponent>(uid);
@@ -1100,6 +1103,7 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
                     blip.RequireNoGrid = false;
                     blip.Enabled = true;
                 }
+                // _CS End: shared objective radar blips
 
                 structureComp.Structures.Add(uid);
                 break;

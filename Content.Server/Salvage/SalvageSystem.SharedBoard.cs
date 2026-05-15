@@ -1,5 +1,8 @@
 using System.Numerics;
 using System.Linq;
+// _CS Start: shared landing atmosphere exclusions
+using Content.Server._NF.Salvage.Expeditions;
+// _CS End: shared landing atmosphere exclusions
 using Content.Server.Salvage.Expeditions;
 using Content.Server.Shuttles.Components;
 using Content.Server.Station.Components;
@@ -248,7 +251,11 @@ public sealed partial class SalvageSystem
 
     private bool TryFindLandingOrigin(EntityUid expeditionMap, SalvageExpeditionComponent expedition, Box2 shuttleBox, out Vector2 origin)
     {
-        var dungeonBuffer = SalvageExpeditionReservation.MinimumLandingClearanceTiles;
+        // _CS Start: shared expedition landing separation
+        // Shared expeditions keep claimed ships farther apart than the normal tile-reservation fallback.
+        const float sharedLandingSeparationTiles = 32f;
+        var dungeonBuffer = sharedLandingSeparationTiles;
+        // _CS End: shared expedition landing separation
         var boardPadding = MathF.Max(shuttleBox.Width, shuttleBox.Height) + 24f;
         var searchRadius = expedition.SharedLandingRadius > 0f
             ? expedition.SharedLandingRadius
@@ -296,6 +303,12 @@ public sealed partial class SalvageSystem
 
                 origin = candidateOrigin;
                 expedition.ReservedLandingZones.Add(candidateReservationZone);
+
+                // _CS Start: keep claim-landed ships clear of expedition map atmosphere
+                if (TryComp<ExpeditionAtmosphereExclusionComponent>(expeditionMap, out var atmosExclusion))
+                    atmosExclusion.ExcludedZones.Add(candidateReservationZone);
+                // _CS End: keep claim-landed ships clear of expedition map atmosphere
+
                 return true;
             }
         }

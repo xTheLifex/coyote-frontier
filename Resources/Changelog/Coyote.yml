@@ -2779,3 +2779,16 @@ Entries:
   id: 317
   time: '2026-05-12T11:03:11.0000000+00:00'
   url: https://github.com/ARF-SS13/coyote-frontier/pull/1196
+- author: QTNeen
+  changes:
+    - type: Add
+      message: Shared expedition destruction objectives now appear on radar
+    - type: Tweak
+      message: Improved shared expedition dungeon generation logic
+    - type: Tweak
+      message: Shared expeditions now last 30 minutes, with a 25 minute cycle time
+    - type: Tweak
+      message: Expedition atmospheric effects no longer occur inside of ships
+  id: 318
+  time: '2026-05-15T01:06:58.0000000+00:00'
+  url: https://github.com/ARF-SS13/coyote-frontier/pull/1197

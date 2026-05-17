@@ -27,6 +27,10 @@
       Primary: Structures/Piping/Atmospherics/pump.rsi
       Secondary: Structures/Piping/Atmospherics/pump_alt1.rsi
       Tertiary: Structures/Piping/Atmospherics/pump_alt2.rsi
+  - type: RCDDeconstructable
+    cost: 1
+    delay: 0
+    rpd: true
 
 - type: entity
   parent: GasBinaryBase
@@ -439,6 +443,10 @@
     - type: GuideHelp
       guides:
       - GasCanisters
+    - type: RCDDeconstructable
+      cost: 1
+      delay: 0
+      rpd: true
 
 - type: entity
   parent: GasVentPump
@@ -625,6 +633,10 @@
   - type: GuideHelp
     guides:
     - Radiators
+  - type: RCDDeconstructable
+    cost: 1
+    delay: 0
+    rpd: true
 
 - type: entity
   parent: HeatExchanger

@@ -740,6 +740,18 @@
   name: body bags pile
   description: A stacked pile of reinforced body bags. Some of them are moving!
   components:
+  # _CS Start: salvage objective zombie pile spawner
+  - type: SalvageObjectiveNpcSpawner
+    spawnIntervalSeconds: 76
+    nearbyRange: 15
+    maxNearby: 5
+    nearbyFactions:
+    - Zombie
+    spawnPrototypes:
+    - NFSpawnMobZombie
+    - NFSpawnMobZombieSpecial
+    - NFSpawnMobZombieRandom
+  # _CS End: salvage objective zombie pile spawner
   - type: TimedSpawner
     prototypes:
     - NFSpawnMobZombieRandom

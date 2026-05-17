@@ -34,12 +34,16 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Server.Shuttles.Components;
+// _CS Start: shared objective radar blips
+using Content.Server._NF.Radar;
 using Content.Server._NF.Salvage.Expeditions; // _CS
 using Content.Server.Station.Components; // _CS
 using Content.Server.Station.Systems; // _CS
 using Content.Server.Shuttles.Systems;
 using Content.Server._NF.Salvage.Expeditions.Structure; // _CS
 using Content.Shared.NPC.Prototypes;
+using Content.Shared._NF.Radar;
+// _CS End: shared objective radar blips
 
 namespace Content.Server.Salvage;
 
@@ -50,6 +54,10 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
     private const float SharedExpeditionClusterPadding = 80f;
     private const float SharedExpeditionMinNonOverlapPadding = 16f;
     private const float SharedExpeditionMaxCompoundDistanceFromFirstShip = 96f;
+    // _CS Start: shared cluster placement retries
+    private const int SharedExpeditionPlacementMaxAttempts = 4;
+    private const float SharedExpeditionPlacementRetryStep = 16f;
+    // _CS End: shared cluster placement retries
     private const int SharedObjectiveMultiplier = 2;
     private static readonly float SharedLandingBufferTiles = SalvageExpeditionReservation.MinimumLandingClearanceTiles;
 
@@ -339,6 +347,14 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
         coords = coords.Rounded(); // Ensure grid is aligned to map coords
         expedition.ReservedLandingZones.Add(SalvageExpeditionReservation.GetLandingZone(shuttleBox, coords, SharedLandingBufferTiles));
 
+        // _CS Start: exclude landing zones from map atmosphere
+        var atmosExclusion = _entManager.AddComponent<ExpeditionAtmosphereExclusionComponent>(mapUid);
+        foreach (var zone in expedition.ReservedLandingZones)
+        {
+            atmosExclusion.ExcludedZones.Add(zone);
+        }
+        // _CS End: exclude landing zones from map atmosphere
+
         // List<Vector2i> reservedTiles = new();
 
         // foreach (var tile in _map.GetTilesIntersecting(mapUid, grid, new Circle(Vector2.Zero, landingPadRadius), false))
@@ -505,11 +521,14 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
             return (sharedDungeons, clusterCenters);
 
         sharedDungeons.AddRange(firstBatch);
-        clusterCenters.Add(new Vector2(origin.X, origin.Y));
 
         var firstBounds = GetDungeonBounds(firstBatch[0], origin);
-        var firstHalfExtent = MathF.Max(firstBounds.Width, firstBounds.Height) / 2f;
+        // _CS Start: use actual generated bounds center/radius for overlap checks
+        clusterCenters.Add(firstBounds.Center);
+
+        var firstHalfExtent = GetSharedClusterRadius(firstBounds);
         var estimatedHalfExtent = firstHalfExtent;
+        // _CS End: use actual generated bounds center/radius for overlap checks
         var minNonOverlappingSpacing = firstHalfExtent * 2f + SharedExpeditionMinNonOverlapPadding;
         clusterHalfExtents.Add(firstHalfExtent);
         var preferredSpacing = MathF.Max(SharedExpeditionMinClusterSpacing,
@@ -526,42 +545,141 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
         }
 
         var baseAngle = (float)_dungeon.GetDungeonRotation(seed);
+        // _CS Start: cache probe results per (seed, origin) to avoid redundant temporary dungeon generations
+        var probeBoundsCache = new Dictionary<(int seed, Vector2i origin), Box2?>();
+        // _CS End: cache probe results
 
         for (var i = 1; i < SharedExpeditionDungeonCount; i++)
         {
             var theta = baseAngle + MathF.Tau * (i - 1) / (SharedExpeditionDungeonCount - 1);
             var direction = new Vector2(MathF.Cos(theta), MathF.Sin(theta));
-            var resolvedCenter = ResolveSequentialSharedClusterCenter(
-                dungeonOffset,
-                direction,
-                spacing,
-                estimatedHalfExtent,
-                clusterCenters,
-                clusterHalfExtents,
-                SharedExpeditionMinNonOverlapPadding);
-
-            var positionedOrigin = resolvedCenter.Floored();
             var localSeed = seed + i * 9973;
+            // _CS Start: probe candidate cluster bounds and retry outward until overlap-free
+            var radialDistance = spacing;
+            var positionedOrigin = ((dungeonOffset + direction * radialDistance).Floored());
+            var probeHalfExtent = estimatedHalfExtent;
+
+            for (var attempt = 0; attempt < SharedExpeditionPlacementMaxAttempts; attempt++)
+            {
+                var resolvedCenter = ResolveSequentialSharedClusterCenter(
+                    dungeonOffset,
+                    direction,
+                    radialDistance,
+                    estimatedHalfExtent,
+                    clusterCenters,
+                    clusterHalfExtents,
+                    SharedExpeditionMinNonOverlapPadding);
+
+                positionedOrigin = resolvedCenter.Floored();
+
+                // _CS Start: cache by (seed, origin) - skip probe if already computed
+                var probeKey = (localSeed, positionedOrigin);
+                if (!probeBoundsCache.TryGetValue(probeKey, out var probeBounds))
+                {
+                    probeBounds = await ProbeSharedClusterBoundsAsync(config, dungeonProto, positionedOrigin, localSeed);
+                    probeBoundsCache[probeKey] = probeBounds;
+                }
+                // _CS End: cache by (seed, origin)
+
+                // _CS Start: exponential outward step on failure to reduce probe count
+                var stepMultiplier = attempt + 1;
+                // _CS End: exponential outward step
+
+                if (probeBounds == null)
+                {
+                    radialDistance += SharedExpeditionPlacementRetryStep * stepMultiplier;
+                    continue;
+                }
+
+                probeHalfExtent = GetSharedClusterRadius(probeBounds.Value);
+
+                if (!IntersectsExistingSharedClusters(
+                        probeBounds.Value.Center,
+                        probeHalfExtent,
+                        clusterCenters,
+                        clusterHalfExtents,
+                        SharedExpeditionMinNonOverlapPadding))
+                {
+                    break;
+                }
+
+                radialDistance += SharedExpeditionPlacementRetryStep * stepMultiplier;
+            }
+            // _CS End: probe candidate cluster bounds and retry outward until overlap-free
 
             var batch = await WaitAsyncTask(_dungeon.GenerateDungeonAsync(config, dungeonProto, mapUid, grid, positionedOrigin, localSeed));
             sharedDungeons.AddRange(batch);
-            clusterCenters.Add(new Vector2(positionedOrigin.X, positionedOrigin.Y));
 
+            // _CS Start: use final generated bounds center, not origin, for overlap tracking (fixes double-add)
             if (batch.Count > 0)
             {
                 var bounds = GetDungeonBounds(batch[0], positionedOrigin);
-                var halfExtent = MathF.Max(bounds.Width, bounds.Height) / 2f;
+                clusterCenters.Add(bounds.Center);
+                var halfExtent = GetSharedClusterRadius(bounds);
                 clusterHalfExtents.Add(halfExtent);
                 estimatedHalfExtent = MathF.Max(estimatedHalfExtent, halfExtent);
             }
             else
             {
+                clusterCenters.Add(new Vector2(positionedOrigin.X, positionedOrigin.Y));
                 clusterHalfExtents.Add(estimatedHalfExtent);
             }
+            // _CS End: use final generated bounds center
         }
 
         return (sharedDungeons, clusterCenters);
     }
+
+    // _CS Start: shared cluster overlap probing helpers
+    private async Task<Box2?> ProbeSharedClusterBoundsAsync(
+        DungeonConfig config,
+        ProtoId<DungeonConfigPrototype> dungeonProto,
+        Vector2i probeOrigin,
+        int seed)
+    {
+        var probeMapUid = _map.CreateMap(out var probeMapId, runMapInit: false);
+        var probeGrid = _entManager.EnsureComponent<MapGridComponent>(probeMapUid);
+
+        try
+        {
+            _map.InitializeMap(probeMapId);
+            _map.SetPaused(probeMapUid, true);
+
+            var probeBatch = await WaitAsyncTask(_dungeon.GenerateDungeonAsync(config, dungeonProto, probeMapUid, probeGrid, probeOrigin, seed));
+            if (probeBatch.Count == 0)
+                return null;
+
+            return GetDungeonBounds(probeBatch[0], probeOrigin);
+        }
+        finally
+        {
+            _entManager.QueueDeleteEntity(probeMapUid);
+        }
+    }
+
+    private static bool IntersectsExistingSharedClusters(
+        Vector2 candidateCenter,
+        float candidateHalfExtent,
+        IReadOnlyList<Vector2> existingCenters,
+        IReadOnlyList<float> existingHalfExtents,
+        float extraPadding)
+    {
+        for (var i = 0; i < existingCenters.Count; i++)
+        {
+            var required = candidateHalfExtent + existingHalfExtents[i] + extraPadding;
+            var actual = (candidateCenter - existingCenters[i]).Length();
+            if (actual < required)
+                return true;
+        }
+
+        return false;
+    }
+
+    private static float GetSharedClusterRadius(Box2 bounds)
+    {
+        return bounds.Size.Length() / 2f;
+    }
+    // _CS End: shared cluster overlap probing helpers
 
     private static Vector2 ResolveSequentialSharedClusterCenter(
         Vector2 anchor,
@@ -706,6 +824,22 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
                     "MobMercenaryBreacherShotgun",
                 };
                 break;
+            // _CS Start
+            case "BloodCollector":
+                spawner.NearbyFactions = new() { "BloodCultNF" };
+                spawner.SpawnPrototypes = new()
+                {
+                    "SpawnMobBloodCultistZealotMelee",
+                    "SpawnMobBloodCultLeech",
+                    "SpawnMobBloodCultistZealotRanged",
+                    "SpawnMobBloodCultistCaster",
+                    "SpawnMobBloodCultistAcolyte",
+                    "SpawnMobBloodCultistPriest",
+                    "SpawnMobBloodCultistJanitor",
+                    "MobBloodCultistAscended",
+                };
+                break;
+            // _CS End
         }
     }
 
@@ -980,6 +1114,21 @@ public sealed class SpawnSalvageMissionJob : Job<bool>
                 var uid = _entManager.SpawnEntity(shaggy, _map.GridTileToLocal(mapUid, grid, tile));
                 ConfigureObjectiveNpcSpawner(uid, mission.Faction);
                 _entManager.AddComponent<SalvageStructureComponent>(uid);
+
+                // _CS Start: shared objective radar blips
+                if (_missionParams.OpenContract)
+                {
+                    var blip = _entManager.EnsureComponent<RadarBlipComponent>(uid);
+                    blip.RadarColor = Color.Gold;
+                    blip.HighlightedRadarColor = Color.Yellow;
+                    blip.Scale = 3f;
+                    blip.Shape = RadarBlipShape.Diamond;
+                    blip.VisibleFromOtherGrids = true;
+                    blip.RequireNoGrid = false;
+                    blip.Enabled = true;
+                }
+                // _CS End: shared objective radar blips
+
                 structureComp.Structures.Add(uid);
                 break;
             }

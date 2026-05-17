@@ -32,7 +32,9 @@ public sealed partial class SalvageSystem
      */
 
     private const int MissionLimit = 5; // _CS: 3<5
-    private const float SharedExpeditionCooldown = 600f; // Frontier: 10 minutes for open contract board
+    // _CS Start: shared board reset cadence
+    private const float SharedExpeditionCooldown = 1500f; // Frontier: 25 minutes for open contract board
+    // _CS End: shared board reset cadence
 
     private readonly JobQueue _salvageQueue = new();
     private readonly List<(SpawnSalvageMissionJob Job, CancellationTokenSource CancelToken)> _salvageJobs = new();

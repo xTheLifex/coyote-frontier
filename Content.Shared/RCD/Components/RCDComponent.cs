@@ -52,6 +52,19 @@ public sealed partial class RCDComponent : Component
     public bool InstantConstruction { get; set; }
 
     /// <summary>
+    /// Stores color data for the RPD
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public (string Key, Color? Color) PipeColor { get; set; } = ("default", null);
+
+    /// <summary>
+    /// Stores player eye rotation for RPD pipe layer calculation.
+    /// Workaround for eye rotation not being networked.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float? LastKnownEyeRotation { get; set; } = null;
+
+    /// <summary>
     /// The direction constructed entities will face upon spawning
     /// </summary>
     [DataField, AutoNetworkedField]

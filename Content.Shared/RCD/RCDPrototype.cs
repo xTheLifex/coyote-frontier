@@ -119,6 +119,13 @@ public sealed partial class RCDPrototype : IPrototype
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadOnly)]
     public RcdRotation Rotation { get; private set; } = RcdRotation.User;
+
+    /// <summary>
+    /// If true, this prototype uses traditional single-placement instead of layered placement.
+    /// Only applies to RPD prototypes.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadOnly)]
+    public bool NoLayers { get; private set; } = false;
 }
 
 public enum RcdMode : byte

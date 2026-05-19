@@ -92,6 +92,10 @@
         enum.PowerDeviceVisualLayers.Powered:
           True: { state: gsensor1 }
           False: { state: gsensor0 }
+  - type: RCDDeconstructable
+    cost: 1
+    delay: 0
+    rpd: true
 
 - type: entity
   parent: BaseItem

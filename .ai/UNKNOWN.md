@@ -61,8 +61,9 @@ Questions that could not be answered confidently from the working tree. Treat th
 
 21. **`bors.toml` "Build & Test Release" status**: required but no matching workflow exists in this repo
     (possibly inherited from the parent fork). Whether CI actually gates on it is unknown.
-22. **`Resources/Changelog/Frontier.yml`** appears legacy (workflow writes `Coyote.yml`); whether any tool
-    still reads it was not verified beyond code search.
+22. **`Resources/Changelog/Frontier.yml`** is legacy/frozen history: no tool writes it, the client
+    loads it as the "Frontier" tab. Palmtree entries go to `Resources/Changelog/Palmtree.yml`
+    (see `.ai/guides/changelogs.md`).
 23. **`Content.Docfx`** is not in the solution; only the weekly workflow uses it; its output/docs coverage
     was not assessed.
 24. **`Content.Tools`** in this fork only contains the map merge driver; upstream subcommands are absent.

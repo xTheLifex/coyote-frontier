@@ -158,7 +158,7 @@ Notes:
 | Spawn | `spawn MobSyndicateAgentPreset` (server/admin console) |
 | Inspect | `vv <uid>` to confirm `HumanoidAppearance.Initial`, factions, loadout |
 | Compare with known-good | `spawn MobSyndicateNavalDeckhandA` |
-| Reload YAML | `reloadprototypes` (TOOLS/dev) |
+| Reload YAML | In Tools builds the client prototype watcher reloads on window refocus (CVar `res.prototype_reload_watch`); `loadprototype` pushes YAML in any build. There is no server `reloadprototypes` command in this fork. |
 | Rules | `listgamerules`, `addgamerule`, `endgamerule` |
 
 ## Pitfalls

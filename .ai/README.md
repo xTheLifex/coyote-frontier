@@ -86,6 +86,13 @@ prefixes (`_DEN`, `_AS`, `_Impstation`, `_Funkystation`, `_Shitmed`).
 | `.ai/guides/adding-admin-commands.md` | Classic/toolshed commands, `[AdminCommand]`, permissions, localization, completion |
 | `.ai/guides/adding-species.md` | `SpeciesPrototype`, mobs/dolls, sprites/markings, minimum-viable recipe |
 | `.ai/guides/saving-grids.md` | `savegrid`/`savemap`/mapping mode, format v7, NF drydock, preservation semantics |
+| `.ai/guides/changelogs.md` | Changelog YAML authoring (manual + commit draft generator), in-game verification, tabs, removed automation |
+
+### Research / ideas (not implemented)
+
+| Document | Topic |
+|---|---|
+| `.ai/ideas/lua.md` | Lua scripting feasibility: runtime-defined components, Garry's-Mod-style hot reload, in-game robot programming, MoonSharp, sandbox/perf/licensing, phased plan |
 
 ## 5. Where the main APIs are
 

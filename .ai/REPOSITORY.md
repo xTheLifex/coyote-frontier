@@ -36,7 +36,7 @@ plus thousands of YAML prototypes. The engine is explicitly **not to be modified
 | — Content.IntegrationTests / Content.Tests | 205 / 27 |
 | Prototype YAML files | 4,107 under `Resources/Prototypes` |
 | Tests | 442 `[Test]` methods in 198 files (NUnit) |
-| CI workflows | 29 under `.github/workflows` |
+| CI workflows | 27 under `.github/workflows` |
 
 ## Top-level layout
 
@@ -152,7 +152,7 @@ Nix users: `flake.nix` / `shell.nix` / `.envrc` provide a dev shell with SDL2, O
 | `Content.Tests` | Unit tests (chemistry, atmos, wires, chat censor, localization, IPIntel, preferences) |
 | `Content.YAMLLinter` | Loads all prototypes on server+client, `ValidateStaticFields`; CI `::error` annotations |
 | Migration system | `Resources/migration.yml` + `nf_migration.yml` applied on map load (`MapMigrationSystem`) |
-| Changelog | `Resources/Changelog/Coyote.yml` written by `.github/workflows/changelog.yml` from PR body |
+| Changelog | `Resources/Changelog/Palmtree.yml`, manual entries (draft from commits with `Tools/_PS/generate_commit_changelog.py`); see `.ai/guides/changelogs.md` |
 | Packaging | `Content.Packaging` zips per RID; `Tools/publish_multi_request.py` for deployment |
 | Map renderer | `Content.MapRenderer <mapId|all>` → `Resources/MapImages/` |
 

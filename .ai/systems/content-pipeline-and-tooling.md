@@ -51,7 +51,7 @@ Key integration test infrastructure: `PoolManager.cs`, `PoolManager.Cvars.cs` (`
 `nftest` preset, `GameMap=Empty`), `Pair/TestPair.cs`, `Pair/TestMapData.cs`, `PoolSettings.cs`.
 `Content.Tests/Server/Connection/IPIntelTest.cs` mocks `IServerDbManager`.
 
-## CI (`.github/workflows/`, 29 files)
+## CI (`.github/workflows/`, 27 files)
 
 | Workflow | Checks |
 |---|---|
@@ -64,7 +64,7 @@ Key integration test infrastructure: `PoolManager.cs`, `PoolManager.Cvars.cs` (`
 | `validate-rgas.yml` | attribution YAML schema |
 | `check-crlf.yml` | line endings |
 | `build-map-renderer.yml`, `benchmarks.yml`, `build-docfx.yml` | tools/docs |
-| `changelog.yml`, `nf-validate-changelog.yml`, `publish-changelog.yml` | changelog generation/validation/Discord publish |
+| `nf-validate-changelog.yml` | optional PR `:cl:` syntax validation (changelog writer/publisher workflows were removed; see `.ai/guides/changelogs.md`) |
 | `publish.yml`, `publish-testing.yml`, `update-credits.yml`, labelers, `close-master-pr.yml`, `no-submodule-update.yml` | release/ops automation |
 
 `bors.toml` requires statuses including a "Build & Test Release" that no workflow here produces (stale).
@@ -80,9 +80,13 @@ Key integration test infrastructure: `PoolManager.cs`, `PoolManager.Cvars.cs` (`
 
 ## Changelog
 
-- `Resources/Changelog/*.yml` (upstream `Changelog.yml`, `Admin.yml`, `Maps.yml`, `Frontier.yml` legacy,
-  `Coyote.yml` fork target); client `ChangelogManager` tracks last-read.
-- PR body `:cl:` parsing by `Tools/_NF/changelog/changelog.js` into `Coyote.yml`; Discord publish script.
+- Changelogs are **manual, client-side YAML**: the client loads every direct `Resources/Changelog/*.yml`
+  as a tab (`ChangelogManager`) and tracks last-read per server id. Git commits are not scanned.
+- Palmtree entries go in `Resources/Changelog/Palmtree.yml` (tab "Palmtree Station" via
+  `Resources/Locale/en-US/_PS/changelog/changelog-window.ftl`). Draft them from commits with
+  `Tools/_PS/generate_commit_changelog.py` or interactively with `Tools/manual_changelog.py`.
+- The GitHub writer/publisher workflows were removed; only `nf-validate-changelog.yml` remains.
+  Full workflow, verification and gotchas: `.ai/guides/changelogs.md`.
 
 ## Documentation
 

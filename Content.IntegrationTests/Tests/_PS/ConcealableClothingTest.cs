@@ -1,11 +1,15 @@
 using System.Linq;
+using Content.Server.Station.Systems;
 using Content.Shared._PS.Clothing;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Implants;
 using Content.Shared.Implants.Components;
 using Content.Shared.Inventory;
+using Content.Shared.Preferences;
+using Content.Shared.Preferences.Loadouts;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Prototypes;
 
 namespace Content.IntegrationTests.Tests._PS;
 
@@ -25,6 +29,18 @@ public sealed class ConcealableClothingTest
   - type: Inventory
   - type: ContainerContainer
   - type: Actions
+
+- type: playTimeTracker
+  id: PSLoadoutPlayTimeTracker
+
+- type: roleLoadout
+  id: JobPSLoadoutTester
+  groups:
+  - ContractorImplanter
+
+- type: job
+  id: PSLoadoutTester
+  playTimeTracker: PSLoadoutPlayTimeTracker
 ";
 
     [Test]
@@ -76,5 +92,43 @@ public sealed class ConcealableClothingTest
     {
         var query = entMan.GetEntityQuery<InstantActionComponent>();
         return actions.GetActions(user).Any(action => query.CompOrNull(action.Owner)?.Event is ToggleClothingConcealmentEvent);
+    }
+
+    [Test]
+    public async Task LoadoutProvidesConcealmentImplanter()
+    {
+        await using var pair = await PoolManager.GetServerClient(new PoolSettings { Dirty = true });
+        var server = pair.Server;
+        var testMap = await pair.CreateTestMap();
+        var entMan = server.ResolveDependency<IEntityManager>();
+        var protoMan = server.ResolveDependency<IPrototypeManager>();
+        var stationSpawning = server.System<StationSpawningSystem>();
+        var mapSystem = server.System<SharedMapSystem>();
+
+        await server.WaitAssertion(() =>
+        {
+            // The shared contractor implant group must offer the concealment implanter.
+            var group = protoMan.Index<LoadoutGroupPrototype>("ContractorImplanter");
+            Assert.That(group.Loadouts.Contains("ContractorClothingConcealmentBackpackImplanter"), Is.True);
+
+            var loadout = protoMan.Index<LoadoutPrototype>("ContractorClothingConcealmentBackpackImplanter");
+            Assert.That(loadout.Implants.Contains("ClothingConcealmentBackpackImplanter"), Is.True);
+
+            // Spawning with it selected must actually implant the character.
+            var profile = new HumanoidCharacterProfile();
+            var roleLoadout = new RoleLoadout("JobPSLoadoutTester");
+            roleLoadout.SelectedLoadouts["ContractorImplanter"] =
+            [
+                new Loadout { Prototype = "ContractorClothingConcealmentBackpackImplanter" },
+            ];
+            profile.SetLoadout(roleLoadout);
+
+            var tester = stationSpawning.SpawnPlayerMob(testMap.GridCoords, job: "PSLoadoutTester", profile, station: null);
+            Assert.That(entMan.HasComponent<ConcealableClothingUserComponent>(tester), Is.True);
+
+            mapSystem.DeleteMap(testMap.MapId);
+        });
+
+        await pair.CleanReturnAsync();
     }
 }
